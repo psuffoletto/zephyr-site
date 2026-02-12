@@ -1,0 +1,9 @@
+---
+import CategoryPage from '../../../components/CategoryPage.astro';
+import { getCategoryBySlug, getProductsByCategory } from '../../../data/products';
+
+const category = getCategoryBySlug('fill')!;
+const products = getProductsByCategory('fill');
+---
+
+<CategoryPage category={category} products={products} />

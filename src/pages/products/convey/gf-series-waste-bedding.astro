@@ -1,0 +1,9 @@
+---
+import DetailProductPage from '../../../components/DetailProductPage.astro';
+import { getProductBySlug, getCategoryBySlug } from '../../../data/products';
+
+const product = getProductBySlug('gf-series-waste-bedding')!;
+const category = getCategoryBySlug(product.category)!;
+---
+
+<DetailProductPage product={product} category={category} />

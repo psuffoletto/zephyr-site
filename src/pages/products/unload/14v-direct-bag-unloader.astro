@@ -1,0 +1,9 @@
+---
+import DetailProductPage from '../../../components/DetailProductPage.astro';
+import { getProductBySlug, getCategoryBySlug } from '../../../data/products';
+
+const product = getProductBySlug('14v-direct-bag-unloader')!;
+const category = getCategoryBySlug(product.category)!;
+---
+
+<DetailProductPage product={product} category={category} />

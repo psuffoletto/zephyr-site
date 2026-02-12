@@ -1,24 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const products = [
-  { name: 'Dust Collectors', category: 'Filtration Systems', href: '/products/dust-collectors', desc: 'Custom baghouse and cartridge collectors for any application.' },
-  { name: 'Conveyor Systems', category: 'Material Transport', href: '/products/conveyors', desc: 'Screw, drag chain, belt, and pneumatic conveying solutions.' },
-  { name: 'Industrial Valves', category: 'Flow Control', href: '/products/industrial-valves', desc: 'Rotary airlock, slide gate, diverter, and butterfly valves.' },
-  { name: 'Bedding Systems', category: 'Agricultural', href: '/products/bedding-systems', desc: 'Automated bedding distribution for dairy and livestock.' },
-  { name: 'Silos & Bins', category: 'Bulk Storage', href: '/products/silos-and-bins', desc: 'Custom storage with mass-flow discharge geometry.' },
-  { name: 'Deduster Systems', category: 'Air Classification', href: '/products/dedusters', desc: 'Precision fines separation and air classification.' },
-];
+import { categories } from '../../data/products';
+
+const products = categories.map(cat => ({
+  name: cat.name,
+  category: cat.tagline,
+  href: `/products/${cat.slug}`,
+  desc: cat.description,
+  num: cat.num,
+}));
 ---
 
-<BaseLayout title="Products" description="Zephyr Equipment product line — dust collectors, conveyors, industrial valves, bedding systems, silos, and dedusters.">
+<BaseLayout title="Products" description="Zephyr Equipment product line — unload, fill, store, filter, convey, clean, automate, and power solutions for bulk material handling.">
 
   <section class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <span class="label" style="color: var(--zephyr-orange);">Our Equipment</span>
       <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Products</h1>
-      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Six product lines, infinite configurations</p>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Eight product lines, infinite configurations</p>
     </div>
   </section>
 
@@ -26,7 +27,7 @@ const products = [
     <div class="products-list">
       {products.map((product, i) => (
         <a href={product.href} class="product-row reveal" data-delay={i}>
-          <div class="product-row-num">{String(i + 1).padStart(2, '0')}</div>
+          <div class="product-row-num">{product.num}</div>
           <div class="product-row-content">
             <span class="label" style="color: var(--zephyr-orange); font-size: 0.65rem;">{product.category}</span>
             <h2 class="display-md" style="margin-top: 0.25rem;">{product.name}</h2>

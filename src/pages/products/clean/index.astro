@@ -1,0 +1,23 @@
+---
+import CategoryPage from '../../../components/CategoryPage.astro';
+import { getCategoryBySlug } from '../../../data/products';
+import type { Product } from '../../../data/products';
+
+const category = getCategoryBySlug('clean')!;
+const products: Product[] = [];
+---
+
+<CategoryPage category={category} products={products}>
+  <section class="section" style="background: var(--steel-50); padding: 3rem 2rem;">
+    <div class="container" style="max-width: 720px; margin-inline: auto; text-align: center;">
+      <p class="body-lg" style="color: var(--steel-600); line-height: 1.8;">
+        Looking for integrated dust collection? The
+        <a href="/products/unload/13-02-bag-dump-station" style="color: var(--zephyr-orange); font-weight: 600; text-decoration: underline;">
+          13-02 Bag Dump Station
+        </a>
+        in the <a href="/products/unload" style="color: var(--zephyr-orange); font-weight: 600; text-decoration: underline;">Unload</a> category
+        features a built-in downdraft dust collection hood for contained, dust-free material handling.
+      </p>
+    </div>
+  </section>
+</CategoryPage>

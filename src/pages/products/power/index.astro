@@ -1,0 +1,10 @@
+---
+import CategoryPage from '../../../components/CategoryPage.astro';
+import { getCategoryBySlug } from '../../../data/products';
+import type { Product } from '../../../data/products';
+
+const category = getCategoryBySlug('power')!;
+const products: Product[] = [];
+---
+
+<CategoryPage category={category} products={products} />
