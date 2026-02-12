@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Spec {
+  label: string;
+  value: string;
+}
+
+interface Feature {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  name: string;
+  category: string;
+  headline: string;
+  description: string;
+  specs: Spec[];
+  features: Feature[];
+  applications: string[];
+  ctaText?: string;
+}
+
+const {
+  name,
+  category,
+  headline,
+  description,
+  specs,
+  features,
+  applications,
+  ctaText = 'Request a Quote',
+} = Astro.props;
+
+const otherProducts = [
+  { name: 'Dust Collectors', href: '/products/dust-collectors' },
+  { name: 'Conveyors', href: '/products/conveyors' },
+  { name: 'Industrial Valves', href: '/products/industrial-valves' },
+  { name: 'Bedding Systems', href: '/products/bedding-systems' },
+  { name: 'Silos & Bins', href: '/products/silos-and-bins' },
+  { name: 'Dedusters', href: '/products/dedusters' },
+].filter(p => p.name !== name);
+---
+
+<BaseLayout title={name} description={`${name} by Zephyr Equipment — ${headline}`}>
+
+  <!-- Hero -->
+  <section class="product-hero">
+    <div class="product-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">{category}</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">{name}</h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">{headline}</p>
+    </div>
+  </section>
+
+  <!-- Specs Bar -->
+  <section class="specs-bar">
+    <div class="container">
+      <div class="specs-row">
+        {specs.map(spec => (
+          <div class="spec-item">
+            <div class="spec-item-val">{spec.value}</div>
+            <div class="spec-item-lbl">{spec.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="product-intro reveal">
+        <p class="body-lg" style="color: var(--steel-600);">{description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Engineering Details</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Key Features</h2>
+      </div>
+      <div class="features-grid">
+        {features.map((feat, i) => (
+          <div class="feature-card reveal" data-delay={i}>
+            <div class="feature-num">{String(i + 1).padStart(2, '0')}</div>
+            <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+              {feat.title}
+            </h3>
+            <p style="font-weight: 300; color: var(--steel-400); line-height: 1.65; font-size: 0.9rem;">
+              {feat.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Industries Served</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Applications</h2>
+      </div>
+      <div class="apps-grid reveal">
+        {applications.map(app => (
+          <div class="app-tag">{app}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="product-cta">
+    <div class="product-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Need a {name.replace(/s$/, '')}?</h2>
+      <p class="accent-text" style="color: rgba(255,255,255,0.85); margin-top: 0.5rem;">
+        Tell us about your application and we'll engineer the right solution.
+      </p>
+      <a href="/contact" class="btn btn--primary" style="margin-top: 2rem;">{ctaText}</a>
+    </div>
+  </section>
+
+  <!-- Other Products -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">More Equipment</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Other Products</h2>
+      </div>
+      <div class="other-products reveal">
+        {otherProducts.map(p => (
+          <a href={p.href} class="other-product-link">
+            <span>{p.name}</span>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .product-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+
+  .product-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+
+  .specs-bar {
+    background: var(--steel-800);
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(232, 97, 45, 0.1);
+  }
+
+  .specs-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .spec-item { text-align: center; }
+
+  .spec-item-val {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: white;
+  }
+
+  .spec-item-lbl {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.15rem;
+  }
+
+  .product-intro {
+    text-align: center;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    background: var(--steel-50);
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-left-color: var(--zephyr-orange);
+    transform: translateX(4px);
+  }
+
+  .feature-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--steel-100);
+    margin-bottom: 0.75rem;
+  }
+
+  .apps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .app-tag {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--steel-100);
+    color: var(--steel-600);
+    transition: all 0.3s ease;
+  }
+
+  .app-tag:hover {
+    border-color: var(--zephyr-orange);
+    color: var(--zephyr-orange);
+    background: rgba(232, 97, 45, 0.03);
+  }
+
+  .product-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+
+  .product-cta-pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 20px,
+      rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px
+    );
+  }
+
+  .other-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+  }
+
+  .other-product-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .other-product-link:hover {
+    background: var(--steel-800);
+    color: var(--zephyr-orange);
+  }
+
+  .other-product-link svg {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+  }
+
+  .other-product-link:hover svg {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (max-width: 768px) {
+    .specs-row { gap: 2rem; }
+    .features-grid { grid-template-columns: 1fr; }
+  }
+</style>

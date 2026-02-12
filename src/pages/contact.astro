@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const productOptions = [
+  'Dust Collectors',
+  'Conveyor Systems',
+  'Industrial Valves',
+  'Bedding Systems',
+  'Silos & Bins',
+  'Deduster Systems',
+  'Complete System',
+  'Other / Not Sure',
+];
+---
+
+<BaseLayout title="Contact" description="Request a quote or get in touch with Zephyr Equipment for your bulk material handling needs.">
+
+  <section class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">Get in Touch</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Contact<br /><span style="color: var(--zephyr-orange);">Us</span></h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Every project starts with a conversation</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="contact-form-wrap reveal">
+          <h2 class="display-md" style="margin-bottom: 0.5rem;">Request a Quote</h2>
+          <p style="color: var(--steel-400); font-weight: 300; margin-bottom: 2rem;">
+            Tell us about your application and we'll get back to you with a solution.
+          </p>
+
+          <form class="contact-form" id="contact-form" action="#" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" name="name" class="form-input" required placeholder="Your name" />
+              </div>
+              <div class="form-group">
+                <label for="company" class="form-label">Company</label>
+                <input type="text" id="company" name="company" class="form-input" placeholder="Company name" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="you@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="product" class="form-label">Product Interest</label>
+              <select id="product" name="product" class="form-input">
+                <option value="">Select a product line...</option>
+                {productOptions.map(opt => (
+                  <option value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Project Details</label>
+              <textarea id="message" name="message" class="form-input form-textarea" rows="5" placeholder="Tell us about your application — material type, throughput, facility constraints, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+              Send Request
+            </button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-info reveal" data-delay="2">
+          <div class="info-block">
+            <h3 class="info-title">Location</h3>
+            <p class="info-text">
+              Orchard Park, NY<br />
+              United States
+            </p>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-title">What to Expect</h3>
+            <div class="expect-list">
+              <div class="expect-item">
+                <div class="expect-num">1</div>
+                <div>
+                  <strong>Initial Discussion</strong>
+                  <p>We'll review your application details and ask the right questions.</p>
+                </div>
+              </div>
+              <div class="expect-item">
+                <div class="expect-num">2</div>
+                <div>
+                  <strong>Engineering Review</strong>
+                  <p>Our team sizes and configures the right equipment for your needs.</p>
+                </div>
+              </div>
+              <div class="expect-item">
+                <div class="expect-num">3</div>
+                <div>
+                  <strong>Proposal</strong>
+                  <p>Detailed quote with specifications, drawings, and delivery timeline.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-title">Industries We Serve</h3>
+            <div class="industry-tags">
+              <span>Agriculture</span>
+              <span>Mining</span>
+              <span>Food Processing</span>
+              <span>Chemical</span>
+              <span>Wood Products</span>
+              <span>Cement</span>
+              <span>Grain & Feed</span>
+              <span>Recycling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .contact-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .contact-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(232,97,45,0.06) 0%, transparent 50%);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Form */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-600);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--steel-800);
+    background: white;
+    border: 1px solid var(--steel-100);
+    transition: all 0.2s ease;
+    outline: none;
+    appearance: none;
+  }
+
+  .form-input:focus {
+    border-color: var(--zephyr-orange);
+    box-shadow: 0 0 0 3px rgba(232, 97, 45, 0.1);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  select.form-input {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235D7B96' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  /* Info */
+  .info-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .info-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--steel-100);
+  }
+
+  .info-text {
+    color: var(--steel-600);
+    line-height: 1.6;
+  }
+
+  .expect-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .expect-item {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .expect-num {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--zephyr-orange);
+    border: 1px solid rgba(232,97,45,0.2);
+    flex-shrink: 0;
+  }
+
+  .expect-item strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 0.15rem;
+  }
+
+  .expect-item p {
+    font-size: 0.8rem;
+    color: var(--steel-400);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .industry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .industry-tags span {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--steel-100);
+    color: var(--steel-500);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>

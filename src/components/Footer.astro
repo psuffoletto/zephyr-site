@@ -1,0 +1,205 @@
+---
+const currentYear = new Date().getFullYear();
+
+const productLinks = [
+  { label: 'Dust Collectors', href: '/products/dust-collectors' },
+  { label: 'Conveyors', href: '/products/conveyors' },
+  { label: 'Industrial Valves', href: '/products/industrial-valves' },
+  { label: 'Bedding Systems', href: '/products/bedding-systems' },
+  { label: 'Silos & Bins', href: '/products/silos-and-bins' },
+  { label: 'Dedusters', href: '/products/dedusters' },
+];
+
+const companyLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark"></div>
+          <div>
+            <div class="footer-logo-name">Zephyr <span>Equipment</span></div>
+            <div class="footer-logo-llc">LLC</div>
+          </div>
+        </div>
+        <p class="footer-tagline">Built to move material.</p>
+        <p class="footer-desc">
+          Custom-designed bulk material handling equipment manufactured in Orchard Park, New York.
+        </p>
+      </div>
+
+      <!-- Products Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Products</h4>
+        {productLinks.map(link => (
+          <a href={link.href} class="footer-link">{link.label}</a>
+        ))}
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Company</h4>
+        {companyLinks.map(link => (
+          <a href={link.href} class="footer-link">{link.label}</a>
+        ))}
+      </div>
+
+      <!-- Contact Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Location</h4>
+        <p class="footer-address">
+          Orchard Park, NY<br />
+          United States
+        </p>
+        <a href="/contact" class="btn btn--outline footer-cta">Get a Quote</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Zephyr Equipment, LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--steel-900);
+    color: var(--steel-300);
+    border-top: 3px solid var(--zephyr-orange);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  /* Brand */
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo-mark {
+    width: 12px;
+    height: 12px;
+    background: var(--zephyr-orange);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .footer-logo-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+
+  .footer-logo-name span {
+    color: var(--zephyr-orange);
+  }
+
+  .footer-logo-llc {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+  }
+
+  .footer-tagline {
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    color: var(--steel-300);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--steel-400);
+    max-width: 280px;
+  }
+
+  /* Columns */
+  .footer-heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-link {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--steel-300);
+    padding: 0.3rem 0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    text-decoration: none;
+  }
+
+  .footer-link:hover {
+    color: var(--zephyr-orange);
+    padding-left: 0.25rem;
+  }
+
+  .footer-address {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--steel-400);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-cta {
+    font-size: 0.65rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  /* Bottom */
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--steel-500);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

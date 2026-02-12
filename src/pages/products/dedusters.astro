@@ -1,0 +1,34 @@
+---
+import ProductPage from '../../components/ProductPage.astro';
+---
+
+<ProductPage
+  name="Deduster Systems"
+  category="Air Classification"
+  headline="Precision separation, product integrity"
+  description="Our deduster systems use controlled airflow to separate unwanted fines, dust, and undersized particles from granular products. Designed for inline integration with your existing process, these systems achieve target particle size distributions while minimizing product loss and maintaining the quality your customers expect."
+  specs={[
+    { value: 'Precision', label: 'Separation' },
+    { value: 'Inline', label: 'Integration' },
+    { value: 'Low', label: 'Product Loss' },
+    { value: 'Adjustable', label: 'Cut Point' },
+  ]}
+  features={[
+    { title: 'Adjustable Air Classification', desc: 'Variable airflow controls that let you dial in the exact cut point for your product specification. Fine-tune separation in real time without stopping production.' },
+    { title: 'Inline Process Integration', desc: 'Designed to drop into your existing material flow with minimal modifications. Standard inlet/outlet connections and compact footprint for tight installations.' },
+    { title: 'Low Product Loss', desc: 'Engineered air patterns that efficiently remove fines without carrying away good product. Maximizes yield while hitting your quality targets.' },
+    { title: 'Dust Collection Integration', desc: 'Paired with our dust collectors to capture separated fines for disposal or reprocessing. Complete systems with ductwork, fans, and controls.' },
+    { title: 'Multiple Product Handling', desc: 'Quick-changeover designs for facilities running multiple products. Adjustable parameters stored in PLC recipes for repeatable results across product lines.' },
+    { title: 'Sanitary Options', desc: 'Food-grade construction with stainless steel contact surfaces, quick-clean access, and wash-down capability for food and pharmaceutical applications.' },
+  ]}
+  applications={[
+    'Pellet Manufacturing',
+    'Granular Chemicals',
+    'Animal Feed',
+    'Seed Processing',
+    'Recycled Materials',
+    'Food Products',
+    'Pharmaceutical',
+    'Plastics & Polymers',
+  ]}
+/>

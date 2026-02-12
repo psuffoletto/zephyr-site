@@ -1,0 +1,566 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const products = [
+  {
+    name: 'Dust Collectors',
+    category: 'Filtration Systems',
+    desc: 'Custom baghouse and cartridge collectors engineered for your exact application — from woodworking to mineral processing.',
+    href: '/products/dust-collectors',
+    specs: [
+      { value: 'Custom', label: 'CFM Range' },
+      { value: '99.9%', label: 'Efficiency' },
+      { value: 'NFPA', label: 'Compliant' },
+    ],
+    num: '01',
+  },
+  {
+    name: 'Conveyor Systems',
+    category: 'Material Transport',
+    desc: 'Screw, drag chain, belt, and pneumatic conveying systems with full PLC-controlled sequencing and automated operation.',
+    href: '/products/conveyors',
+    specs: [
+      { value: 'All Types', label: 'Configurations' },
+      { value: 'PLC', label: 'Controlled' },
+      { value: 'Custom', label: 'Lengths' },
+    ],
+    num: '02',
+  },
+  {
+    name: 'Industrial Valves',
+    category: 'Flow Control',
+    desc: 'Rotary airlock, slide gate, diverter, and butterfly valves for abrasive, high-temperature bulk material applications.',
+    href: '/products/industrial-valves',
+    specs: [
+      { value: 'Rotary', label: 'Airlock' },
+      { value: 'Slide', label: 'Gate' },
+      { value: 'Diverter', label: 'Valves' },
+    ],
+    num: '03',
+  },
+  {
+    name: 'Bedding Systems',
+    category: 'Agricultural',
+    desc: 'Automated bedding distribution systems for dairy and livestock operations with rugged construction built for 24/7 environments.',
+    href: '/products/bedding-systems',
+    specs: [
+      { value: 'Auto', label: 'Distribution' },
+      { value: 'Rugged', label: 'Build' },
+      { value: '24/7', label: 'Operation' },
+    ],
+    num: '04',
+  },
+  {
+    name: 'Silos & Bins',
+    category: 'Bulk Storage',
+    desc: 'Engineered storage solutions with proper cone angles, structural analysis, and mass-flow discharge geometry.',
+    href: '/products/silos-and-bins',
+    specs: [
+      { value: 'Custom', label: 'Sizing' },
+      { value: 'Welded', label: 'Steel' },
+      { value: 'Mass Flow', label: 'Design' },
+    ],
+    num: '05',
+  },
+  {
+    name: 'Deduster Systems',
+    category: 'Air Classification',
+    desc: 'Precision air classification and dedusting equipment for separating fines while maintaining product integrity.',
+    href: '/products/dedusters',
+    specs: [
+      { value: 'Precision', label: 'Separation' },
+      { value: 'Inline', label: 'Integration' },
+      { value: 'Low', label: 'Product Loss' },
+    ],
+    num: '06',
+  },
+];
+
+const capabilities = [
+  { title: 'Custom Engineering', desc: 'Every system designed to your exact specifications — no off-the-shelf compromises.' },
+  { title: 'In-House Manufacturing', desc: 'Complete fabrication capability from raw steel to finished equipment, all under one roof.' },
+  { title: 'PLC Integration', desc: 'Full control system design with ladder logic programming across multiple PLC platforms.' },
+  { title: 'Field Support', desc: 'Installation assistance, commissioning, and ongoing technical support for every system we build.' },
+];
+---
+
+<BaseLayout title="Home">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-diamond"></div>
+        <span>Zephyr Equipment, LLC</span>
+        <div class="hero-diamond"></div>
+      </div>
+      <h1 class="display-xl">Built to<br /><span class="orange">Move Material</span></h1>
+      <p class="hero-tagline accent-text">Engineered in Orchard Park, NY</p>
+      <p class="hero-subtitle">
+        Custom-designed bulk material handling equipment — dust collectors, conveyors,
+        industrial valves, and bedding systems built for the toughest environments.
+      </p>
+      <div class="hero-actions">
+        <a href="/products" class="btn btn--primary">View Products</a>
+        <a href="/contact" class="btn btn--outline" style="color: white; border-color: rgba(255,255,255,0.3);">
+          Request a Quote
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Explore</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">01 — Product Line</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">What We Build</h2>
+        <p class="accent-text" style="color: var(--steel-400); margin-top: 0.25rem;">Custom solutions, no compromises</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      {products.map((product, i) => (
+        <a href={product.href} class="product-card reveal" data-delay={i}>
+          <div class="product-bg-num">{product.num}</div>
+          <span class="label product-cat">{product.category}</span>
+          <h3 class="display-md product-name">{product.name}</h3>
+          <p class="product-desc">{product.desc}</p>
+          <div class="product-specs">
+            {product.specs.map(spec => (
+              <div class="spec">
+                <div class="spec-val">{spec.value}</div>
+                <div class="spec-lbl">{spec.label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="product-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== BANNER ===== -->
+  <section class="banner reveal">
+    <div class="banner-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Custom Engineered.<br />American Built.</h2>
+      <p class="accent-text" style="color: rgba(255,255,255,0.85); margin-top: 0.5rem;">Every system designed to your exact specifications</p>
+      <div class="banner-stats">
+        <div class="banner-stat">
+          <div class="banner-stat-num">100%</div>
+          <div class="banner-stat-lbl">Custom Design</div>
+        </div>
+        <div class="banner-stat">
+          <div class="banner-stat-num">6</div>
+          <div class="banner-stat-lbl">Product Lines</div>
+        </div>
+        <div class="banner-stat">
+          <div class="banner-stat-num">NY</div>
+          <div class="banner-stat-lbl">Manufactured</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAPABILITIES ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">02 — Capabilities</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">How We Work</h2>
+        <p class="accent-text" style="color: var(--steel-400); margin-top: 0.25rem;">From concept to commissioning</p>
+      </div>
+
+      <div class="capabilities-grid">
+        {capabilities.map((cap, i) => (
+          <div class="capability-card reveal" data-delay={i}>
+            <div class="capability-num">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="display-md" style="font-size: 1.3rem; margin-bottom: 0.75rem;">{cap.title}</h3>
+            <p style="color: var(--steel-400); font-weight: 300; line-height: 1.65;">{cap.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section reveal">
+    <div class="container" style="text-align: center;">
+      <span class="label" style="color: var(--zephyr-orange);">Ready to get started?</span>
+      <h2 class="display-lg" style="color: white; margin-top: 0.75rem;">Tell Us About<br />Your Application</h2>
+      <p style="color: var(--steel-300); max-width: 500px; margin: 1rem auto 2rem; font-weight: 300; line-height: 1.7;">
+        Every project starts with a conversation. Share your material handling challenge and we'll engineer the right solution.
+      </p>
+      <a href="/contact" class="btn btn--primary">Get a Quote</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+    background: var(--steel-900);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(232, 97, 45, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(52, 73, 94, 0.25) 0%, transparent 50%),
+      linear-gradient(180deg, var(--steel-900) 0%, #0a1018 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232, 97, 45, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232, 97, 45, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 65%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-diamond {
+    width: 10px;
+    height: 10px;
+    background: var(--zephyr-orange);
+    transform: rotate(45deg);
+  }
+
+  .hero-eyebrow span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+  }
+
+  .hero h1 {
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .orange { color: var(--zephyr-orange); }
+
+  .hero-tagline {
+    color: var(--steel-300);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--steel-400);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+
+  .hero-scroll span {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--zephyr-orange), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  /* ===== PRODUCT GRID ===== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2px;
+  }
+
+  .product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    min-height: 360px;
+    background: linear-gradient(145deg, #f8f9fb 0%, #f0f2f5 100%);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--steel-800);
+    transition: all 0.4s var(--ease-out);
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--zephyr-orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .product-card:hover {
+    background: linear-gradient(145deg, var(--steel-800) 0%, var(--steel-900) 100%);
+    color: white;
+  }
+
+  .product-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .product-bg-num {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 8rem;
+    color: rgba(0, 0, 0, 0.03);
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.4s ease;
+  }
+
+  .product-card:hover .product-bg-num {
+    color: rgba(232, 97, 45, 0.06);
+  }
+
+  .product-cat {
+    color: var(--zephyr-orange);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-name {
+    margin-bottom: 0.75rem;
+  }
+
+  .product-desc {
+    font-weight: 300;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--steel-400);
+    flex-grow: 1;
+  }
+
+  .product-card:hover .product-desc {
+    color: var(--steel-300);
+  }
+
+  .product-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    transition: border-color 0.4s ease;
+  }
+
+  .product-card:hover .product-specs {
+    border-color: rgba(232, 97, 45, 0.15);
+  }
+
+  .spec-val {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .spec-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+  }
+
+  .product-arrow {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--steel-400);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover .product-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    background: rgba(232, 97, 45, 0.15);
+    color: var(--zephyr-orange);
+  }
+
+  /* ===== BANNER ===== */
+  .banner {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+
+  .banner-pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.03) 20px,
+      rgba(0, 0, 0, 0.03) 40px
+    );
+  }
+
+  .banner-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-top: 2.5rem;
+  }
+
+  .banner-stat { text-align: center; }
+
+  .banner-stat-num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 3rem;
+    color: white;
+    line-height: 1;
+  }
+
+  .banner-stat-lbl {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.25rem;
+  }
+
+  /* ===== CAPABILITIES ===== */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .capability-card {
+    padding: 2rem;
+    background: white;
+    border-top: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .capability-card:hover {
+    border-top-color: var(--zephyr-orange);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .capability-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--steel-100);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    background: var(--steel-900);
+    padding: 6rem 2rem;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @media (max-width: 768px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .banner-stats { gap: 2.5rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+  }
+</style>

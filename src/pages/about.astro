@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="Zephyr Equipment, LLC — Custom bulk material handling equipment designed and manufactured in Orchard Park, New York.">
+
+  <section class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">Our Story</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">About<br /><span style="color: var(--zephyr-orange);">Zephyr</span></h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Orchard Park, New York</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="reveal" style="text-align: center;">
+        <p class="body-lg" style="color: var(--steel-600);">
+          Zephyr Equipment designs and builds custom bulk material handling equipment for industries that can't afford downtime. Based in Orchard Park, New York, we bring together engineering expertise, in-house manufacturing capability, and hands-on field experience to deliver equipment that works as hard as the people who run it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">What Drives Us</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Our Approach</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal" data-delay="0">
+          <div class="value-num">01</div>
+          <h3 class="value-title">Custom First</h3>
+          <p class="value-desc">Every system starts with your specific application — your material, your facility, your throughput — and we engineer from there.</p>
+        </div>
+        <div class="value-card reveal" data-delay="1">
+          <div class="value-num">02</div>
+          <h3 class="value-title">Built to Last</h3>
+          <p class="value-desc">Heavy-gauge steel, precision-machined components, and quality hardware. Built the way equipment should be built.</p>
+        </div>
+        <div class="value-card reveal" data-delay="2">
+          <div class="value-num">03</div>
+          <h3 class="value-title">Engineering Depth</h3>
+          <p class="value-desc">From structural analysis and flow calculations to PLC programming across multiple platforms — all in-house.</p>
+        </div>
+        <div class="value-card reveal" data-delay="3">
+          <div class="value-num">04</div>
+          <h3 class="value-title">Straight Talk</h3>
+          <p class="value-desc">We'll tell you what you need to hear. If your application needs a different approach, we'll say so — and explain why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">In-House</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Capabilities</h2>
+      </div>
+      <div class="cap-grid reveal">
+        <div class="cap-item">Engineering & Design</div>
+        <div class="cap-item">Structural Analysis</div>
+        <div class="cap-item">Steel Fabrication</div>
+        <div class="cap-item">Precision Machining</div>
+        <div class="cap-item">Welding & Assembly</div>
+        <div class="cap-item">PLC Programming</div>
+        <div class="cap-item">Control Panel Build</div>
+        <div class="cap-item">Installation Support</div>
+        <div class="cap-item">Commissioning</div>
+        <div class="cap-item">Field Service</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <div class="about-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Let's Talk About<br />Your Project</h2>
+      <p style="color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+        Whether you have a complete specification or just a material handling problem that needs solving, we're ready to help.
+      </p>
+      <a href="/contact" class="btn btn--primary" style="margin-top: 2rem; background: white; color: var(--zephyr-orange);">Get in Touch</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .about-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(232,97,45,0.06) 0%, transparent 50%);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    padding: 2rem;
+    background: var(--steel-50);
+    border-top: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .value-card:hover {
+    border-top-color: var(--zephyr-orange);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .value-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--steel-100);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .value-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .value-desc {
+    font-weight: 300;
+    color: var(--steel-400);
+    line-height: 1.65;
+    font-size: 0.9rem;
+  }
+
+  .cap-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .cap-item {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--steel-100);
+    color: var(--steel-600);
+    transition: all 0.3s ease;
+  }
+  .cap-item:hover {
+    border-color: var(--zephyr-orange);
+    color: var(--zephyr-orange);
+    background: rgba(232,97,45,0.03);
+  }
+
+  .about-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+  .about-cta-pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
+  }
+
+  @media (max-width: 768px) {
+    .values-grid { grid-template-columns: 1fr; }
+  }
+</style>

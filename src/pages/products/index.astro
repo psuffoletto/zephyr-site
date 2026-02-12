@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const products = [
+  { name: 'Dust Collectors', category: 'Filtration Systems', href: '/products/dust-collectors', desc: 'Custom baghouse and cartridge collectors for any application.' },
+  { name: 'Conveyor Systems', category: 'Material Transport', href: '/products/conveyors', desc: 'Screw, drag chain, belt, and pneumatic conveying solutions.' },
+  { name: 'Industrial Valves', category: 'Flow Control', href: '/products/industrial-valves', desc: 'Rotary airlock, slide gate, diverter, and butterfly valves.' },
+  { name: 'Bedding Systems', category: 'Agricultural', href: '/products/bedding-systems', desc: 'Automated bedding distribution for dairy and livestock.' },
+  { name: 'Silos & Bins', category: 'Bulk Storage', href: '/products/silos-and-bins', desc: 'Custom storage with mass-flow discharge geometry.' },
+  { name: 'Deduster Systems', category: 'Air Classification', href: '/products/dedusters', desc: 'Precision fines separation and air classification.' },
+];
+---
+
+<BaseLayout title="Products" description="Zephyr Equipment product line — dust collectors, conveyors, industrial valves, bedding systems, silos, and dedusters.">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">Our Equipment</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Products</h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Six product lines, infinite configurations</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="products-list">
+      {products.map((product, i) => (
+        <a href={product.href} class="product-row reveal" data-delay={i}>
+          <div class="product-row-num">{String(i + 1).padStart(2, '0')}</div>
+          <div class="product-row-content">
+            <span class="label" style="color: var(--zephyr-orange); font-size: 0.65rem;">{product.category}</span>
+            <h2 class="display-md" style="margin-top: 0.25rem;">{product.name}</h2>
+            <p style="color: var(--steel-400); font-weight: 300; margin-top: 0.5rem;">{product.desc}</p>
+          </div>
+          <div class="product-row-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(232,97,45,0.06) 0%, transparent 50%);
+  }
+
+  .products-list {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .product-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--steel-100);
+    text-decoration: none;
+    color: var(--steel-800);
+    transition: all 0.3s ease;
+  }
+
+  .product-row:hover {
+    background: rgba(232, 97, 45, 0.02);
+    padding-left: 2.5rem;
+  }
+
+  .product-row-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--steel-100);
+    flex-shrink: 0;
+    width: 60px;
+    transition: color 0.3s ease;
+  }
+
+  .product-row:hover .product-row-num {
+    color: var(--zephyr-orange);
+  }
+
+  .product-row-content { flex-grow: 1; }
+
+  .product-row-arrow {
+    color: var(--steel-200);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+
+  .product-row:hover .product-row-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--zephyr-orange);
+  }
+
+  @media (max-width: 640px) {
+    .product-row { flex-wrap: wrap; }
+    .product-row-num { width: auto; font-size: 1.5rem; }
+  }
+</style>

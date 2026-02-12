@@ -1,0 +1,35 @@
+---
+import ProductPage from '../../components/ProductPage.astro';
+---
+
+<ProductPage
+  name="Dust Collectors"
+  category="Filtration Systems"
+  headline="Clean air, compliant operations"
+  description="Our dust collection systems are custom-engineered from the ground up for your specific application. Whether you're processing wood, grain, minerals, metals, or chemicals, we design the right collector with optimized air-to-cloth ratios, proper can velocities, and efficient pulse-jet cleaning. Every unit is built to meet NFPA and OSHA requirements while maximizing filter life and minimizing pressure drop."
+  specs={[
+    { value: 'Custom', label: 'CFM Range' },
+    { value: '99.9%', label: 'Filtration Efficiency' },
+    { value: 'NFPA', label: 'Compliant' },
+    { value: 'Pulse-Jet', label: 'Cleaning' },
+  ]}
+  features={[
+    { title: 'Baghouse Collectors', desc: 'High-capacity filtration for heavy dust loads with long bag life and easy maintenance access. Designed for continuous operation in demanding environments.' },
+    { title: 'Cartridge Collectors', desc: 'Compact footprint with high filtration area. Ideal for fine dust applications where space is limited and efficiency requirements are critical.' },
+    { title: 'Pulse-Jet Cleaning', desc: 'Automated reverse-pulse cleaning system that maintains optimal airflow without shutting down. Programmable cleaning cycles matched to your dust characteristics.' },
+    { title: 'Custom Sizing', desc: 'Every collector is sized using our engineering spreadsheets with proper filter selection, air-to-cloth ratio calculations, and inlet velocity optimization for your specific material.' },
+    { title: 'Explosion Protection', desc: 'NFPA 652 and 654 compliant designs with explosion venting, isolation valves, and deflagration suppression options for combustible dust applications.' },
+    { title: 'Controls Integration', desc: 'Full PLC integration with differential pressure monitoring, cleaning cycle control, fan VFD management, and alarm systems.' },
+  ]}
+  applications={[
+    'Woodworking & Lumber',
+    'Grain & Feed Processing',
+    'Mineral Processing',
+    'Metal Fabrication',
+    'Chemical Processing',
+    'Pharmaceutical',
+    'Food & Beverage',
+    'Cement & Concrete',
+    'Plastics & Recycling',
+  ]}
+/>

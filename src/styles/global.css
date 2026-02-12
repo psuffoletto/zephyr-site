@@ -1,0 +1,218 @@
+/* ============================================
+   ZEPHYR EQUIPMENT — Global Design System
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  /* Brand Colors */
+  --zephyr-orange: #E8612D;
+  --zephyr-orange-light: #F4845F;
+  --zephyr-orange-dark: #C94A1A;
+  --zephyr-orange-glow: rgba(232, 97, 45, 0.15);
+
+  /* Steel Palette */
+  --steel-900: #0F1A26;
+  --steel-800: #1B2A3D;
+  --steel-700: #2C3E50;
+  --steel-600: #34495E;
+  --steel-500: #4A6A84;
+  --steel-400: #5D7B96;
+  --steel-300: #8FA7BC;
+  --steel-200: #B0C4D4;
+  --steel-100: #D4DFE8;
+  --steel-50: #F5F7FA;
+
+  /* Neutrals */
+  --charcoal: #1A1A1A;
+  --warm-gray: #E8E4E0;
+  --off-white: #FAFAF8;
+
+  /* Typography */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-accent: 'Caveat', cursive;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --max-width-narrow: 800px;
+  --header-height: 72px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--steel-800);
+  background: var(--steel-50);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Typography Utilities --- */
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.accent-text {
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+}
+
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* --- Layout Utilities --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--narrow {
+  max-width: var(--max-width-narrow);
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+/* --- Button Styles --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--zephyr-orange);
+  color: white;
+}
+
+.btn--primary:hover {
+  background: var(--zephyr-orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(232, 97, 45, 0.3);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--zephyr-orange);
+  border: 2px solid var(--zephyr-orange);
+}
+
+.btn--outline:hover {
+  background: var(--zephyr-orange);
+  color: white;
+}
+
+.btn--dark {
+  background: var(--steel-800);
+  color: white;
+}
+
+.btn--dark:hover {
+  background: var(--steel-700);
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    --space-3xl: 5rem;
+  }
+}
