@@ -1,10 +1,9 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const navLinks = [
-  { label: 'Products', href: '/products' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+const aboutLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Careers', href: '/about/careers' },
 ];
 
 const productLinks = [
@@ -37,7 +36,20 @@ const productLinks = [
           ))}
         </div>
       </div>
-      <a href="/about" class:list={["nav-link", { active: currentPath === '/about' }]}>About</a>
+      <a href="/service" class:list={["nav-link", { active: currentPath === '/service' }]}>Service</a>
+      <a href="/news" class:list={["nav-link", { active: currentPath.startsWith('/news') }]}>News</a>
+      <a href="/success-stories" class:list={["nav-link", { active: currentPath.startsWith('/success-stories') }]}>Success Stories</a>
+      <div class="nav-item has-dropdown">
+        <a href="/about" class:list={["nav-link", { active: currentPath.startsWith('/about') }]}>
+          About
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown">
+          {aboutLinks.map(link => (
+            <a href={link.href} class="dropdown-link">{link.label}</a>
+          ))}
+        </div>
+      </div>
       <a href="/contact" class:list={["nav-link", { active: currentPath === '/contact' }]}>Contact</a>
     </nav>
 
@@ -58,7 +70,11 @@ const productLinks = [
     {productLinks.map(link => (
       <a href={link.href} class="mobile-link mobile-link--sub">{link.label}</a>
     ))}
+    <a href="/service" class="mobile-link">Service</a>
+    <a href="/news" class="mobile-link">News</a>
+    <a href="/success-stories" class="mobile-link">Success Stories</a>
     <a href="/about" class="mobile-link">About</a>
+    <a href="/about/careers" class="mobile-link mobile-link--sub">Careers</a>
     <a href="/contact" class="mobile-link">Contact</a>
     <a href="/contact" class="btn btn--primary" style="margin-top: 1.5rem; width: 100%; justify-content: center;">Get a Quote</a>
   </nav>

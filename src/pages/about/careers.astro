@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const openings = [
+  // Add job openings here as objects: { title, department, type, description }
+  // Example:
+  // { title: 'Mechanical Engineer', department: 'Engineering', type: 'Full-Time', description: 'Design custom bulk material handling equipment...' },
+];
+---
+
+<BaseLayout title="Careers | About" description="Career opportunities at Zephyr Equipment — join our team in Orchard Park, New York.">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <a href="/about" class="breadcrumb">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        About
+      </a>
+      <span class="label" style="color: var(--zephyr-orange); margin-top: 1rem; display: block;">Join Our Team</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Careers</h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Orchard Park, New York</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="reveal" style="text-align: center;">
+        <p class="body-lg" style="color: var(--steel-600);">
+          We're a growing team of engineers, fabricators, and technicians who design and build custom bulk material handling equipment. If you're looking for hands-on work with real engineering challenges, we'd like to hear from you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Why Zephyr</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">What We Offer</h2>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-card reveal" data-delay="0">
+          <div class="perk-num">01</div>
+          <h3 class="perk-title">Real Engineering</h3>
+          <p class="perk-desc">Every project is different. You'll solve real problems for real applications — no cookie-cutter designs.</p>
+        </div>
+        <div class="perk-card reveal" data-delay="1">
+          <div class="perk-num">02</div>
+          <h3 class="perk-title">Small Team Impact</h3>
+          <p class="perk-desc">Your work matters here. You'll see your designs go from concept to fabrication to field installation.</p>
+        </div>
+        <div class="perk-card reveal" data-delay="2">
+          <div class="perk-num">03</div>
+          <h3 class="perk-title">Growth Opportunity</h3>
+          <p class="perk-desc">We're growing and building our team. Get in early and grow with the company.</p>
+        </div>
+        <div class="perk-card reveal" data-delay="3">
+          <div class="perk-num">04</div>
+          <h3 class="perk-title">Western New York</h3>
+          <p class="perk-desc">Based in Orchard Park, NY — affordable living, great community, and no commute headaches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Opportunities</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Open Positions</h2>
+      </div>
+
+      {openings.length > 0 ? (
+        <div class="openings-list">
+          {openings.map((job, i) => (
+            <div class="opening-card reveal" data-delay={i}>
+              <div class="opening-meta">
+                <span class="opening-dept">{job.department}</span>
+                <span class="opening-type">{job.type}</span>
+              </div>
+              <h3 class="opening-title">{job.title}</h3>
+              <p class="opening-desc">{job.description}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="reveal" style="text-align: center; padding: 2rem;">
+          <p class="body-lg" style="color: var(--steel-400);">
+            No specific openings listed right now, but we're always interested in hearing from talented people.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="careers-cta">
+    <div class="careers-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Interested?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 1rem; max-width: 480px; margin-inline: auto; line-height: 1.7;">
+        Send us your resume and tell us about yourself. We're always looking for people who want to build things that matter.
+      </p>
+      <a href="mailto:info@zephyrbhs.com" class="btn btn--primary" style="margin-top: 2rem; background: white; color: var(--zephyr-orange);">Email Your Resume</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+
+  .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--steel-400);
+    transition: color 0.2s;
+  }
+  .breadcrumb:hover { color: var(--zephyr-orange); }
+
+  .perks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .perk-card {
+    padding: 2rem;
+    background: var(--steel-50);
+    border-top: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .perk-card:hover {
+    border-top-color: var(--zephyr-orange);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .perk-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--steel-100);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .perk-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .perk-desc {
+    font-weight: 300;
+    color: var(--steel-400);
+    line-height: 1.65;
+    font-size: 0.9rem;
+  }
+
+  .openings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .opening-card {
+    padding: 2rem;
+    background: white;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .opening-card:hover {
+    border-left-color: var(--zephyr-orange);
+    transform: translateX(4px);
+  }
+
+  .opening-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .opening-dept, .opening-type {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .opening-dept { color: var(--zephyr-orange); }
+  .opening-type { color: var(--steel-400); }
+
+  .opening-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+  }
+
+  .opening-desc {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.65;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+  }
+
+  .careers-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+  .careers-cta-pattern {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
+  }
+
+  @media (max-width: 768px) {
+    .perks-grid { grid-template-columns: 1fr; }
+  }
+</style>

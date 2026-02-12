@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const stories = [
+  // Add project write-ups here as objects: { title, client, industry, excerpt, slug }
+  // Example:
+  // { title: 'Vivarium Bedding System', client: 'Major Research University', industry: 'Life Sciences', excerpt: 'Complete unloading, conveying...', slug: 'vivarium-bedding' },
+];
+---
+
+<BaseLayout title="Success Stories" description="Project case studies and success stories from Zephyr Equipment — real-world bulk material handling solutions.">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">Case Studies</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Success<br /><span style="color: var(--zephyr-orange);">Stories</span></h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Real-world solutions for real-world problems</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {stories.length > 0 ? (
+        <div class="stories-grid">
+          {stories.map((story, i) => (
+            <a href={`/success-stories/${story.slug}`} class="story-card reveal" data-delay={i}>
+              <div class="story-card-top">
+                <span class="story-industry">{story.industry}</span>
+              </div>
+              <h2 class="story-title">{story.title}</h2>
+              <p class="story-client">{story.client}</p>
+              <p class="story-excerpt">{story.excerpt}</p>
+              <div class="story-link">
+                Read Case Study
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state reveal">
+          <p class="body-lg" style="color: var(--steel-400); text-align: center;">
+            Project case studies coming soon. We're documenting our latest installations and success stories.
+          </p>
+          <div style="text-align: center; margin-top: 2rem;">
+            <a href="/contact" class="btn btn--primary">Discuss Your Project</a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .story-card {
+    display: block;
+    padding: 2rem;
+    background: white;
+    border-top: 3px solid transparent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .story-card:hover {
+    border-top-color: var(--zephyr-orange);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .story-industry {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+  }
+
+  .story-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    margin-top: 0.75rem;
+  }
+
+  .story-client {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--steel-400);
+    margin-top: 0.25rem;
+  }
+
+  .story-excerpt {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.65;
+    font-size: 0.88rem;
+    margin-top: 1rem;
+  }
+
+  .story-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    margin-top: 1.25rem;
+    transition: gap 0.2s ease;
+  }
+  .story-card:hover .story-link { gap: 0.75rem; }
+
+  .empty-state {
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .stories-grid { grid-template-columns: 1fr; }
+  }
+</style>

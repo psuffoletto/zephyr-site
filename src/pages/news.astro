@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = [
+  // Add blog posts here as objects: { title, date, excerpt, slug }
+  // Example:
+  // { title: 'New Facility Expansion', date: '2025-03-15', excerpt: 'We are excited to announce...', slug: 'facility-expansion' },
+];
+---
+
+<BaseLayout title="News" description="Latest news and updates from Zephyr Equipment — industry insights, company updates, and technical articles.">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">Blog</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">News</h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Industry insights and company updates</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      {posts.length > 0 ? (
+        <div class="posts-list">
+          {posts.map((post, i) => (
+            <article class="post-card reveal" data-delay={i}>
+              <span class="post-date">{post.date}</span>
+              <h2 class="post-title">{post.title}</h2>
+              <p class="post-excerpt">{post.excerpt}</p>
+              <a href={`/news/${post.slug}`} class="post-link">
+                Read More
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state reveal">
+          <p class="body-lg" style="color: var(--steel-400); text-align: center;">
+            Blog posts coming soon. Check back for industry insights, technical articles, and company updates.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .post-card {
+    padding: 2.5rem 2rem;
+    background: white;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .post-card:hover {
+    border-left-color: var(--zephyr-orange);
+    transform: translateX(4px);
+  }
+
+  .post-date {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    color: var(--steel-800);
+  }
+
+  .post-excerpt {
+    font-weight: 300;
+    color: var(--steel-400);
+    line-height: 1.65;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .post-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: gap 0.2s ease;
+  }
+  .post-link:hover { gap: 0.75rem; }
+
+  .empty-state {
+    padding: 4rem 2rem;
+  }
+</style>

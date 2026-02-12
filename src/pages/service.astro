@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  { title: 'Installation & Start-Up', desc: 'On-site installation supervision and equipment start-up to ensure your system is running correctly from day one. Our field technicians work alongside your team through commissioning.' },
+  { title: 'Preventive Maintenance', desc: 'Scheduled maintenance programs designed to maximize equipment uptime and extend service life. We inspect, adjust, and replace wear components before they become problems.' },
+  { title: 'Troubleshooting & Repair', desc: 'Rapid response troubleshooting and repair services to get your system back online. Our technicians are experienced with all PVS equipment and can diagnose issues quickly.' },
+  { title: 'Spare Parts', desc: 'Factory-direct spare parts inventory for all PVS equipment. We stock common wear items and can fabricate custom replacement components as needed.' },
+  { title: 'System Upgrades', desc: 'Retrofit and upgrade existing systems with new controls, improved components, or expanded capacity. We evaluate your current setup and recommend targeted improvements.' },
+  { title: 'Controls & Programming', desc: 'PLC programming, HMI configuration, and control system upgrades across IDEC, Do-More, and Allen-Bradley platforms. Remote diagnostics available for supported systems.' },
+];
+---
+
+<BaseLayout title="Service" description="Zephyr Equipment service offerings — installation, maintenance, repair, spare parts, and system upgrades for bulk material handling equipment.">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <span class="label" style="color: var(--zephyr-orange);">Support</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Service</h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">We stand behind every system we build</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="reveal" style="text-align: center;">
+        <p class="body-lg" style="color: var(--steel-600);">
+          Our commitment doesn't end at delivery. From installation and commissioning through ongoing maintenance and support, we provide the field service and technical expertise to keep your systems running at peak performance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">What We Offer</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Service Capabilities</h2>
+      </div>
+      <div class="services-grid">
+        {services.map((svc, i) => (
+          <div class="service-card reveal" data-delay={i}>
+            <div class="service-num">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="service-title">{svc.title}</h3>
+            <p class="service-desc">{svc.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-header reveal" style="text-align: center;">
+        <span class="label" style="color: var(--zephyr-orange);">Emergency Support</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">System Down?</h2>
+      </div>
+      <div class="reveal" style="text-align: center;">
+        <p class="body-lg" style="color: var(--steel-500);">
+          Call us directly for priority service response. We understand that downtime costs money and we work quickly to get your operation back up and running.
+        </p>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:7165687882" class="btn btn--primary">Call 716.568.7882</a>
+          <a href="/contact" class="btn btn--outline" style="border-color: var(--steel-200); color: var(--steel-600);">Submit a Request</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-cta">
+    <div class="svc-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Schedule Service</h2>
+      <p style="color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 1rem; max-width: 480px; margin-inline: auto; line-height: 1.7;">
+        Whether it's a routine maintenance visit or an urgent repair, we're here to help.
+      </p>
+      <a href="/contact" class="btn btn--primary" style="margin-top: 2rem; background: white; color: var(--zephyr-orange);">Contact Service Team</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 2rem;
+    background: var(--steel-50);
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .service-card:hover {
+    border-left-color: var(--zephyr-orange);
+    transform: translateX(4px);
+  }
+
+  .service-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--steel-100);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.65;
+    font-size: 0.88rem;
+  }
+
+  .svc-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+  .svc-cta-pattern {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
