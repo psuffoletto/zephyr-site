@@ -84,8 +84,12 @@ const productOptions = [
           <div class="info-block">
             <h3 class="info-title">Location</h3>
             <p class="info-text">
-              Orchard Park, NY<br />
-              United States
+              227 Thorn Avenue, Suite C2<br />
+              Orchard Park, NY 14127
+            </p>
+            <p class="info-text" style="margin-top: 0.75rem;">
+              <strong style="font-weight: 500;">Phone:</strong> <a href="tel:7165687882" style="color: var(--zephyr-orange); text-decoration: none;">716.568.7882</a><br />
+              <strong style="font-weight: 500;">Email:</strong> <a href="mailto:info@zephyrbhs.com" style="color: var(--zephyr-orange); text-decoration: none;">info@zephyrbhs.com</a>
             </p>
           </div>
 
@@ -146,7 +150,9 @@ const productOptions = [
   .contact-hero-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 60%, rgba(232,97,45,0.06) 0%, transparent 50%);
+    background:
+      linear-gradient(180deg, rgba(10, 16, 24, 0.75) 0%, rgba(10, 16, 24, 0.9) 100%),
+      url('https://static.wixstatic.com/media/9d739b_d7c8ee6bd3624bb19d636bf61dffb54c~mv2.jpg') center/cover no-repeat;
   }
 
   .contact-grid {

@@ -1,0 +1,181 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQ[];
+  title?: string;
+  label?: string;
+}
+
+const { items, title = 'Frequently Asked', label = 'FAQ' } = Astro.props;
+---
+
+<div class="accordion-section">
+  {(title || label) && (
+    <div class="accordion-header reveal">
+      {label && <span class="label" style="color: var(--zephyr-orange);">{label}</span>}
+      {title && <h2 class="display-lg" style="margin-top: 0.5rem;">{title}</h2>}
+    </div>
+  )}
+
+  <div class="accordion reveal">
+    {items.map((item, i) => (
+      <div class="accordion-item" data-delay={i}>
+        <button class="accordion-trigger" aria-expanded="false">
+          <span class="accordion-num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="accordion-question">{item.question}</span>
+          <svg class="accordion-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <line class="accordion-icon-h" x1="3" y1="9" x2="15" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line class="accordion-icon-v" x1="9" y1="3" x2="9" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-answer">
+            <p>{item.answer}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .accordion-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .accordion {
+    max-width: 800px;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid var(--steel-100);
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: color 0.2s ease;
+    color: var(--steel-800);
+  }
+
+  .accordion-trigger:hover {
+    color: var(--zephyr-orange);
+  }
+
+  .accordion-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--steel-200);
+    flex-shrink: 0;
+    width: 28px;
+    transition: color 0.3s ease;
+  }
+
+  .accordion-trigger:hover .accordion-num,
+  .accordion-trigger[aria-expanded="true"] .accordion-num {
+    color: var(--zephyr-orange);
+  }
+
+  .accordion-question {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    flex-grow: 1;
+  }
+
+  .accordion-icon {
+    flex-shrink: 0;
+    color: var(--steel-300);
+    transition: color 0.3s ease;
+  }
+
+  .accordion-trigger:hover .accordion-icon {
+    color: var(--zephyr-orange);
+  }
+
+  .accordion-icon-v {
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  .accordion-trigger[aria-expanded="true"] .accordion-icon-v {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .accordion-trigger[aria-expanded="true"] .accordion-icon {
+    color: var(--zephyr-orange);
+  }
+
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .accordion-trigger[aria-expanded="true"] + .accordion-content {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-answer {
+    overflow: hidden;
+  }
+
+  .accordion-answer p {
+    padding: 0 0 1.5rem 3.25rem;
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.7;
+    font-size: 0.92rem;
+  }
+
+  /* Dark theme variant */
+  :global(.dark) .accordion-item,
+  .accordion-section[data-theme="dark"] .accordion-item {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .accordion-section[data-theme="dark"] .accordion-trigger {
+    color: var(--steel-100);
+  }
+
+  .accordion-section[data-theme="dark"] .accordion-num {
+    color: var(--steel-500);
+  }
+
+  .accordion-section[data-theme="dark"] .accordion-answer p {
+    color: var(--steel-300);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Optional: close others in same accordion
+      const accordion = trigger.closest('.accordion');
+      accordion?.querySelectorAll('.accordion-trigger').forEach(other => {
+        other.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    });
+  });
+</script>
