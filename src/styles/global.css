@@ -44,7 +44,7 @@
   /* Layout */
   --max-width: 1200px;
   --max-width-narrow: 800px;
-  --header-height: 72px;
+  --header-height: 84px;
 
   /* Transitions */
   --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
