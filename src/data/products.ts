@@ -38,6 +38,7 @@ export interface Product {
   applications: string[];
   faqs?: FAQ[];
   heroImage?: string;
+  sketchfabId?: string;
 }
 
 export interface Category {

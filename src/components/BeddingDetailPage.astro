@@ -77,6 +77,28 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     </section>
   )}
 
+  <!-- 3D MODEL VIEWER (OPTIONAL) -->
+  {product.sketchfabId && (
+    <section class="section" style="background: white;">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label" style="color: var(--zephyr-orange);">Interactive 3D</span>
+          <h2 class="display-lg" style="margin-top: 0.5rem;">Explore the {product.name}</h2>
+          <p style="color: var(--steel-500); margin-top: 0.75rem; font-weight: 300;">Pan, zoom, and rotate to inspect every detail.</p>
+        </div>
+        <div class="sketchfab-embed reveal">
+          <iframe
+            title={`${product.name} 3D Model`}
+            src={`https://sketchfab.com/models/${product.sketchfabId}/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_watermark=0`}
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- FEATURES -->
   <section class="section" style="background: white;">
     <div class="container">
@@ -331,6 +353,23 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     text-transform: uppercase;
     color: var(--steel-400);
     margin-top: 0.3rem;
+  }
+
+  /* SKETCHFAB EMBED */
+  .sketchfab-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--steel-900);
+  }
+  .sketchfab-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   /* FEATURE GRID */
