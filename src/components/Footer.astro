@@ -1,7 +1,7 @@
 ---
 const currentYear = new Date().getFullYear();
 
-const productLinks = [
+const bulkLinks = [
   { label: 'Unload', href: '/products/unload' },
   { label: 'Fill', href: '/products/fill' },
   { label: 'Store', href: '/products/store' },
@@ -10,6 +10,12 @@ const productLinks = [
   { label: 'Clean', href: '/products/clean' },
   { label: 'Automate', href: '/products/automate' },
   { label: 'Power', href: '/products/power' },
+];
+
+const beddingLinks = [
+  { label: 'Delivery', href: '/bedding/delivery' },
+  { label: 'Dispensing', href: '/bedding/dispensing' },
+  { label: 'Disposal', href: '/bedding/disposal' },
 ];
 
 const companyLinks = [
@@ -43,10 +49,18 @@ const companyLinks = [
         </div>
       </div>
 
-      <!-- Products Column -->
+      <!-- Bulk Column -->
       <div class="footer-col">
-        <h4 class="footer-heading">Products</h4>
-        {productLinks.map(link => (
+        <h4 class="footer-heading"><a href="/bulk" class="footer-heading-link">Bulk</a></h4>
+        {bulkLinks.map(link => (
+          <a href={link.href} class="footer-link">{link.label}</a>
+        ))}
+      </div>
+
+      <!-- Bedding Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading"><a href="/bedding" class="footer-heading-link">Bedding</a></h4>
+        {beddingLinks.map(link => (
           <a href={link.href} class="footer-link">{link.label}</a>
         ))}
       </div>
@@ -98,8 +112,8 @@ const companyLinks = [
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 2.5rem;
   }
 
   /* Brand */
@@ -159,6 +173,15 @@ const companyLinks = [
     text-transform: uppercase;
     color: var(--zephyr-orange);
     margin-bottom: 1.25rem;
+  }
+
+  .footer-heading-link {
+    color: var(--zephyr-orange);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-heading-link:hover {
+    color: var(--zephyr-orange-light);
   }
 
   .footer-link {

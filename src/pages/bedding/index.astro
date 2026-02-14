@@ -1,0 +1,441 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { beddingCategories, beddingProducts } from '../../data/bedding';
+
+const categories = [
+  {
+    name: 'Delivery',
+    slug: 'delivery',
+    desc: 'Pneumatic and mechanical bedding delivery systems to transport clean bedding from bulk storage to dispensing stations over short and long distances.',
+    specs: [
+      { value: '500 Ft.', label: 'Max Distance' },
+      { value: 'Enclosed', label: 'Lines' },
+      { value: 'PLC', label: 'Controlled' },
+    ],
+    num: '01',
+    color: 'offwhite',
+  },
+  {
+    name: 'Dispensing',
+    slug: 'dispensing',
+    desc: 'Semi-automatic and automatic bedding dispensing systems for filling rodent cages with precise, consistent amounts of bedding material.',
+    specs: [
+      { value: '4–6', label: 'Chute Options' },
+      { value: '304 SS', label: 'Construction' },
+      { value: 'Pulse', label: 'Filter Clean' },
+    ],
+    num: '02',
+    color: 'lightblue',
+  },
+  {
+    name: 'Disposal',
+    slug: 'disposal',
+    desc: 'Vacuum-fed and gravity-fed waste bedding disposal systems for clean, efficient removal of soiled bedding from cage changing operations.',
+    specs: [
+      { value: '1,000 Ft.', label: 'Convey Distance' },
+      { value: 'Multi', label: 'Dump Stations' },
+      { value: 'Enclosed', label: 'Disposal' },
+    ],
+    num: '03',
+    color: 'orange',
+  },
+];
+---
+
+<BaseLayout title="Bedding Handling Systems" description="Integrated bedding delivery, dispensing, and waste disposal systems for vivarium and laboratory animal facilities.">
+
+  <!-- ===== HERO ===== -->
+  <section class="bed-hero">
+    <div class="bed-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <a href="/" class="bed-breadcrumb">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Home
+      </a>
+      <span class="label" style="color: var(--zephyr-orange); margin-top: 1rem; display: block;">Life Science Systems</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Bedding<br /><span style="color: var(--zephyr-orange);">Handling</span></h1>
+      <p class="bed-hero-desc">
+        Integrated bedding delivery, dispensing, and waste disposal systems for vivarium and laboratory animal facilities. Designed for clean, efficient bedding management in life science environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY ACCORDION ===== -->
+  <section class="section" style="background: var(--steel-900); padding: 5rem 2rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="section-header reveal" style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="label" style="color: var(--zephyr-orange);">System Categories</span>
+        <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">Complete Bedding Solutions</h2>
+      </div>
+
+      <div class="bh-accordion reveal">
+        {categories.map((cat, i) => (
+          <div class={`bh-panel bh-panel--${cat.color}${i === 0 ? ' active' : ''}`} data-index={i}>
+            <div class="bh-pattern"></div>
+            <span class="bh-collapsed-title">{cat.name}</span>
+            <div class="bh-number">{cat.num}</div>
+            <div class="bh-content">
+              <div class="bh-subtitle">Bedding {cat.name}</div>
+              <h3 class="bh-title">{cat.name}</h3>
+              <p class="bh-desc">{cat.desc}</p>
+              <div class="bh-tags">
+                {cat.specs.map(spec => (
+                  <span>{spec.value} {spec.label}</span>
+                ))}
+              </div>
+              <a href={`/bedding/${cat.slug}`} class={`bh-cta${cat.color === 'orange' ? ' bh-cta--white' : ''}`}>
+                Explore {cat.name}
+              </a>
+            </div>
+            <div class="bh-accent"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALL BEDDING PRODUCTS ===== -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Equipment</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">All Bedding Products</h2>
+      </div>
+
+      <div class="product-cards">
+        {beddingProducts.map((product, i) => (
+          <a href={`/bedding/${product.category}/${product.slug}`} class="product-card reveal" data-delay={i}>
+            <div class="product-card-header">
+              <span class="product-card-model">{product.modelNumber}</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="product-card-arrow">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="product-card-name">{product.name}</h3>
+            <p class="product-card-tagline">{product.tagline}</p>
+            <div class="product-card-specs">
+              {product.keySpecs.slice(0, 3).map(spec => (
+                <div class="product-card-spec">
+                  <span class="product-card-spec-val">{spec.value}</span>
+                  <span class="product-card-spec-lbl">{spec.label}</span>
+                </div>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="bed-cta">
+    <div class="bed-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Need a Bedding<br />Handling System?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 1rem; max-width: 480px; margin-inline: auto; line-height: 1.7;">
+        Tell us about your vivarium facility and we'll design the right bedding handling solution for your operation.
+      </p>
+      <a href="/contact" class="btn btn--primary" style="margin-top: 2rem; background: white; color: var(--zephyr-orange);">Request a Quote</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .bed-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .bed-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+  .bed-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--steel-400);
+    transition: color 0.2s;
+  }
+  .bed-breadcrumb:hover { color: var(--zephyr-orange); }
+  .bed-hero-desc {
+    color: var(--steel-300);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-top: 1rem;
+    max-width: 600px;
+  }
+
+  /* ===== ACCORDION ===== */
+  .bh-accordion {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+  }
+
+  .bh-panel {
+    flex: 0.5;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .bh-panel.active { flex: 4; padding: 36px; }
+  .bh-panel:not(:last-child) { border-right: 1px solid rgba(15,26,38,0.3); }
+
+  .bh-panel--offwhite { background: linear-gradient(135deg, #FAFAF8 0%, #F0F2F5 100%); }
+  .bh-panel--lightblue { background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%); }
+  .bh-panel--orange { background: linear-gradient(135deg, var(--zephyr-orange) 0%, #c43d0a 100%); }
+
+  .bh-pattern {
+    position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
+  }
+  .bh-panel--offwhite .bh-pattern, .bh-panel--lightblue .bh-pattern { color: var(--zephyr-orange); }
+  .bh-panel--orange .bh-pattern { color: white; }
+
+  .bh-collapsed-title {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-family: var(--font-display); font-weight: 700; font-size: 18px;
+    letter-spacing: 6px; text-transform: uppercase;
+    opacity: 1; transition: opacity 0.3s ease; pointer-events: none;
+  }
+  .bh-panel--offwhite .bh-collapsed-title { color: var(--zephyr-orange); }
+  .bh-panel--lightblue .bh-collapsed-title { color: var(--steel-800); }
+  .bh-panel--orange .bh-collapsed-title { color: white; }
+  .bh-panel.active .bh-collapsed-title { opacity: 0; }
+
+  .bh-number {
+    position: absolute; top: 24px; right: 24px;
+    font-family: var(--font-display); font-size: 52px; font-weight: 300;
+    opacity: 0.15; line-height: 1;
+  }
+  .bh-panel--offwhite .bh-number, .bh-panel--lightblue .bh-number { color: var(--zephyr-orange); }
+  .bh-panel--orange .bh-number { color: white; }
+
+  .bh-content {
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.4s ease 0.1s; pointer-events: none;
+  }
+  .bh-panel.active .bh-content { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+  .bh-subtitle {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bh-panel--offwhite .bh-subtitle, .bh-panel--lightblue .bh-subtitle { color: var(--zephyr-orange); }
+  .bh-panel--orange .bh-subtitle { color: white; }
+
+  .bh-title {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 38px; text-transform: uppercase; letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .bh-panel--offwhite .bh-title, .bh-panel--lightblue .bh-title { color: var(--steel-800); }
+  .bh-panel--orange .bh-title { color: white; }
+
+  .bh-desc {
+    font-size: 0.85rem;
+    font-weight: 300; line-height: 1.6; max-width: 400px; margin-bottom: 20px;
+  }
+  .bh-panel--offwhite .bh-desc { color: var(--steel-500); }
+  .bh-panel--lightblue .bh-desc { color: var(--steel-700); }
+  .bh-panel--orange .bh-desc { color: rgba(255,255,255,0.7); }
+
+  .bh-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .bh-tags span {
+    padding: 6px 14px; font-family: var(--font-display);
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    border-radius: 2px; transition: background 0.2s;
+  }
+  .bh-panel--offwhite .bh-tags span {
+    background: rgba(0,0,0,0.05); color: var(--steel-700); border: 1px solid rgba(0,0,0,0.1);
+  }
+  .bh-panel--offwhite .bh-tags span:hover { background: rgba(0,0,0,0.1); }
+  .bh-panel--lightblue .bh-tags span {
+    background: rgba(0,0,0,0.06); color: var(--steel-800); border: 1px solid rgba(0,0,0,0.1);
+  }
+  .bh-panel--lightblue .bh-tags span:hover { background: rgba(0,0,0,0.12); }
+  .bh-panel--orange .bh-tags span {
+    background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.15);
+  }
+  .bh-panel--orange .bh-tags span:hover { background: rgba(255,255,255,0.2); }
+
+  .bh-cta {
+    display: inline-block; padding: 12px 28px;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    background: var(--zephyr-orange); color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .bh-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .bh-cta--white { background: white; color: var(--zephyr-orange); }
+
+  .bh-accent {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .bh-panel--offwhite .bh-accent, .bh-panel--lightblue .bh-accent { background: var(--zephyr-orange); }
+  .bh-panel--orange .bh-accent { background: white; }
+  .bh-panel.active .bh-accent { transform: scaleX(1); }
+
+  /* ===== PRODUCT CARDS ===== */
+  .product-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    display: block;
+    padding: 2rem;
+    background: var(--steel-50);
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .product-card:hover {
+    border-left-color: var(--zephyr-orange);
+    background: var(--steel-800);
+    transform: translateX(4px);
+  }
+
+  .product-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .product-card-model {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+  }
+  .product-card-arrow {
+    color: var(--steel-300);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+  }
+  .product-card:hover .product-card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--zephyr-orange);
+  }
+
+  .product-card-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  .product-card:hover .product-card-name { color: white; }
+
+  .product-card-tagline {
+    font-weight: 300;
+    font-size: 0.88rem;
+    color: var(--steel-400);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  .product-card:hover .product-card-tagline { color: var(--steel-300); }
+
+  .product-card-specs {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--steel-100);
+    transition: border-color 0.3s ease;
+  }
+  .product-card:hover .product-card-specs {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+
+  .product-card-spec-val {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--steel-700);
+    transition: color 0.3s ease;
+  }
+  .product-card:hover .product-card-spec-val { color: var(--zephyr-orange); }
+
+  .product-card-spec-lbl {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.1rem;
+  }
+
+  /* ===== CTA ===== */
+  .bed-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+  .bed-cta-pattern {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
+  }
+
+  @media (max-width: 768px) {
+    .bh-accordion { flex-direction: column; height: auto; }
+    .bh-panel { flex: none !important; height: 60px; padding: 14px 20px; }
+    .bh-panel.active { height: 380px; padding: 24px; }
+    .bh-collapsed-title { transform: translate(-50%, -50%) rotate(0deg); font-size: 15px; letter-spacing: 4px; }
+    .bh-title { font-size: 28px; }
+    .bh-number { font-size: 36px; top: 12px; right: 14px; }
+    .bh-desc { font-size: 0.8rem; max-width: 100%; }
+    .product-cards { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Bedding Categories Accordion
+  const bhPanels = document.querySelectorAll('.bh-panel');
+
+  function setBHActive(index: number) {
+    bhPanels.forEach((p, i) => p.classList.toggle('active', i === index));
+  }
+
+  bhPanels.forEach(panel => {
+    panel.addEventListener('mouseenter', () => setBHActive(parseInt((panel as HTMLElement).dataset.index!)));
+    panel.addEventListener('click', () => setBHActive(parseInt((panel as HTMLElement).dataset.index!)));
+  });
+</script>

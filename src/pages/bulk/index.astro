@@ -1,0 +1,596 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const products = [
+  {
+    name: 'Unload',
+    category: 'Receiving & Material Introduction',
+    desc: 'Bulk bag unloaders, vacuum wands, feed bins, and bag dump stations for introducing materials into your process.',
+    href: '/products/unload',
+    specs: [
+      { value: 'Bulk Bag', label: 'Unloaders' },
+      { value: 'Vacuum', label: 'Wands' },
+      { value: 'Feed', label: 'Bins' },
+    ],
+    num: '01',
+  },
+  {
+    name: 'Fill',
+    category: 'Packaging & Dispensing',
+    desc: 'Bedding dispensers and bulk bag fill frames for life science, vivarium, and industrial filling applications.',
+    href: '/products/fill',
+    specs: [
+      { value: '4 Chute', label: 'Dispensing' },
+      { value: '360°', label: 'Access' },
+      { value: 'Auto', label: 'Detection' },
+    ],
+    num: '02',
+  },
+  {
+    name: 'Store',
+    category: 'Bulk Storage Solutions',
+    desc: 'Modular storage silos with flexible inlet, outlet, and discharge configurations for intermediate system capacity.',
+    href: '/products/store',
+    specs: [
+      { value: 'Modular', label: 'Design' },
+      { value: 'Flexible', label: 'Inlet/Outlet' },
+      { value: 'Multiple', label: 'Discharge' },
+    ],
+    num: '03',
+  },
+  {
+    name: 'Filter',
+    category: 'Material Separation & Filtration',
+    desc: 'Material filter receivers with automatic pulse cleaning for vacuum pneumatic conveying systems.',
+    href: '/products/filter',
+    specs: [
+      { value: 'PTFE', label: 'Filters' },
+      { value: 'Auto', label: 'Pulse Clean' },
+      { value: 'Modular', label: 'Design' },
+    ],
+    num: '04',
+  },
+  {
+    name: 'Convey',
+    category: 'Pneumatic Conveying Systems',
+    desc: 'Packaged pneumatic conveyors and integrated bedding handling systems for short and long distance material transport.',
+    href: '/products/convey',
+    specs: [
+      { value: '1,000 Ft.', label: 'Max Distance' },
+      { value: 'Enclosed', label: 'Lines' },
+      { value: 'Vacuum', label: 'Powered' },
+    ],
+    num: '05',
+  },
+  {
+    name: 'Clean',
+    category: 'Dust Collection & Containment',
+    desc: 'Integrated dust collection and containment solutions for unloading, filling, and dispensing operations.',
+    href: '/products/clean',
+    specs: [
+      { value: 'Integral', label: 'Dust Control' },
+      { value: 'HEPA', label: 'Available' },
+      { value: 'Pulse', label: 'Cleaning' },
+    ],
+    num: '06',
+  },
+  {
+    name: 'Automate',
+    category: 'Controls & Automation',
+    desc: 'Non-proprietary PLC-based controls to automate all process functions in pneumatic conveying systems.',
+    href: '/products/automate',
+    specs: [
+      { value: 'PLC', label: 'Based' },
+      { value: 'VFD', label: 'Control' },
+      { value: 'HMI', label: 'Touch Screen' },
+    ],
+    num: '07',
+  },
+  {
+    name: 'Power',
+    category: 'Vacuum Power Units',
+    desc: 'Vacuum power units and blower packages that drive pneumatic conveying systems for your facility.',
+    href: '/products/power',
+    specs: [
+      { value: 'Vacuum', label: 'Power' },
+      { value: 'Integral', label: 'Units' },
+      { value: 'Custom', label: 'Sizing' },
+    ],
+    num: '08',
+  },
+];
+---
+
+<BaseLayout title="Bulk Material Handling" description="Custom-designed bulk material handling equipment — unloading, conveying, filling, storage, filtration, and controls systems.">
+
+  <!-- ===== HERO ===== -->
+  <section class="bulk-hero">
+    <div class="bulk-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <a href="/" class="bulk-breadcrumb">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Home
+      </a>
+      <span class="label" style="color: var(--zephyr-orange); margin-top: 1rem; display: block;">Industrial Solutions</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Bulk Material<br /><span style="color: var(--zephyr-orange);">Handling</span></h1>
+      <p class="bulk-hero-desc">
+        Complete pneumatic conveying systems for dry bulk materials — unloading, filling, storage, filtration, conveying, and controls. Engineered and manufactured for industrial, food, pharmaceutical, and chemical processing applications.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">01 — Product Line</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">What We Build</h2>
+        <p class="accent-text" style="color: var(--steel-400); margin-top: 0.25rem;">Custom solutions, no compromises</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      {products.map((product, i) => (
+        <a href={product.href} class="product-card reveal" data-delay={i}>
+          <div class="product-bg-num">{product.num}</div>
+          <span class="label product-cat">{product.category}</span>
+          <h3 class="display-md product-name">{product.name}</h3>
+          <p class="product-desc">{product.desc}</p>
+          <div class="product-specs">
+            {product.specs.map(spec => (
+              <div class="spec">
+                <div class="spec-val">{spec.value}</div>
+                <div class="spec-lbl">{spec.label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="product-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== PRODUCT CATEGORIES ACCORDION ===== -->
+  <section class="section" style="background: var(--steel-900); padding: 5rem 2rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="section-header reveal" style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="label" style="color: var(--zephyr-orange);">Explore Equipment</span>
+        <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">Product Categories</h2>
+      </div>
+
+      <div class="mh-accordion reveal">
+        {products.map((product, i) => {
+          const colors = ['offwhite', 'lightblue', 'offwhite', 'lightblue', 'orange', 'offwhite', 'lightblue', 'offwhite'];
+          const color = colors[i];
+          return (
+            <div class={`mh-panel mh-panel--${color}${i === 0 ? ' active' : ''}`} data-index={i}>
+              <div class="mh-pattern"></div>
+              <span class="mh-collapsed-title">{product.name}</span>
+              <div class="mh-number">{product.num}</div>
+              <div class="mh-content">
+                <div class="mh-subtitle">{product.category}</div>
+                <h3 class="mh-title">{product.name}</h3>
+                <p class="mh-desc">{product.desc}</p>
+                <div class="mh-tags">
+                  {product.specs.map(spec => (
+                    <span>{spec.value} {spec.label}</span>
+                  ))}
+                </div>
+                <a href={product.href} class={`mh-cta${color === 'orange' ? ' mh-cta--white' : ''}`}>
+                  Explore {product.name}
+                </a>
+              </div>
+              <div class="mh-accent"></div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div class="mh-nav">
+        <button class="mh-nav-arrow mh-nav-prev" aria-label="Previous category">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="mh-dots">
+          {products.map((_, i) => (
+            <button class={`mh-dot${i === 0 ? ' active' : ''}`} data-index={i}></button>
+          ))}
+        </div>
+        <button class="mh-nav-arrow mh-nav-next" aria-label="Next category">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section reveal">
+    <div class="container" style="text-align: center;">
+      <span class="label" style="color: var(--zephyr-orange);">Ready to get started?</span>
+      <h2 class="display-lg" style="color: white; margin-top: 0.75rem;">Tell Us About<br />Your Application</h2>
+      <p style="color: var(--steel-300); max-width: 500px; margin: 1rem auto 2rem; font-weight: 300; line-height: 1.7;">
+        Every project starts with a conversation. Share your material handling challenge and we'll engineer the right solution.
+      </p>
+      <a href="/contact" class="btn btn--primary">Get a Quote</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .bulk-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .bulk-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+  .bulk-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--steel-400);
+    transition: color 0.2s;
+  }
+  .bulk-breadcrumb:hover { color: var(--zephyr-orange); }
+  .bulk-hero-desc {
+    color: var(--steel-300);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-top: 1rem;
+    max-width: 600px;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  /* ===== PRODUCT GRID ===== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2px;
+  }
+
+  .product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    min-height: 360px;
+    background: linear-gradient(145deg, #f8f9fb 0%, #f0f2f5 100%);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--steel-800);
+    transition: all 0.4s var(--ease-out);
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--zephyr-orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .product-card:hover {
+    background: linear-gradient(145deg, var(--steel-800) 0%, var(--steel-900) 100%);
+    color: white;
+  }
+
+  .product-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .product-bg-num {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 8rem;
+    color: rgba(0, 0, 0, 0.03);
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.4s ease;
+  }
+
+  .product-card:hover .product-bg-num {
+    color: rgba(232, 97, 45, 0.06);
+  }
+
+  .product-cat {
+    color: var(--zephyr-orange);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-name {
+    margin-bottom: 0.75rem;
+  }
+
+  .product-desc {
+    font-weight: 300;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--steel-400);
+    flex-grow: 1;
+  }
+
+  .product-card:hover .product-desc {
+    color: var(--steel-300);
+  }
+
+  .product-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    transition: border-color 0.4s ease;
+  }
+
+  .product-card:hover .product-specs {
+    border-color: rgba(232, 97, 45, 0.15);
+  }
+
+  .spec-val {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .spec-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+  }
+
+  .product-arrow {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--steel-400);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover .product-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    background: rgba(232, 97, 45, 0.15);
+    color: var(--zephyr-orange);
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    background: var(--steel-900);
+    padding: 6rem 2rem;
+  }
+
+  /* ===== PRODUCT CATEGORIES ACCORDION ===== */
+  .mh-accordion {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+  }
+
+  .mh-panel {
+    flex: 0.3;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mh-panel.active { flex: 3.5; padding: 36px; }
+  .mh-panel:not(:last-child) { border-right: 1px solid rgba(15,26,38,0.3); }
+
+  .mh-panel--offwhite { background: linear-gradient(135deg, #FAFAF8 0%, #F0F2F5 100%); }
+  .mh-panel--orange { background: linear-gradient(135deg, var(--zephyr-orange) 0%, #c43d0a 100%); }
+  .mh-panel--lightblue { background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%); }
+
+  .mh-pattern {
+    position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
+  }
+  .mh-panel--offwhite .mh-pattern, .mh-panel--lightblue .mh-pattern { color: var(--zephyr-orange); }
+  .mh-panel--orange .mh-pattern { color: white; }
+
+  .mh-collapsed-title {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-family: var(--font-display); font-weight: 700; font-size: 16px;
+    letter-spacing: 5px; text-transform: uppercase;
+    opacity: 1; transition: opacity 0.3s ease; pointer-events: none;
+  }
+  .mh-panel--offwhite .mh-collapsed-title { color: var(--zephyr-orange); }
+  .mh-panel--lightblue .mh-collapsed-title { color: var(--steel-800); }
+  .mh-panel--orange .mh-collapsed-title { color: white; }
+  .mh-panel.active .mh-collapsed-title { opacity: 0; }
+
+  .mh-number {
+    position: absolute; top: 24px; right: 24px;
+    font-family: var(--font-display); font-size: 52px; font-weight: 300;
+    opacity: 0.15; line-height: 1;
+  }
+  .mh-panel--offwhite .mh-number, .mh-panel--lightblue .mh-number { color: var(--zephyr-orange); }
+  .mh-panel--orange .mh-number { color: white; }
+
+  .mh-content {
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.4s ease 0.1s; pointer-events: none;
+  }
+  .mh-panel.active .mh-content { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+  .mh-subtitle {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .mh-panel--offwhite .mh-subtitle, .mh-panel--lightblue .mh-subtitle { color: var(--zephyr-orange); }
+  .mh-panel--orange .mh-subtitle { color: white; }
+
+  .mh-title {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 38px; text-transform: uppercase; letter-spacing: 3px;
+    color: white; margin-bottom: 12px;
+  }
+  .mh-panel--offwhite .mh-title, .mh-panel--lightblue .mh-title { color: var(--steel-800); }
+
+  .mh-desc {
+    color: rgba(255,255,255,0.7); font-size: 0.85rem;
+    font-weight: 300; line-height: 1.6; max-width: 340px; margin-bottom: 20px;
+  }
+  .mh-panel--offwhite .mh-desc { color: var(--steel-500); }
+  .mh-panel--lightblue .mh-desc { color: var(--steel-700); }
+
+  .mh-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .mh-tags span {
+    background: rgba(255,255,255,0.1); color: white;
+    padding: 6px 14px; font-family: var(--font-display);
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .mh-tags span:hover { background: rgba(255,255,255,0.2); }
+  .mh-panel--offwhite .mh-tags span {
+    background: rgba(0,0,0,0.05); color: var(--steel-700);
+    border-color: rgba(0,0,0,0.1);
+  }
+  .mh-panel--offwhite .mh-tags span:hover { background: rgba(0,0,0,0.1); }
+  .mh-panel--lightblue .mh-tags span {
+    background: rgba(0,0,0,0.06); color: var(--steel-800);
+    border-color: rgba(0,0,0,0.1);
+  }
+  .mh-panel--lightblue .mh-tags span:hover { background: rgba(0,0,0,0.12); }
+
+  .mh-cta {
+    display: inline-block; padding: 12px 28px;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    background: var(--zephyr-orange); color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .mh-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .mh-cta--white { background: white; color: var(--zephyr-orange); }
+
+  .mh-accent {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mh-panel--offwhite .mh-accent, .mh-panel--lightblue .mh-accent { background: var(--zephyr-orange); }
+  .mh-panel--orange .mh-accent { background: white; }
+  .mh-panel.active .mh-accent { transform: scaleX(1); }
+
+  .mh-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem; margin-top: 2rem;
+  }
+
+  .mh-nav-arrow {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+    background: transparent; color: rgba(255,255,255,0.5); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .mh-nav-arrow:hover { border-color: var(--zephyr-orange); color: var(--zephyr-orange); background: rgba(232,97,45,0.1); }
+
+  .mh-dots { display: flex; gap: 8px; align-items: center; }
+  .mh-dot {
+    width: 10px; height: 10px; border-radius: 5px; border: none;
+    background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease;
+  }
+  .mh-dot:hover { background: rgba(255,255,255,0.5); }
+  .mh-dot.active { width: 28px; background: var(--zephyr-orange); }
+
+  @media (max-width: 768px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .mh-accordion { flex-direction: column; height: auto; }
+    .mh-panel { flex: none !important; height: 52px; padding: 14px 20px; }
+    .mh-panel.active { height: 360px; padding: 24px; }
+    .mh-collapsed-title { transform: translate(-50%, -50%) rotate(0deg); font-size: 14px; letter-spacing: 4px; }
+    .mh-title { font-size: 26px; }
+    .mh-number { font-size: 36px; top: 12px; right: 14px; }
+    .mh-desc { font-size: 0.8rem; max-width: 100%; }
+    .mh-nav-arrow { width: 34px; height: 34px; }
+  }
+</style>
+
+<script>
+  // Product Categories Accordion
+  const mhPanels = document.querySelectorAll('.mh-panel');
+  const mhDots = document.querySelectorAll('.mh-dot');
+  const prevBtn = document.querySelector('.mh-nav-prev');
+  const nextBtn = document.querySelector('.mh-nav-next');
+  let activeIndex = 0;
+
+  function setMHActive(index: number) {
+    activeIndex = index;
+    mhPanels.forEach((p, i) => p.classList.toggle('active', i === index));
+    mhDots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  mhPanels.forEach(panel => {
+    panel.addEventListener('mouseenter', () => setMHActive(parseInt((panel as HTMLElement).dataset.index!)));
+    panel.addEventListener('click', () => setMHActive(parseInt((panel as HTMLElement).dataset.index!)));
+  });
+
+  mhDots.forEach(dot => {
+    dot.addEventListener('click', () => setMHActive(parseInt((dot as HTMLElement).dataset.index!)));
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    setMHActive(activeIndex > 0 ? activeIndex - 1 : mhPanels.length - 1);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    setMHActive(activeIndex < mhPanels.length - 1 ? activeIndex + 1 : 0);
+  });
+</script>

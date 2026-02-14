@@ -6,7 +6,7 @@ const aboutLinks = [
   { label: 'Careers', href: '/about/careers' },
 ];
 
-const productLinks = [
+const bulkLinks = [
   { label: 'Unload', href: '/products/unload' },
   { label: 'Fill', href: '/products/fill' },
   { label: 'Store', href: '/products/store' },
@@ -15,6 +15,22 @@ const productLinks = [
   { label: 'Clean', href: '/products/clean' },
   { label: 'Automate', href: '/products/automate' },
   { label: 'Power', href: '/products/power' },
+];
+
+const beddingLinks = [
+  { heading: 'Delivery', items: [
+    { label: 'LX Series', href: '/bedding/delivery/lx-series' },
+    { label: 'MX Series', href: '/bedding/delivery/mx-series' },
+    { label: 'VX Series', href: '/bedding/delivery/vx-series' },
+  ]},
+  { heading: 'Dispensing', items: [
+    { label: '504 Series', href: '/bedding/dispensing/504-series' },
+    { label: '506 Series', href: '/bedding/dispensing/506-series' },
+  ]},
+  { heading: 'Disposal', items: [
+    { label: 'VF Series', href: '/bedding/disposal/vf-series' },
+    { label: 'GF Series', href: '/bedding/disposal/gf-series' },
+  ]},
 ];
 ---
 
@@ -26,13 +42,29 @@ const productLinks = [
 
     <nav class="main-nav" id="main-nav">
       <div class="nav-item has-dropdown">
-        <a href="/products" class:list={["nav-link", { active: currentPath.startsWith('/products') }]}>
-          Products
+        <a href="/bulk" class:list={["nav-link", { active: currentPath.startsWith('/bulk') || currentPath.startsWith('/products') }]}>
+          Bulk
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
         <div class="dropdown">
-          {productLinks.map(link => (
+          {bulkLinks.map(link => (
             <a href={link.href} class="dropdown-link">{link.label}</a>
+          ))}
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <a href="/bedding" class:list={["nav-link", { active: currentPath.startsWith('/bedding') }]}>
+          Bedding
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown dropdown--bedding">
+          {beddingLinks.map(section => (
+            <div class="dropdown-section">
+              <span class="dropdown-heading">{section.heading}</span>
+              {section.items.map(link => (
+                <a href={link.href} class="dropdown-link">{link.label}</a>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -66,9 +98,18 @@ const productLinks = [
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
   <nav class="mobile-nav">
-    <a href="/products" class="mobile-link">Products</a>
-    {productLinks.map(link => (
+    <a href="/bulk" class="mobile-link">Bulk</a>
+    {bulkLinks.map(link => (
       <a href={link.href} class="mobile-link mobile-link--sub">{link.label}</a>
+    ))}
+    <a href="/bedding" class="mobile-link">Bedding</a>
+    {beddingLinks.map(section => (
+      <>
+        <span class="mobile-link mobile-link--heading">{section.heading}</span>
+        {section.items.map(link => (
+          <a href={link.href} class="mobile-link mobile-link--sub">{link.label}</a>
+        ))}
+      </>
     ))}
     <a href="/service" class="mobile-link">Service</a>
     <a href="/news" class="mobile-link">News</a>
@@ -177,6 +218,11 @@ const productLinks = [
     transition: all 0.25s ease;
   }
 
+  .dropdown--bedding {
+    min-width: 240px;
+    padding: 0.75rem 0;
+  }
+
   .nav-item:hover .dropdown {
     opacity: 1;
     visibility: visible;
@@ -185,6 +231,27 @@ const productLinks = [
 
   .nav-item:hover .nav-link svg {
     transform: rotate(180deg);
+  }
+
+  .dropdown-section {
+    padding: 0.25rem 0;
+  }
+
+  .dropdown-section:not(:last-child) {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .dropdown-heading {
+    display: block;
+    padding: 0.4rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
   }
 
   .dropdown-link {
@@ -270,6 +337,17 @@ const productLinks = [
     font-size: 0.9rem;
     color: var(--steel-300);
     padding-left: 1.5rem;
+  }
+
+  .mobile-link--heading {
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--zephyr-orange);
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: none;
   }
 
   @media (max-width: 768px) {

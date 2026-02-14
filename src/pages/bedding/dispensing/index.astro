@@ -1,0 +1,9 @@
+---
+import BeddingCategoryPage from '../../../components/BeddingCategoryPage.astro';
+import { getBeddingCategoryBySlug, getBeddingProductsByCategory } from '../../../data/bedding';
+
+const category = getBeddingCategoryBySlug('dispensing')!;
+const products = getBeddingProductsByCategory('dispensing');
+---
+
+<BeddingCategoryPage category={category} products={products} />
