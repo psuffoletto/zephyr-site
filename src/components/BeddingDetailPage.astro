@@ -294,13 +294,16 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
   }
 
   .prod-hero-img {
-    width: 100%;
-    max-width: 400px;
+    width: 200%;
+    max-width: none;
     height: auto;
     border-radius: 4px;
+    margin-left: -60%;
+    margin-right: -40%;
   }
 
   .prod-hero-placeholder {
