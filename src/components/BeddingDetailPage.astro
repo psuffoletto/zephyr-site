@@ -77,28 +77,6 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     </section>
   )}
 
-  <!-- 3D MODEL VIEWER (OPTIONAL) -->
-  {product.sketchfabId && (
-    <section class="section" style="background: white;">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="label" style="color: var(--zephyr-orange);">Interactive 3D</span>
-          <h2 class="display-lg" style="margin-top: 0.5rem;">Explore the {product.name}</h2>
-          <p style="color: var(--steel-500); margin-top: 0.75rem; font-weight: 300;">Pan, zoom, and rotate to inspect every detail.</p>
-        </div>
-        <div class="sketchfab-embed reveal">
-          <iframe
-            title={`${product.name} 3D Model`}
-            src={`https://sketchfab.com/models/${product.sketchfabId}/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_watermark=0`}
-            allow="autoplay; fullscreen; xr-spatial-tracking"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-    </section>
-  )}
-
   <!-- FEATURES -->
   <section class="section" style="background: white;">
     <div class="container">
@@ -118,24 +96,45 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     </div>
   </section>
 
-  <!-- FULL SPECIFICATIONS TABLE -->
+  <!-- SPECIFICATIONS + 3D MODEL -->
   {product.specTable && product.specTable.length > 0 && (
     <section class="section">
-      <div class="container container--narrow">
-        <div class="section-header reveal">
-          <span class="label" style="color: var(--zephyr-orange);">Technical Data</span>
-          <h2 class="display-lg" style="margin-top: 0.5rem;">Specifications</h2>
+      <div class="container">
+        <div class={`specs-3d-layout ${product.sketchfabId ? 'has-model' : ''}`}>
+          <div class="specs-3d-left">
+            <div class="section-header reveal">
+              <span class="label" style="color: var(--zephyr-orange);">Technical Data</span>
+              <h2 class="display-lg" style="margin-top: 0.5rem;">Specifications</h2>
+            </div>
+            <table class="spec-table reveal">
+              <tbody>
+                {product.specTable.map(row => (
+                  <tr>
+                    <td class="spec-table-label">{row.label}</td>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {product.sketchfabId && (
+            <div class="specs-3d-right reveal">
+              <div class="specs-3d-header">
+                <span class="label" style="color: var(--zephyr-orange);">Interactive 3D</span>
+                <p style="color: var(--steel-500); margin-top: 0.4rem; font-weight: 300; font-size: 0.85rem;">Pan, zoom, and rotate to inspect every detail.</p>
+              </div>
+              <div class="sketchfab-embed">
+                <iframe
+                  title={`${product.name} 3D Model`}
+                  src={`https://sketchfab.com/models/${product.sketchfabId}/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_watermark=0`}
+                  allow="autoplay; fullscreen; xr-spatial-tracking"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          )}
         </div>
-        <table class="spec-table reveal">
-          <tbody>
-            {product.specTable.map(row => (
-              <tr>
-                <td class="spec-table-label">{row.label}</td>
-                <td>{row.value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </section>
   )}
@@ -355,11 +354,29 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     margin-top: 0.3rem;
   }
 
-  /* SKETCHFAB EMBED */
+  /* SPECS + 3D LAYOUT */
+  .specs-3d-layout {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .specs-3d-layout.has-model {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: none;
+  }
+  .specs-3d-right {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+  }
+  .specs-3d-header {
+    margin-bottom: 1rem;
+  }
   .sketchfab-embed {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
     border-radius: 4px;
     overflow: hidden;
     background: var(--steel-900);
@@ -554,5 +571,7 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     .specs-bar-grid { justify-content: center; }
     .spec-table-label { width: auto; }
     .gallery-grid { grid-template-columns: 1fr; }
+    .specs-3d-layout.has-model { grid-template-columns: 1fr; }
+    .specs-3d-right { position: static; }
   }
 </style>
