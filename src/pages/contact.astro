@@ -40,8 +40,7 @@ const productOptions = [
             Tell us about your application and we'll get back to you with a solution.
           </p>
 
-          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xnjbddpp" method="POST">
-            <input type="hidden" name="_next" id="form-next" value="/" />
+          <form class="contact-form" id="contact-form">
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
@@ -309,13 +308,31 @@ const productOptions = [
 </style>
 
 <script>
-  const select = document.getElementById('product') as HTMLSelectElement;
-  const nextField = document.getElementById('form-next') as HTMLInputElement;
-  const origin = window.location.origin;
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
 
-  select?.addEventListener('change', () => {
-    const selected = select.options[select.selectedIndex];
-    const url = selected?.dataset.url || '/';
-    nextField.value = origin + url;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const data = new FormData(form);
+
+    try {
+      await fetch('https://formspree.io/f/xnjbddpp', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' },
+      });
+
+      const select = document.getElementById('product') as HTMLSelectElement;
+      const selected = select.options[select.selectedIndex];
+      const url = selected?.dataset.url || '/';
+      window.location.href = url;
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send Request';
+      alert('Something went wrong. Please try again or email info@zephyrbhs.com directly.');
+    }
   });
 </script>
