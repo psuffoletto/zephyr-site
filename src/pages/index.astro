@@ -59,12 +59,12 @@ const capabilities = [
             <h3 class="ms-title">Bulk Material Handling</h3>
             <p class="ms-desc">Complete pneumatic conveying systems for dry bulk materials — unloading, filling, storage, filtration, conveying, and controls. Engineered and manufactured for industrial, food, pharmaceutical, and chemical processing applications.</p>
             <div class="ms-tags">
-              <span>Unload</span>
-              <span>Fill</span>
-              <span>Store</span>
-              <span>Convey</span>
-              <span>Filter</span>
-              <span>Automate</span>
+              <a href="/products/unload">Unload</a>
+              <a href="/products/fill">Fill</a>
+              <a href="/products/store">Store</a>
+              <a href="/products/convey">Convey</a>
+              <a href="/products/filter">Filter</a>
+              <a href="/products/automate">Automate</a>
             </div>
             <a href="/bulk" class="ms-cta">Explore Bulk</a>
           </div>
@@ -80,9 +80,9 @@ const capabilities = [
             <h3 class="ms-title">Bedding Handling</h3>
             <p class="ms-desc">Integrated bedding delivery, dispensing, and waste disposal systems for vivarium and laboratory animal facilities. Designed for clean, efficient bedding management in life science environments.</p>
             <div class="ms-tags">
-              <span>Delivery</span>
-              <span>Dispensing</span>
-              <span>Disposal</span>
+              <a href="/bedding/delivery">Delivery</a>
+              <a href="/bedding/dispensing">Dispensing</a>
+              <a href="/bedding/disposal">Disposal</a>
             </div>
             <a href="/bedding" class="ms-cta">Explore Bedding</a>
           </div>
@@ -471,27 +471,28 @@ const capabilities = [
   .ms-panel.expanded .ms-desc { color: rgba(255,255,255,0.8); }
 
   .ms-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-  .ms-tags span {
+  .ms-tags a {
+    display: inline-block;
     padding: 6px 14px; font-family: var(--font-display);
     font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
-    border-radius: 2px;
+    border-radius: 2px; text-decoration: none;
     transition: all 0.4s ease;
   }
-  .ms-panel--offwhite .ms-tags span {
+  .ms-panel--offwhite .ms-tags a {
     background: rgba(0,0,0,0.05); color: var(--steel-700);
     border: 1px solid rgba(0,0,0,0.1);
   }
-  .ms-panel--offwhite .ms-tags span:hover { background: rgba(0,0,0,0.1); }
-  .ms-panel--lightblue .ms-tags span {
+  .ms-panel--offwhite .ms-tags a:hover { background: rgba(0,0,0,0.1); }
+  .ms-panel--lightblue .ms-tags a {
     background: rgba(0,0,0,0.06); color: var(--steel-800);
     border: 1px solid rgba(0,0,0,0.1);
   }
-  .ms-panel--lightblue .ms-tags span:hover { background: rgba(0,0,0,0.12); }
-  .ms-panel.expanded .ms-tags span {
+  .ms-panel--lightblue .ms-tags a:hover { background: rgba(0,0,0,0.12); }
+  .ms-panel.expanded .ms-tags a {
     background: rgba(255,255,255,0.1); color: white;
     border-color: rgba(255,255,255,0.15);
   }
-  .ms-panel.expanded .ms-tags span:hover { background: rgba(255,255,255,0.2); }
+  .ms-panel.expanded .ms-tags a:hover { background: rgba(255,255,255,0.2); }
 
   .ms-cta {
     display: inline-block; padding: 12px 28px;

@@ -120,6 +120,8 @@ export const products: Product[] = [
     slug: '14v-direct-bag-unloader',
     modelNumber: '14v',
     category: 'unload',
+    heroImage: '/images/14v-hero.jpg',
+    productImage: '/images/14v-product.png',
     accentLabel: 'Bag Unloading',
     tagline: 'Automated bulk bag and drum unloading in a compact footprint',
     description: 'The 14v Series takes the heavy lifting out of emptying drums or bulk bags. Designed to handle free-flowing granules, pellets, or powders, this unique design draws the material from the top of the bag automatically. During the unloading operation, the carriage stretches the bag, forcing the material to the center, promoting continuous and complete discharge.',
