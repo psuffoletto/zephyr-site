@@ -41,8 +41,8 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
           </div>
         </div>
         <div class="prod-hero-visual">
-          {product.heroImage ? (
-            <img src={product.heroImage} alt={product.name} class="prod-hero-img" />
+          {(product.productImage || product.heroImage) ? (
+            <img src={product.productImage || product.heroImage} alt={product.name} class="prod-hero-img" />
           ) : (
             <div class="prod-hero-placeholder">
               <div class="prod-placeholder-icon">
