@@ -41,16 +41,17 @@ const capabilities = [
   </section>
 
   <!-- ===== MARKET SEGMENTS ===== -->
-  <section class="section" style="background: var(--steel-900); padding: 5rem 2rem;">
-    <div class="container" style="max-width: 1200px;">
+  <section class="section" style="background: white; padding: 5rem 2rem;">
+    <div class="container" style="max-width: 1400px;">
       <div class="section-header reveal" style="text-align: center; margin-bottom: 2.5rem;">
         <span class="label" style="color: var(--zephyr-orange);">Our Markets</span>
-        <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">What We Do</h2>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">What We Do</h2>
       </div>
 
       <div class="ms-accordion reveal">
-        <div class="ms-panel ms-panel--offwhite active" data-index="0">
+        <div class="ms-panel ms-panel--offwhite" data-index="0">
           <div class="ms-pattern"></div>
+          <div class="ms-img" style="background-image: url('https://static.wixstatic.com/media/9d739b_b4e9e4b4bb4f4c08b9bea3f033c88464~mv2.jpg');"></div>
           <span class="ms-collapsed-title">Bulk</span>
           <div class="ms-number">01</div>
           <div class="ms-content">
@@ -71,6 +72,7 @@ const capabilities = [
         </div>
         <div class="ms-panel ms-panel--lightblue" data-index="1">
           <div class="ms-pattern"></div>
+          <div class="ms-img" style="background-image: url('https://static.wixstatic.com/media/9d739b_b4e9e4b4bb4f4c08b9bea3f033c88464~mv2.jpg');"></div>
           <span class="ms-collapsed-title">Bedding</span>
           <div class="ms-number">02</div>
           <div class="ms-content">
@@ -368,87 +370,116 @@ const capabilities = [
   .ms-accordion {
     display: flex;
     width: 100%;
-    height: 500px;
+    height: 620px;
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+    box-shadow: 0 12px 60px rgba(0,0,0,0.1);
   }
 
   .ms-panel {
-    flex: 0.5;
+    flex: 1;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 16px;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 40px;
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .ms-panel.active { flex: 4; padding: 36px; }
-  .ms-panel:not(:last-child) { border-right: 1px solid rgba(15,26,38,0.3); }
+  .ms-panel.expanded { flex: 3; }
+  .ms-panel.collapsed { flex: 0.35; padding: 16px; }
+  .ms-panel:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
 
   .ms-panel--offwhite { background: linear-gradient(135deg, #FAFAF8 0%, #F0F2F5 100%); }
   .ms-panel--lightblue { background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%); }
 
+  /* Background image layer */
+  .ms-img {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .ms-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,26,38,0.3) 0%, rgba(15,26,38,0.7) 100%);
+  }
+  .ms-panel.expanded .ms-img { opacity: 1; }
+
   .ms-pattern {
     position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
     background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
+    transition: opacity 0.4s ease;
   }
   .ms-panel--offwhite .ms-pattern, .ms-panel--lightblue .ms-pattern { color: var(--zephyr-orange); }
+  .ms-panel.expanded .ms-pattern { opacity: 0; }
 
+  /* Collapsed vertical title — hidden by default, shown only when collapsed */
   .ms-collapsed-title {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
     white-space: nowrap;
     font-family: var(--font-display); font-weight: 700; font-size: 18px;
     letter-spacing: 6px; text-transform: uppercase;
-    opacity: 1; transition: opacity 0.3s ease; pointer-events: none;
+    opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
   }
   .ms-panel--offwhite .ms-collapsed-title { color: var(--zephyr-orange); }
   .ms-panel--lightblue .ms-collapsed-title { color: var(--steel-800); }
-  .ms-panel.active .ms-collapsed-title { opacity: 0; }
+  .ms-panel.collapsed .ms-collapsed-title { opacity: 1; }
 
   .ms-number {
     position: absolute; top: 24px; right: 24px;
     font-family: var(--font-display); font-size: 52px; font-weight: 300;
     opacity: 0.15; line-height: 1;
+    transition: all 0.4s ease;
   }
   .ms-panel--offwhite .ms-number, .ms-panel--lightblue .ms-number { color: var(--zephyr-orange); }
+  .ms-panel.expanded .ms-number { color: white; opacity: 0.2; }
 
+  /* Content — visible by default at 50/50, enhanced when expanded */
   .ms-content {
-    opacity: 0; transform: translateY(20px);
-    transition: all 0.4s ease 0.1s; pointer-events: none;
+    position: relative; z-index: 1;
+    transition: all 0.4s ease 0.1s;
   }
-  .ms-panel.active .ms-content { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .ms-panel.collapsed .ms-content { opacity: 0; transform: translateY(20px); pointer-events: none; }
+  .ms-panel.expanded .ms-content { pointer-events: auto; }
 
   .ms-subtitle {
     font-family: var(--font-display); font-weight: 600;
     font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
     margin-bottom: 6px;
+    transition: color 0.4s ease;
   }
   .ms-panel--offwhite .ms-subtitle, .ms-panel--lightblue .ms-subtitle { color: var(--zephyr-orange); }
+  .ms-panel.expanded .ms-subtitle { color: var(--zephyr-orange); }
 
   .ms-title {
     font-family: var(--font-display); font-weight: 800;
     font-size: 38px; text-transform: uppercase; letter-spacing: 3px;
     margin-bottom: 12px;
+    transition: color 0.4s ease;
   }
   .ms-panel--offwhite .ms-title, .ms-panel--lightblue .ms-title { color: var(--steel-800); }
+  .ms-panel.expanded .ms-title { color: white; }
 
   .ms-desc {
     font-size: 0.85rem;
     font-weight: 300; line-height: 1.6; max-width: 440px; margin-bottom: 20px;
+    transition: color 0.4s ease;
   }
   .ms-panel--offwhite .ms-desc { color: var(--steel-500); }
   .ms-panel--lightblue .ms-desc { color: var(--steel-700); }
+  .ms-panel.expanded .ms-desc { color: rgba(255,255,255,0.8); }
 
   .ms-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
   .ms-tags span {
     padding: 6px 14px; font-family: var(--font-display);
     font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
     border-radius: 2px;
-    transition: background 0.2s;
+    transition: all 0.4s ease;
   }
   .ms-panel--offwhite .ms-tags span {
     background: rgba(0,0,0,0.05); color: var(--steel-700);
@@ -460,6 +491,11 @@ const capabilities = [
     border: 1px solid rgba(0,0,0,0.1);
   }
   .ms-panel--lightblue .ms-tags span:hover { background: rgba(0,0,0,0.12); }
+  .ms-panel.expanded .ms-tags span {
+    background: rgba(255,255,255,0.1); color: white;
+    border-color: rgba(255,255,255,0.15);
+  }
+  .ms-panel.expanded .ms-tags span:hover { background: rgba(255,255,255,0.2); }
 
   .ms-cta {
     display: inline-block; padding: 12px 28px;
@@ -477,14 +513,15 @@ const capabilities = [
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .ms-panel--offwhite .ms-accent, .ms-panel--lightblue .ms-accent { background: var(--zephyr-orange); }
-  .ms-panel.active .ms-accent { transform: scaleX(1); }
+  .ms-panel.expanded .ms-accent { transform: scaleX(1); }
 
   @media (max-width: 768px) {
     .banner-stats { gap: 2.5rem; }
     .hero-actions { flex-direction: column; align-items: center; }
     .ms-accordion { flex-direction: column; height: auto; }
-    .ms-panel { flex: none !important; height: 60px; padding: 14px 20px; }
-    .ms-panel.active { height: 420px; padding: 24px; }
+    .ms-panel { flex: none !important; padding: 28px 24px; }
+    .ms-panel.collapsed { height: 60px !important; padding: 14px 20px; }
+    .ms-panel.expanded { padding: 28px 24px; }
     .ms-collapsed-title { transform: translate(-50%, -50%) rotate(0deg); font-size: 15px; letter-spacing: 4px; }
     .ms-title { font-size: 28px; }
     .ms-number { font-size: 36px; top: 12px; right: 14px; }
@@ -493,15 +530,35 @@ const capabilities = [
 </style>
 
 <script>
-  // Market Segments Accordion
+  // Market Segments Accordion — 50/50 default, hover to expand
   const msPanels = document.querySelectorAll('.ms-panel');
+  const msAccordion = document.querySelector('.ms-accordion');
 
-  function setMSActive(index: number) {
-    msPanels.forEach((p, i) => p.classList.toggle('active', i === index));
+  function resetPanels() {
+    msPanels.forEach(p => {
+      p.classList.remove('expanded', 'collapsed');
+    });
+  }
+
+  function expandPanel(index: number) {
+    msPanels.forEach((p, i) => {
+      if (i === index) {
+        p.classList.add('expanded');
+        p.classList.remove('collapsed');
+      } else {
+        p.classList.add('collapsed');
+        p.classList.remove('expanded');
+      }
+    });
   }
 
   msPanels.forEach(panel => {
-    panel.addEventListener('mouseenter', () => setMSActive(parseInt((panel as HTMLElement).dataset.index!)));
-    panel.addEventListener('click', () => setMSActive(parseInt((panel as HTMLElement).dataset.index!)));
+    panel.addEventListener('mouseenter', () => {
+      expandPanel(parseInt((panel as HTMLElement).dataset.index!));
+    });
+  });
+
+  msAccordion?.addEventListener('mouseleave', () => {
+    resetPanels();
   });
 </script>
