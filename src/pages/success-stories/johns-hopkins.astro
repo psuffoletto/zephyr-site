@@ -5,9 +5,6 @@ const installImages = [
   { src: '/images/johns-hopkins/install-1.jpg', alt: 'Clean bedding delivery system installation' },
   { src: '/images/johns-hopkins/install-2.jpg', alt: 'Pneumatic conveying lines routed through facility' },
   { src: '/images/johns-hopkins/install-3.jpg', alt: 'Dispensing station in vivarium housing area' },
-  { src: '/images/johns-hopkins/install-4.jpg', alt: 'Waste bedding vacuum collection point' },
-  { src: '/images/johns-hopkins/install-5.jpg', alt: 'Touchscreen control interface' },
-  { src: '/images/johns-hopkins/install-6.jpg', alt: 'Sealed waste hopper in service corridor' },
 ];
 
 const results = [
@@ -53,14 +50,7 @@ const results = [
 
   <!-- ===== HERO IMAGE ===== -->
   <section class="cs-hero-image">
-    <div class="cs-hero-image-placeholder">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <polyline points="21 15 16 10 5 21"/>
-      </svg>
-      <span>Project Hero Image</span>
-    </div>
+    <img src="/images/johns-hopkins/hero.jpg" alt="Johns Hopkins University bedding handling system" />
   </section>
 
   <!-- ===== INTRO ===== -->
@@ -166,14 +156,7 @@ const results = [
         <div class="cs-carousel-track">
           {installImages.map((img, i) => (
             <div class={`cs-carousel-slide${i === 0 ? ' active' : ''}`} data-index={i}>
-              <div class="cs-carousel-placeholder">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <polyline points="21 15 16 10 5 21"/>
-                </svg>
-                <span>{img.alt}</span>
-              </div>
+              <img src={img.src} alt={img.alt} loading="lazy" />
             </div>
           ))}
         </div>
@@ -661,9 +644,6 @@ const results = [
     'Clean bedding delivery system installation',
     'Pneumatic conveying lines routed through facility',
     'Dispensing station in vivarium housing area',
-    'Waste bedding vacuum collection point',
-    'Touchscreen control interface',
-    'Sealed waste hopper in service corridor',
   ];
 
   function goTo(index) {
