@@ -6,9 +6,10 @@ import { getOtherBeddingCategories } from '../data/bedding';
 interface Props {
   category: Category;
   products: Product[];
+  heroImage?: string;
 }
 
-const { category, products } = Astro.props;
+const { category, products, heroImage } = Astro.props;
 const otherCategories = getOtherBeddingCategories(category.slug);
 ---
 
@@ -16,7 +17,7 @@ const otherCategories = getOtherBeddingCategories(category.slug);
 
   <!-- Hero -->
   <section class="cat-hero">
-    <div class="cat-hero-bg"></div>
+    <div class="cat-hero-bg" style={heroImage ? `background: linear-gradient(180deg, rgba(10,16,24,0.5) 0%, rgba(10,16,24,0.7) 100%), url('${heroImage}') center/cover no-repeat;` : ''}></div>
     <div class="container" style="position: relative; z-index: 1;">
       <a href="/bedding" class="cat-breadcrumb">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
