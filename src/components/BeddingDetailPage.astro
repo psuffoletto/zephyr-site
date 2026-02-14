@@ -18,7 +18,7 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
 
   <!-- HERO -->
   <section class="prod-hero">
-    <div class="prod-hero-bg"></div>
+    <div class="prod-hero-bg" style={product.heroImage ? `background: linear-gradient(135deg, rgba(78,106,128,0.85) 0%, rgba(10,18,37,0.9) 100%), url('${product.heroImage}') center/cover no-repeat;` : ''}></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="prod-hero-grid">
         <div class="prod-hero-text">

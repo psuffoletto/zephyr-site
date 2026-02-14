@@ -217,6 +217,7 @@ export const beddingProducts: Product[] = [
     slug: 'gf-series',
     modelNumber: 'GF',
     category: 'disposal',
+    heroImage: '/images/gf-series-hero.png',
     accentLabel: 'Waste Handling',
     tagline: 'Gravity-fed waste bedding disposal system for vivarium facilities',
     description: 'The GF-Series Waste Bedding Delivery System is designed for gravity-fed waste bedding disposal applications in vivarium and laboratory animal facilities. The system provides a clean, efficient method for disposing of soiled bedding material from cage changing operations.',
