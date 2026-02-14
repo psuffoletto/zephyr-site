@@ -174,80 +174,58 @@ const capabilities = [
     </div>
   </section>
 
-  <!-- ===== MATERIAL HANDLING ACCORDION ===== -->
+  <!-- ===== PRODUCT CATEGORIES ===== -->
   <section class="section" style="background: #0a0a0a; padding: 5rem 2rem;">
     <div class="container" style="max-width: 1200px;">
       <div class="section-header reveal" style="text-align: center; margin-bottom: 2.5rem;">
-        <span class="label" style="color: var(--zephyr-orange);">Integrated Solutions</span>
-        <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">Complete Material Handling</h2>
+        <span class="label" style="color: var(--zephyr-orange);">Explore Equipment</span>
+        <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">Product Categories</h2>
       </div>
 
       <div class="mh-accordion reveal">
-        <!-- UPSTREAM -->
-        <div class="mh-panel mh-panel--dark" data-index="0">
-          <div class="mh-pattern"></div>
-          <span class="mh-collapsed-title">Upstream</span>
-          <div class="mh-number">01</div>
-          <div class="mh-content">
-            <div class="mh-subtitle">Receiving & Storage</div>
-            <h3 class="mh-title">Upstream</h3>
-            <p class="mh-desc">Bulk material receiving, storage solutions, and inventory management systems engineered for your throughput requirements.</p>
-            <div class="mh-tags">
-              <span>Bulk Bag Unloaders</span>
-              <span>Vacuum Wands</span>
-              <span>Feed Bins</span>
-              <span>Storage Silos</span>
+        {products.map((product, i) => {
+          const colors = ['dark', 'steel', 'dark', 'steel', 'orange', 'dark', 'steel', 'dark'];
+          const color = colors[i];
+          return (
+            <div class={`mh-panel mh-panel--${color}${i === 0 ? ' active' : ''}`} data-index={i}>
+              <div class="mh-pattern"></div>
+              <span class="mh-collapsed-title">{product.name}</span>
+              <div class="mh-number">{product.num}</div>
+              <div class="mh-content">
+                <div class="mh-subtitle">{product.category}</div>
+                <h3 class="mh-title">{product.name}</h3>
+                <p class="mh-desc">{product.desc}</p>
+                <div class="mh-tags">
+                  {product.specs.map(spec => (
+                    <span>{spec.value} {spec.label}</span>
+                  ))}
+                </div>
+                <a href={product.href} class={`mh-cta${color === 'orange' ? ' mh-cta--white' : ''}`}>
+                  Explore {product.name}
+                </a>
+              </div>
+              <div class="mh-accent"></div>
             </div>
-            <a href="/products/unload" class="mh-cta">Explore Upstream</a>
-          </div>
-          <div class="mh-accent"></div>
-        </div>
-
-        <!-- MIDSTREAM -->
-        <div class="mh-panel mh-panel--orange active" data-index="1">
-          <div class="mh-pattern"></div>
-          <span class="mh-collapsed-title">Midstream</span>
-          <div class="mh-number">02</div>
-          <div class="mh-content">
-            <div class="mh-subtitle">Processing & Conveying</div>
-            <h3 class="mh-title">Midstream</h3>
-            <p class="mh-desc">Material handling, conveying systems, and process equipment designed to move your product efficiently and reliably.</p>
-            <div class="mh-tags">
-              <span>Pneumatic Conveyors</span>
-              <span>Bedding Systems</span>
-              <span>Waste Delivery</span>
-              <span>System Controllers</span>
-            </div>
-            <a href="/products/convey" class="mh-cta mh-cta--white">Explore Midstream</a>
-          </div>
-          <div class="mh-accent"></div>
-        </div>
-
-        <!-- DOWNSTREAM -->
-        <div class="mh-panel mh-panel--steel" data-index="2">
-          <div class="mh-pattern"></div>
-          <span class="mh-collapsed-title">Downstream</span>
-          <div class="mh-number">03</div>
-          <div class="mh-content">
-            <div class="mh-subtitle">Distribution & Control</div>
-            <h3 class="mh-title">Downstream</h3>
-            <p class="mh-desc">Valves, dust collection, dedusters, and distribution equipment that keep your system running clean and controlled.</p>
-            <div class="mh-tags">
-              <span>Filter Receivers</span>
-              <span>Bag Dump Stations</span>
-              <span>Dust Collection</span>
-              <span>Fill Frames</span>
-            </div>
-            <a href="/products/filter" class="mh-cta">Explore Downstream</a>
-          </div>
-          <div class="mh-accent"></div>
-        </div>
+          );
+        })}
       </div>
 
-      <div class="mh-dots">
-        <button class="mh-dot" data-index="0"></button>
-        <button class="mh-dot active" data-index="1"></button>
-        <button class="mh-dot" data-index="2"></button>
+      <div class="mh-nav">
+        <button class="mh-nav-arrow mh-nav-prev" aria-label="Previous category">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="mh-dots">
+          {products.map((_, i) => (
+            <button class={`mh-dot${i === 0 ? ' active' : ''}`} data-index={i}></button>
+          ))}
+        </div>
+        <button class="mh-nav-arrow mh-nav-next" aria-label="Next category">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -664,36 +642,38 @@ const capabilities = [
     .banner-stats { gap: 2.5rem; }
     .hero-actions { flex-direction: column; align-items: center; }
     .mh-accordion { flex-direction: column; height: auto; }
-    .mh-panel { flex: none !important; height: 70px; padding: 20px; }
-    .mh-panel.active { height: 380px; padding: 28px; }
-    .mh-collapsed-title { transform: translate(-50%, -50%) rotate(0deg); font-size: 16px; }
-    .mh-title { font-size: 28px; }
-    .mh-number { font-size: 40px; top: 16px; right: 16px; }
+    .mh-panel { flex: none !important; height: 52px; padding: 14px 20px; }
+    .mh-panel.active { height: 360px; padding: 24px; }
+    .mh-collapsed-title { transform: translate(-50%, -50%) rotate(0deg); font-size: 14px; letter-spacing: 4px; }
+    .mh-title { font-size: 26px; }
+    .mh-number { font-size: 36px; top: 12px; right: 14px; }
+    .mh-desc { font-size: 0.8rem; max-width: 100%; }
+    .mh-nav-arrow { width: 34px; height: 34px; }
   }
 
-  /* ===== MATERIAL HANDLING ACCORDION ===== */
+  /* ===== PRODUCT CATEGORIES ACCORDION ===== */
   .mh-accordion {
     display: flex;
     width: 100%;
-    height: 480px;
+    height: 500px;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 25px 80px rgba(0,0,0,0.5);
   }
 
   .mh-panel {
-    flex: 0.5;
+    flex: 0.3;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 20px;
+    padding: 16px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .mh-panel.active { flex: 3; padding: 36px; }
-  .mh-panel:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .mh-panel.active { flex: 3.5; padding: 36px; }
+  .mh-panel:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
 
   .mh-panel--dark { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
   .mh-panel--orange { background: linear-gradient(135deg, var(--zephyr-orange) 0%, #c43d0a 100%); }
@@ -710,8 +690,8 @@ const capabilities = [
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
     white-space: nowrap;
-    font-family: var(--font-display); font-weight: 700; font-size: 22px;
-    letter-spacing: 8px; text-transform: uppercase;
+    font-family: var(--font-display); font-weight: 700; font-size: 16px;
+    letter-spacing: 5px; text-transform: uppercase;
     opacity: 1; transition: opacity 0.3s ease; pointer-events: none;
   }
   .mh-panel--dark .mh-collapsed-title, .mh-panel--steel .mh-collapsed-title { color: var(--zephyr-orange); }
@@ -719,8 +699,8 @@ const capabilities = [
   .mh-panel.active .mh-collapsed-title { opacity: 0; }
 
   .mh-number {
-    position: absolute; top: 28px; right: 28px;
-    font-family: var(--font-display); font-size: 64px; font-weight: 300;
+    position: absolute; top: 24px; right: 24px;
+    font-family: var(--font-display); font-size: 52px; font-weight: 300;
     opacity: 0.2; line-height: 1;
   }
   .mh-panel--dark .mh-number, .mh-panel--steel .mh-number { color: var(--zephyr-orange); }
@@ -748,7 +728,7 @@ const capabilities = [
 
   .mh-desc {
     color: rgba(255,255,255,0.7); font-size: 0.85rem;
-    font-weight: 300; line-height: 1.6; max-width: 300px; margin-bottom: 20px;
+    font-weight: 300; line-height: 1.6; max-width: 340px; margin-bottom: 20px;
   }
 
   .mh-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
@@ -781,20 +761,38 @@ const capabilities = [
   .mh-panel--orange .mh-accent { background: white; }
   .mh-panel.active .mh-accent { transform: scaleX(1); }
 
-  .mh-dots { display: flex; gap: 12px; justify-content: center; margin-top: 2rem; }
-  .mh-dot {
-    width: 12px; height: 12px; border-radius: 6px; border: none;
-    background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s ease;
+  .mh-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem; margin-top: 2rem;
   }
-  .mh-dot.active { width: 32px; background: var(--zephyr-orange); }
+
+  .mh-nav-arrow {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+    background: transparent; color: rgba(255,255,255,0.5); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .mh-nav-arrow:hover { border-color: var(--zephyr-orange); color: var(--zephyr-orange); background: rgba(232,97,45,0.1); }
+
+  .mh-dots { display: flex; gap: 8px; align-items: center; }
+  .mh-dot {
+    width: 10px; height: 10px; border-radius: 5px; border: none;
+    background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease;
+  }
+  .mh-dot:hover { background: rgba(255,255,255,0.5); }
+  .mh-dot.active { width: 28px; background: var(--zephyr-orange); }
 </style>
 
 <script>
-  // Material Handling Accordion
+  // Product Categories Accordion
   const mhPanels = document.querySelectorAll('.mh-panel');
   const mhDots = document.querySelectorAll('.mh-dot');
+  const prevBtn = document.querySelector('.mh-nav-prev');
+  const nextBtn = document.querySelector('.mh-nav-next');
+  let activeIndex = 0;
 
   function setMHActive(index) {
+    activeIndex = index;
     mhPanels.forEach((p, i) => p.classList.toggle('active', i === index));
     mhDots.forEach((d, i) => d.classList.toggle('active', i === index));
   }
@@ -806,5 +804,13 @@ const capabilities = [
 
   mhDots.forEach(dot => {
     dot.addEventListener('click', () => setMHActive(parseInt(dot.dataset.index)));
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    setMHActive(activeIndex > 0 ? activeIndex - 1 : mhPanels.length - 1);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    setMHActive(activeIndex < mhPanels.length - 1 ? activeIndex + 1 : 0);
   });
 </script>
