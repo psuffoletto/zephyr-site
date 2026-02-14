@@ -2,14 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const productOptions = [
-  'Dust Collectors',
-  'Conveyor Systems',
-  'Industrial Valves',
-  'Bedding Systems',
-  'Silos & Bins',
-  'Deduster Systems',
-  'Complete System',
-  'Other / Not Sure',
+  { label: 'Unload — Bag Unloaders & Dump Stations', url: '/products/unload' },
+  { label: 'Fill — Bag Fillers & Dispensers', url: '/products/fill' },
+  { label: 'Store — Silos & Bins', url: '/products/store' },
+  { label: 'Filter — Dust Collectors', url: '/products/filter' },
+  { label: 'Convey — Pneumatic Conveyors', url: '/products/convey' },
+  { label: 'Clean — Deduster Systems', url: '/products/clean' },
+  { label: 'Automate — Control Systems', url: '/products/automate' },
+  { label: 'Power — Blower Packages', url: '/products/power' },
+  { label: 'Bedding — Delivery Systems', url: '/bedding/delivery' },
+  { label: 'Bedding — Dispensing Systems', url: '/bedding/dispensing' },
+  { label: 'Bedding — Disposal Systems', url: '/bedding/disposal' },
+  { label: 'Complete System', url: '/bulk' },
+  { label: 'Other / Not Sure', url: '/' },
 ];
 ---
 
@@ -36,6 +41,7 @@ const productOptions = [
           </p>
 
           <form class="contact-form" id="contact-form" action="https://formspree.io/f/xnjbddpp" method="POST">
+            <input type="hidden" name="_next" id="form-next" value="/" />
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
@@ -63,7 +69,7 @@ const productOptions = [
               <select id="product" name="product" class="form-input">
                 <option value="">Select a product line...</option>
                 {productOptions.map(opt => (
-                  <option value={opt}>{opt}</option>
+                  <option value={opt.label} data-url={opt.url}>{opt.label}</option>
                 ))}
               </select>
             </div>
@@ -301,3 +307,15 @@ const productOptions = [
     .form-row { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  const select = document.getElementById('product') as HTMLSelectElement;
+  const nextField = document.getElementById('form-next') as HTMLInputElement;
+  const origin = window.location.origin;
+
+  select?.addEventListener('change', () => {
+    const selected = select.options[select.selectedIndex];
+    const url = selected?.dataset.url || '/';
+    nextField.value = origin + url;
+  });
+</script>
