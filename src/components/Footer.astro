@@ -59,13 +59,20 @@ const companyLinks = [
         ))}
       </div>
 
-      <!-- Contact Column -->
+      <!-- Location Column -->
       <div class="footer-col">
         <h4 class="footer-heading">Location</h4>
         <p class="footer-address">
-          Orchard Park, NY<br />
-          United States
+          227 Thorn Avenue, Suite C2<br />
+          Orchard Park, NY 14127
         </p>
+        <a href="https://www.google.com/maps/search/?api=1&query=227+Thorn+Avenue+Suite+C2+Orchard+Park+NY+14127" target="_blank" rel="noopener noreferrer" class="footer-map-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          View on Google Maps
+        </a>
         <a href="/contact" class="btn btn--outline footer-cta">Get a Quote</a>
       </div>
     </div>
@@ -172,7 +179,26 @@ const companyLinks = [
     font-size: 0.85rem;
     line-height: 1.6;
     color: var(--steel-400);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    text-decoration: none;
     margin-bottom: 1.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-map-link:hover {
+    color: var(--zephyr-orange-light);
   }
 
   .footer-cta {
