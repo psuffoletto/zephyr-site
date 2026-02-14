@@ -65,7 +65,7 @@ const results = [
   </section>
 
   <!-- ===== THE CHALLENGE ===== -->
-  <section class="cs-section" style="padding-top: 0;">
+  <section class="cs-section">
     <div class="container cs-container">
       <div class="cs-section-header reveal">
         <span class="label" style="color: var(--zephyr-orange);">01 — The Challenge</span>
@@ -133,7 +133,7 @@ const results = [
   </section>
 
   <!-- ===== PARTNERSHIP ===== -->
-  <section class="cs-section" style="padding-top: 0;">
+  <section class="cs-section">
     <div class="container cs-container">
       <div class="cs-card cs-card--dark reveal">
         <h3 class="display-md" style="color: white; margin-bottom: 1rem;">A Partnership Built on Performance</h3>
@@ -241,7 +241,7 @@ const results = [
   /* ===== HERO IMAGE ===== */
   .cs-hero-image {
     width: 100%;
-    max-height: 480px;
+    height: 520px;
     overflow: hidden;
   }
 
@@ -249,6 +249,7 @@ const results = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 
   .cs-hero-image-placeholder {
@@ -272,7 +273,7 @@ const results = [
 
   /* ===== TIGHTER SECTIONS ===== */
   .cs-section {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
   }
 
   .cs-hero-meta {
@@ -618,8 +619,8 @@ const results = [
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .cs-hero { padding: 8rem 2rem 3rem; }
-    .cs-section { padding: 2rem 0; }
-    .cs-hero-image-placeholder { height: 240px; }
+    .cs-section { padding: 1.25rem 0; }
+    .cs-hero-image { height: 280px; }
     .cs-hero-meta { gap: 1.5rem; }
     .cs-solution-grid { grid-template-columns: 1fr; }
     .cs-results-grid { grid-template-columns: 1fr 1fr; }
