@@ -1,0 +1,684 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const installImages = [
+  { src: '/images/nih-building-35/install-1.jpg', alt: 'Bedding delivery system installation' },
+  { src: '/images/nih-building-35/install-2.jpg', alt: 'Rainfall-style dispensing station' },
+  { src: '/images/nih-building-35/install-3.jpg', alt: 'Vacuum waste collection system' },
+];
+
+const results = [
+  { stat: 'Faster', label: 'Workflow', desc: 'Staff can move cages through cleaning and bedding much faster.' },
+  { stat: 'Cleaner', label: 'Air', desc: 'Dust and dander were significantly reduced in both clean and dirty areas.' },
+  { stat: 'Lower', label: 'Maintenance', desc: 'Our systems are designed to be simple to clean and easy to service.' },
+  { stat: 'Happier', label: 'Operators', desc: 'The intuitive design improves ergonomics and reduces daily strain.' },
+];
+---
+
+<BaseLayout title="NIH Building 35 — Success Story" description="How Zephyr Equipment replaced an outdated bedding system at NIH Building 35 with modern dispensing, delivery, and waste disposal.">
+
+  <!-- ===== HERO ===== -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-overlay"></div>
+    <div class="container cs-hero-content">
+      <a href="/success-stories" class="cs-back">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All Success Stories
+      </a>
+      <span class="label" style="color: var(--zephyr-orange);">Life Sciences</span>
+      <h1 class="display-lg" style="color: white; margin-top: 0.5rem;">Success at<br /><span style="color: var(--zephyr-orange);">NIH Building 35</span></h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">A full bedding system upgrade done right</p>
+      <div class="cs-hero-meta">
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Client</span>
+          <span class="cs-meta-value">National Institutes of Health</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Facility</span>
+          <span class="cs-meta-value">Building 35</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Scope</span>
+          <span class="cs-meta-value">Demo, Install & Integration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HERO IMAGE ===== -->
+  <section class="cs-hero-image">
+    <div class="cs-hero-image-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <span>Project Hero Image</span>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="cs-section">
+    <div class="container cs-container">
+      <div class="cs-card reveal">
+        <p class="cs-intro-text">
+          When it comes to vivarium operations, consistency, containment, and efficiency are critical. At NIH Building 35, Zephyr Equipment was brought in to do just that — remove an outdated, underperforming bedding system and replace it with a modern, operator-friendly solution for bedding dispensing, delivery, and waste disposal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE CHALLENGE ===== -->
+  <section class="cs-section">
+    <div class="container cs-container">
+      <div class="cs-section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">01 — The Challenge</span>
+        <h2 class="display-md" style="margin-top: 0.5rem;">Out with the Old</h2>
+      </div>
+      <div class="cs-body reveal">
+        <p>NIH had been operating with an aging bedding handling system that was no longer meeting the demands of their high-throughput animal care operations. Frequent clogs, unreliable delivery, and a labor-intensive disposal process were costing time, increasing exposure risk, and creating daily frustration for staff.</p>
+        <p>The facility needed a comprehensive upgrade — without disrupting daily operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE SOLUTION ===== -->
+  <section class="cs-section cs-solution-section">
+    <div class="container cs-container">
+      <div class="cs-section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">02 — The Solution</span>
+        <h2 class="display-md" style="margin-top: 0.5rem;">A Complete System Overhaul</h2>
+      </div>
+      <p class="cs-body-text reveal">Zephyr stepped in with a full-service plan, from demolition and removal of the old equipment to installation and integration of a new, three-part system:</p>
+
+      <div class="cs-solution-grid cs-solution-grid--three">
+        <div class="cs-solution-card reveal">
+          <div class="cs-solution-num">01</div>
+          <h3 class="cs-solution-title">Bedding Delivery System</h3>
+          <p>We installed a clean, enclosed pneumatic conveying system to transport fresh bedding from a central bulk hopper to multiple locations throughout the facility. The system is designed for minimal dust and even distribution using our rainfall-style dispensing modules.</p>
+        </div>
+        <div class="cs-solution-card cs-solution-card--accent reveal">
+          <div class="cs-solution-num">02</div>
+          <h3 class="cs-solution-title">Bedding Dispensing Stations</h3>
+          <p>Each dispensing point features Zephyr's user-friendly, low-dust rainfall dispensers — providing cage-ready bedding at the push of a button. Operators have control, consistency, and significantly reduced clean-up.</p>
+        </div>
+        <div class="cs-solution-card reveal">
+          <div class="cs-solution-num">03</div>
+          <h3 class="cs-solution-title">Waste Bedding Disposal</h3>
+          <p>On the dirty side, Zephyr designed a vacuum-powered collection system that pulls used bedding from dumping stations directly to a sealed waste collection hopper. This eliminates the need for bins and carts, and significantly reduces operator exposure to allergens and dust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE RESULT ===== -->
+  <section class="cs-section">
+    <div class="container cs-container">
+      <div class="cs-section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">03 — The Result</span>
+        <h2 class="display-md" style="margin-top: 0.5rem;">Clean, Contained, and Consistent</h2>
+      </div>
+      <p class="cs-body-text reveal">The result at NIH Building 35 was immediate:</p>
+
+      <div class="cs-results-grid">
+        {results.map((r, i) => (
+          <div class="cs-result-card reveal" data-delay={i}>
+            <div class="cs-result-stat">{r.stat}</div>
+            <div class="cs-result-label">{r.label}</div>
+            <p class="cs-result-desc">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNERSHIP ===== -->
+  <section class="cs-section">
+    <div class="container cs-container">
+      <div class="cs-card cs-card--dark reveal">
+        <h3 class="display-md" style="color: white; margin-bottom: 1rem;">Built for Today. Ready for Tomorrow.</h3>
+        <p style="color: var(--steel-300); font-weight: 300; line-height: 1.7;">
+          Zephyr's operator-first approach, rugged construction, and attention to containment made all the difference for NIH. By replacing a dated system with modern, integrated equipment, we've helped one of the nation's leading research institutions maintain its high standards for safety and efficiency.
+        </p>
+        <p style="color: var(--steel-300); font-weight: 300; line-height: 1.7; margin-top: 1rem;">
+          Whether you're upgrading an aging facility or building new, Zephyr is your partner for custom bedding handling systems that work as hard as you do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSTALL GALLERY ===== -->
+  <section class="cs-section cs-gallery-section">
+    <div class="container cs-container">
+      <div class="cs-section-header reveal" style="text-align: center;">
+        <span class="label" style="color: var(--zephyr-orange);">Installation</span>
+        <h2 class="display-md" style="margin-top: 0.5rem;">Project Gallery</h2>
+      </div>
+
+      <div class="cs-carousel reveal">
+        <div class="cs-carousel-track">
+          {installImages.map((img, i) => (
+            <div class={`cs-carousel-slide${i === 0 ? ' active' : ''}`} data-index={i}>
+              <div class="cs-carousel-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <span>{img.alt}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button class="cs-carousel-arrow cs-carousel-prev" aria-label="Previous image">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 4L7 12L15 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="cs-carousel-arrow cs-carousel-next" aria-label="Next image">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 4L17 12L9 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="cs-carousel-dots">
+          {installImages.map((_, i) => (
+            <button class={`cs-carousel-dot${i === 0 ? ' active' : ''}`} data-index={i} aria-label={`Go to image ${i + 1}`}></button>
+          ))}
+        </div>
+      </div>
+
+      <div class="cs-carousel-caption"></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cs-cta reveal">
+    <div class="container" style="text-align: center;">
+      <span class="label" style="color: var(--zephyr-orange);">Start Your Project</span>
+      <h2 class="display-lg" style="color: white; margin-top: 0.75rem;">Let's Engineer<br />Your Solution</h2>
+      <p style="color: var(--steel-300); max-width: 500px; margin: 1rem auto 2rem; font-weight: 300; line-height: 1.7;">
+        Want to see what we can do for your vivarium? Contact us today to start the conversation.
+      </p>
+      <a href="/contact" class="btn btn--primary">Get a Quote</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .cs-hero {
+    position: relative;
+    padding: 10rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .cs-hero-bg {
+    position: absolute; inset: 0;
+    background: var(--steel-900);
+  }
+
+  .cs-hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(232, 97, 45, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(52, 73, 94, 0.15) 0%, transparent 50%);
+  }
+
+  .cs-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cs-back {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+  }
+  .cs-back:hover { color: var(--zephyr-orange); }
+
+  /* ===== HERO IMAGE ===== */
+  .cs-hero-image {
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+  }
+
+  .cs-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .cs-hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--steel-500);
+    background: linear-gradient(135deg, var(--steel-800) 0%, var(--steel-700) 100%);
+  }
+
+  .cs-hero-image-placeholder span {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ===== TIGHTER SECTIONS ===== */
+  .cs-section {
+    padding: 1.5rem 0;
+  }
+
+  .cs-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .cs-meta-label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    margin-bottom: 0.25rem;
+  }
+
+  .cs-meta-value {
+    font-size: 0.9rem;
+    color: var(--steel-200);
+    font-weight: 300;
+  }
+
+  /* ===== CONTENT ===== */
+  .cs-container {
+    max-width: 900px;
+  }
+
+  .cs-card {
+    background: white;
+    padding: 2.5rem;
+    border-left: 4px solid var(--zephyr-orange);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  }
+
+  .cs-card--dark {
+    background: var(--steel-900);
+    border-left-color: var(--zephyr-orange);
+  }
+
+  .cs-intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--steel-700);
+    font-weight: 300;
+  }
+
+  .cs-section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .cs-body p, .cs-body-text {
+    font-weight: 300;
+    color: var(--steel-600);
+    line-height: 1.75;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .cs-body strong {
+    color: var(--steel-800);
+    font-weight: 600;
+  }
+
+  .cs-body ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .cs-body ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-weight: 300;
+    color: var(--steel-600);
+    line-height: 1.75;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cs-body ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    background: var(--zephyr-orange);
+    transform: rotate(45deg);
+  }
+
+  /* ===== SOLUTION CARDS ===== */
+  .cs-solution-section {
+    background: var(--steel-50);
+  }
+
+  .cs-solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .cs-solution-grid--three {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .cs-solution-card {
+    background: white;
+    padding: 2rem;
+    border-top: 3px solid var(--zephyr-orange);
+  }
+
+  .cs-solution-card--accent {
+    background: var(--steel-900);
+    border-top-color: var(--zephyr-orange);
+  }
+
+  .cs-solution-card--accent p {
+    color: var(--steel-300);
+  }
+
+  .cs-solution-card--accent .cs-solution-title {
+    color: white;
+  }
+
+  .cs-solution-card--accent .cs-solution-num {
+    color: var(--zephyr-orange);
+  }
+
+  .cs-solution-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--steel-100);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .cs-solution-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--steel-800);
+    margin-bottom: 0.75rem;
+  }
+
+  .cs-solution-card p {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.7;
+    font-size: 0.9rem;
+  }
+
+  /* ===== RESULTS ===== */
+  .cs-results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .cs-result-card {
+    padding: 1.5rem;
+    background: white;
+    border-top: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .cs-result-card:hover {
+    border-top-color: var(--zephyr-orange);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .cs-result-stat {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    line-height: 1;
+  }
+
+  .cs-result-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cs-result-desc {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.65;
+    font-size: 0.82rem;
+  }
+
+  /* ===== GALLERY CAROUSEL ===== */
+  .cs-gallery-section {
+    background: var(--steel-900);
+  }
+
+  .cs-gallery-section .cs-section-header h2 {
+    color: white;
+  }
+
+  .cs-carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--steel-800);
+  }
+
+  .cs-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cs-carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .cs-carousel-slide.active { opacity: 1; }
+
+  .cs-carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cs-carousel-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--steel-500);
+    background: linear-gradient(135deg, var(--steel-800) 0%, var(--steel-700) 100%);
+  }
+
+  .cs-carousel-placeholder span {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 300px;
+  }
+
+  .cs-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+  .cs-carousel-arrow:hover {
+    background: rgba(232,97,45,0.8);
+    border-color: var(--zephyr-orange);
+  }
+
+  .cs-carousel-prev { left: 1rem; }
+  .cs-carousel-next { right: 1rem; }
+
+  .cs-carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  .cs-carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .cs-carousel-dot:hover { background: rgba(255,255,255,0.6); }
+  .cs-carousel-dot.active { width: 28px; background: var(--zephyr-orange); }
+
+  .cs-carousel-caption {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--steel-400);
+    margin-top: 1rem;
+    min-height: 1.5rem;
+  }
+
+  /* ===== CTA ===== */
+  .cs-cta {
+    background: var(--steel-800);
+    padding: 4rem 2rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .cs-hero { padding: 8rem 2rem 3rem; }
+    .cs-hero-meta { gap: 1.5rem; }
+    .cs-solution-grid, .cs-solution-grid--three { grid-template-columns: 1fr; }
+    .cs-results-grid { grid-template-columns: 1fr 1fr; }
+    .cs-card { padding: 1.5rem; }
+    .cs-carousel-arrow { width: 36px; height: 36px; }
+    .cs-section { padding: 1.25rem 0; }
+    .cs-hero-image { height: 280px; }
+  }
+
+  @media (max-width: 480px) {
+    .cs-results-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const slides = document.querySelectorAll('.cs-carousel-slide');
+  const dots = document.querySelectorAll('.cs-carousel-dot');
+  const prevBtn = document.querySelector('.cs-carousel-prev');
+  const nextBtn = document.querySelector('.cs-carousel-next');
+  const caption = document.querySelector('.cs-carousel-caption');
+  let current = 0;
+
+  const captions = [
+    'Bedding delivery system installation',
+    'Rainfall-style dispensing station',
+    'Vacuum waste collection system',
+  ];
+
+  function goTo(index) {
+    current = index;
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    if (caption) caption.textContent = captions[index] || '';
+  }
+
+  prevBtn?.addEventListener('click', () => {
+    goTo(current > 0 ? current - 1 : slides.length - 1);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    goTo(current < slides.length - 1 ? current + 1 : 0);
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+  });
+
+  goTo(0);
+
+  let autoplay = setInterval(() => {
+    goTo(current < slides.length - 1 ? current + 1 : 0);
+  }, 5000);
+
+  const carousel = document.querySelector('.cs-carousel');
+  carousel?.addEventListener('mouseenter', () => clearInterval(autoplay));
+  carousel?.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => {
+      goTo(current < slides.length - 1 ? current + 1 : 0);
+    }, 5000);
+  });
+</script>
