@@ -1,10 +1,13 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = [
-  // Add blog posts here as objects: { title, date, excerpt, slug }
-  // Example:
-  // { title: 'New Facility Expansion', date: '2025-03-15', excerpt: 'We are excited to announce...', slug: 'facility-expansion' },
+  {
+    title: 'What Is Pneumatic Conveying?',
+    date: '2026-02-14',
+    excerpt: 'Understanding the system that moves modern manufacturing — how air pressure and vacuum move dry bulk materials through a facility cleanly, safely, and efficiently.',
+    slug: 'what-is-pneumatic-conveying',
+  },
 ];
 ---
 
@@ -13,7 +16,7 @@ const posts = [
   <section class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="container" style="position: relative; z-index: 1;">
-      <span class="label" style="color: var(--zephyr-orange);">Blog</span>
+      <span class="label" style="color: var(--zephyr-orange);">In The "DRY" News...</span>
       <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">News</h1>
       <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Industry insights and company updates</p>
     </div>
