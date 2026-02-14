@@ -175,7 +175,7 @@ const capabilities = [
   </section>
 
   <!-- ===== PRODUCT CATEGORIES ===== -->
-  <section class="section" style="background: #0a0a0a; padding: 5rem 2rem;">
+  <section class="section" style="background: var(--steel-900); padding: 5rem 2rem;">
     <div class="container" style="max-width: 1200px;">
       <div class="section-header reveal" style="text-align: center; margin-bottom: 2.5rem;">
         <span class="label" style="color: var(--zephyr-orange);">Explore Equipment</span>
@@ -184,7 +184,7 @@ const capabilities = [
 
       <div class="mh-accordion reveal">
         {products.map((product, i) => {
-          const colors = ['dark', 'steel', 'dark', 'steel', 'orange', 'dark', 'steel', 'dark'];
+          const colors = ['offwhite', 'lightblue', 'offwhite', 'lightblue', 'orange', 'offwhite', 'lightblue', 'offwhite'];
           const color = colors[i];
           return (
             <div class={`mh-panel mh-panel--${color}${i === 0 ? ' active' : ''}`} data-index={i}>
@@ -673,17 +673,17 @@ const capabilities = [
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .mh-panel.active { flex: 3.5; padding: 36px; }
-  .mh-panel:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
+  .mh-panel:not(:last-child) { border-right: 1px solid rgba(15,26,38,0.3); }
 
-  .mh-panel--dark { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+  .mh-panel--offwhite { background: linear-gradient(135deg, #FAFAF8 0%, #F0F2F5 100%); }
   .mh-panel--orange { background: linear-gradient(135deg, var(--zephyr-orange) 0%, #c43d0a 100%); }
-  .mh-panel--steel { background: linear-gradient(135deg, #4A5259 0%, #3a4249 100%); }
+  .mh-panel--lightblue { background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%); }
 
   .mh-pattern {
-    position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+    position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
     background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
   }
-  .mh-panel--dark .mh-pattern, .mh-panel--steel .mh-pattern { color: var(--zephyr-orange); }
+  .mh-panel--offwhite .mh-pattern, .mh-panel--lightblue .mh-pattern { color: var(--zephyr-orange); }
   .mh-panel--orange .mh-pattern { color: white; }
 
   .mh-collapsed-title {
@@ -694,16 +694,17 @@ const capabilities = [
     letter-spacing: 5px; text-transform: uppercase;
     opacity: 1; transition: opacity 0.3s ease; pointer-events: none;
   }
-  .mh-panel--dark .mh-collapsed-title, .mh-panel--steel .mh-collapsed-title { color: var(--zephyr-orange); }
+  .mh-panel--offwhite .mh-collapsed-title { color: var(--zephyr-orange); }
+  .mh-panel--lightblue .mh-collapsed-title { color: var(--steel-800); }
   .mh-panel--orange .mh-collapsed-title { color: white; }
   .mh-panel.active .mh-collapsed-title { opacity: 0; }
 
   .mh-number {
     position: absolute; top: 24px; right: 24px;
     font-family: var(--font-display); font-size: 52px; font-weight: 300;
-    opacity: 0.2; line-height: 1;
+    opacity: 0.15; line-height: 1;
   }
-  .mh-panel--dark .mh-number, .mh-panel--steel .mh-number { color: var(--zephyr-orange); }
+  .mh-panel--offwhite .mh-number, .mh-panel--lightblue .mh-number { color: var(--zephyr-orange); }
   .mh-panel--orange .mh-number { color: white; }
 
   .mh-content {
@@ -717,7 +718,7 @@ const capabilities = [
     font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
     margin-bottom: 6px;
   }
-  .mh-panel--dark .mh-subtitle, .mh-panel--steel .mh-subtitle { color: var(--zephyr-orange); }
+  .mh-panel--offwhite .mh-subtitle, .mh-panel--lightblue .mh-subtitle { color: var(--zephyr-orange); }
   .mh-panel--orange .mh-subtitle { color: white; }
 
   .mh-title {
@@ -725,11 +726,14 @@ const capabilities = [
     font-size: 38px; text-transform: uppercase; letter-spacing: 3px;
     color: white; margin-bottom: 12px;
   }
+  .mh-panel--offwhite .mh-title, .mh-panel--lightblue .mh-title { color: var(--steel-800); }
 
   .mh-desc {
     color: rgba(255,255,255,0.7); font-size: 0.85rem;
     font-weight: 300; line-height: 1.6; max-width: 340px; margin-bottom: 20px;
   }
+  .mh-panel--offwhite .mh-desc { color: var(--steel-500); }
+  .mh-panel--lightblue .mh-desc { color: var(--steel-700); }
 
   .mh-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
   .mh-tags span {
@@ -740,6 +744,16 @@ const capabilities = [
     transition: background 0.2s;
   }
   .mh-tags span:hover { background: rgba(255,255,255,0.2); }
+  .mh-panel--offwhite .mh-tags span {
+    background: rgba(0,0,0,0.05); color: var(--steel-700);
+    border-color: rgba(0,0,0,0.1);
+  }
+  .mh-panel--offwhite .mh-tags span:hover { background: rgba(0,0,0,0.1); }
+  .mh-panel--lightblue .mh-tags span {
+    background: rgba(0,0,0,0.06); color: var(--steel-800);
+    border-color: rgba(0,0,0,0.1);
+  }
+  .mh-panel--lightblue .mh-tags span:hover { background: rgba(0,0,0,0.12); }
 
   .mh-cta {
     display: inline-block; padding: 12px 28px;
@@ -757,7 +771,7 @@ const capabilities = [
     transform: scaleX(0); transform-origin: left;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .mh-panel--dark .mh-accent, .mh-panel--steel .mh-accent { background: var(--zephyr-orange); }
+  .mh-panel--offwhite .mh-accent, .mh-panel--lightblue .mh-accent { background: var(--zephyr-orange); }
   .mh-panel--orange .mh-accent { background: white; }
   .mh-panel.active .mh-accent { transform: scaleX(1); }
 
