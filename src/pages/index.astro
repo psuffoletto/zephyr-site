@@ -106,6 +106,7 @@ const capabilities = [
         <div class="ms-panel ms-panel--offwhite" data-index="0">
           <div class="ms-pattern"></div>
           <div class="ms-img" style="background-image: url('https://static.wixstatic.com/media/9d739b_b4e9e4b4bb4f4c08b9bea3f033c88464~mv2.jpg');"></div>
+          <img src="/images/products/renders/vac-dense-phase-render.png" alt="Vacuum dense phase conveying system" class="ms-render" />
           <span class="ms-collapsed-title">Bulk</span>
           <div class="ms-number">01</div>
           <div class="ms-content">
@@ -127,6 +128,7 @@ const capabilities = [
         <div class="ms-panel ms-panel--lightblue" data-index="1">
           <div class="ms-pattern"></div>
           <div class="ms-img" style="background-image: url('/images/products/heroes/bedding-hero.png');"></div>
+          <img src="/images/products/renders/bhs-render.png" alt="Bedding handling system" class="ms-render" />
           <span class="ms-collapsed-title">Bedding</span>
           <div class="ms-number">02</div>
           <div class="ms-content">
@@ -732,6 +734,21 @@ const capabilities = [
   }
   .ms-panel.expanded .ms-img { opacity: 1; }
 
+  .ms-render {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 50%;
+    max-width: 80%;
+    object-fit: contain;
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .ms-panel.expanded .ms-render { opacity: 0; }
+  .ms-panel.collapsed .ms-render { opacity: 0; }
+
   .ms-pattern {
     position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
     background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
@@ -844,6 +861,7 @@ const capabilities = [
     .hero-actions { flex-direction: column; align-items: center; }
     .ms-accordion { flex-direction: column; height: auto; }
     .ms-panel { flex: none !important; padding: 28px 24px; }
+    .ms-render { display: none; }
     .ms-panel.collapsed { height: 60px !important; padding: 14px 20px; }
     .ms-panel.expanded { padding: 28px 24px; }
     .ms-collapsed-title { transform: translate(-50%, -50%) rotate(0deg); font-size: 15px; letter-spacing: 4px; }
