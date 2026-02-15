@@ -16,9 +16,11 @@ const capabilities = [
     <div class="hero-slideshow">
       <div class="hero-slide active" style="background-image: url('/images/hero/homepage-hero1.png');"></div>
       <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero2.png');"></div>
-      <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero3.png');"></div>
       <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero4.png');"></div>
       <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero5.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepagehero-6.png');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepagehero-8.png');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepagehero-9.png');"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -248,8 +250,8 @@ const capabilities = [
           <div class="banner-stat-lbl">Custom Design</div>
         </div>
         <div class="banner-stat">
-          <div class="banner-stat-num">2</div>
-          <div class="banner-stat-lbl">Markets Served</div>
+          <div class="banner-stat-num">12+</div>
+          <div class="banner-stat-lbl">Industries Served</div>
         </div>
         <div class="banner-stat">
           <div class="banner-stat-num">NY</div>
@@ -267,7 +269,7 @@ const capabilities = [
   .page-content {
     position: relative;
     z-index: 1;
-    margin-top: 100vh;
+    margin-top: calc(100vh - var(--header-height, 84px));
     background: var(--steel-900);
   }
 
@@ -295,9 +297,9 @@ const capabilities = [
 
   .hero-slide {
     position: absolute;
-    inset: -20px;
+    inset: -5%;
     background-size: cover;
-    background-position: center;
+    background-position: center bottom;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     will-change: opacity;
@@ -919,7 +921,10 @@ const capabilities = [
   (() => {
     const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
     if (slides.length < 2) return;
-    let current = 0;
+    // Random start point
+    let current = Math.floor(Math.random() * slides.length);
+    slides[0].classList.remove('active');
+    slides[current].classList.add('active');
 
     setInterval(() => {
       const prev = slides[current];
