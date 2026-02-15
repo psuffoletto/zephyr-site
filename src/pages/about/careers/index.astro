@@ -1,10 +1,14 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const openings = [
-  // Add job openings here as objects: { title, department, type, description }
-  // Example:
-  // { title: 'Mechanical Engineer', department: 'Engineering', type: 'Full-Time', description: 'Design custom bulk material handling equipment...' },
+  {
+    title: 'Fabricator / Welder',
+    department: 'Manufacturing',
+    type: 'Full-Time',
+    slug: 'fabricator',
+    description: 'Lay out, fit, and fabricate structural and sheet metal components for custom bulk material handling equipment. MIG, TIG, and laser welding on mild steel and stainless steel.'
+  },
 ];
 ---
 
@@ -74,14 +78,15 @@ const openings = [
       {openings.length > 0 ? (
         <div class="openings-list">
           {openings.map((job, i) => (
-            <div class="opening-card reveal" data-delay={i}>
+            <a href={`/about/careers/${job.slug}`} class="opening-card reveal" data-delay={i}>
               <div class="opening-meta">
                 <span class="opening-dept">{job.department}</span>
                 <span class="opening-type">{job.type}</span>
               </div>
               <h3 class="opening-title">{job.title}</h3>
               <p class="opening-desc">{job.description}</p>
-            </div>
+              <span class="opening-view">View Position →</span>
+            </a>
           ))}
         </div>
       ) : (
@@ -184,13 +189,13 @@ const openings = [
     gap: 2px;
   }
 
-  .opening-card {
+  a.opening-card {
     padding: 2rem;
     background: white;
     border-left: 3px solid transparent;
     transition: all 0.3s ease;
   }
-  .opening-card:hover {
+  a.opening-card:hover {
     border-left-color: var(--zephyr-orange);
     transform: translateX(4px);
   }
@@ -218,12 +223,33 @@ const openings = [
     color: var(--steel-800);
   }
 
+  .opening-card {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+
   .opening-desc {
     font-weight: 300;
     color: var(--steel-500);
     line-height: 1.65;
     font-size: 0.88rem;
     margin-top: 0.5rem;
+  }
+
+  .opening-view {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    transition: padding-left 0.2s ease;
+  }
+  .opening-card:hover .opening-view {
+    padding-left: 0.25rem;
   }
 
   .careers-cta {
