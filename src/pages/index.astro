@@ -835,9 +835,10 @@ const capabilities = [
 </style>
 
 <script>
-  // Market Segments Accordion — 50/50 default, hover to expand
+  // Market Segments Accordion — hover on desktop, tap on mobile
   const msPanels = document.querySelectorAll('.ms-panel');
   const msAccordion = document.querySelector('.ms-accordion');
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   function resetPanels() {
     msPanels.forEach(p => {
@@ -857,15 +858,36 @@ const capabilities = [
     });
   }
 
-  msPanels.forEach(panel => {
-    panel.addEventListener('mouseenter', () => {
-      expandPanel(parseInt((panel as HTMLElement).dataset.index!));
+  if (isTouchDevice) {
+    // Tap to expand, tap again to collapse
+    msPanels.forEach(panel => {
+      panel.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        // Allow links inside expanded panels to work normally
+        if (panel.classList.contains('expanded') && target.closest('a')) {
+          return;
+        }
+        e.preventDefault();
+        const idx = parseInt((panel as HTMLElement).dataset.index!);
+        if (panel.classList.contains('expanded')) {
+          resetPanels();
+        } else {
+          expandPanel(idx);
+        }
+      });
     });
-  });
+  } else {
+    // Hover behavior for desktop
+    msPanels.forEach(panel => {
+      panel.addEventListener('mouseenter', () => {
+        expandPanel(parseInt((panel as HTMLElement).dataset.index!));
+      });
+    });
 
-  msAccordion?.addEventListener('mouseleave', () => {
-    resetPanels();
-  });
+    msAccordion?.addEventListener('mouseleave', () => {
+      resetPanels();
+    });
+  }
 
   // ===== INDUSTRY SOLUTIONS — scroll-driven carousel =====
   const industriesSection = document.querySelector('.industries') as HTMLElement;
