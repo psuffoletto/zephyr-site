@@ -120,7 +120,7 @@ export const products: Product[] = [
     slug: '14v-direct-bag-unloader',
     modelNumber: '14v',
     category: 'unload',
-    heroImage: '/images/14v-hero.jpg',
+    heroImage: '/images/14v-hero.png',
     productImage: '/images/14v-product.png',
     accentLabel: 'Bag Unloading',
     tagline: 'Automated bulk bag and drum unloading in a compact footprint',
