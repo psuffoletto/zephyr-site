@@ -13,7 +13,14 @@ const capabilities = [
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-slideshow">
+      <div class="hero-slide active" style="background-image: url('/images/hero/homepage-hero1.png');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero2.png');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero3.png');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero4.png');"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/homepage-hero5.jpg');"></div>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">
@@ -279,12 +286,40 @@ const capabilities = [
     z-index: 0;
   }
 
-  .hero-bg {
+  .hero-slideshow {
+    position: absolute;
+    inset: -10px;
+    background: var(--steel-900);
+  }
+
+  .hero-slide {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10, 16, 24, 0.4) 0%, rgba(10, 16, 24, 0.6) 100%),
-      url('https://static.wixstatic.com/media/9d739b_b4e9e4b4bb4f4c08b9bea3f033c88464~mv2.jpg') center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    will-change: opacity;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+    animation: heroZoom 7s ease-out forwards;
+  }
+
+  .hero-slide.exiting {
+    opacity: 0;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.12); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 16, 24, 0.5) 0%, rgba(10, 16, 24, 0.7) 100%);
   }
 
   .hero-grid {
@@ -872,6 +907,34 @@ const capabilities = [
 </style>
 
 <script>
+  // Hero slideshow — crossfade with subtle zoom
+  (() => {
+    const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    if (slides.length < 2) return;
+    let current = 0;
+
+    setInterval(() => {
+      const prev = slides[current];
+      // Freeze the outgoing slide's current zoom so it doesn't snap back
+      const computed = getComputedStyle(prev);
+      prev.style.transform = computed.transform;
+      prev.classList.remove('active');
+      prev.classList.add('exiting');
+
+      current = (current + 1) % slides.length;
+      const next = slides[current];
+      next.style.transform = '';
+      next.classList.remove('exiting');
+      next.classList.add('active');
+
+      // Clean up exiting slide after fade completes
+      setTimeout(() => {
+        prev.classList.remove('exiting');
+        prev.style.transform = '';
+      }, 1600);
+    }, 6000);
+  })();
+
   // Market Segments Accordion — hover on desktop, tap on mobile
   const msPanels = document.querySelectorAll('.ms-panel');
   const msAccordion = document.querySelector('.ms-accordion');
