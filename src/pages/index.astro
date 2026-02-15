@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const capabilities = [
-  { title: 'Custom Engineering', desc: 'Every system designed to your exact specifications — no off-the-shelf compromises.' },
-  { title: 'In-House Manufacturing', desc: 'Complete fabrication capability from raw steel to finished equipment, all under one roof.' },
-  { title: 'PLC Integration', desc: 'Full control system design with ladder logic programming across multiple PLC platforms.' },
-  { title: 'Field Support', desc: 'Installation assistance, commissioning, and ongoing technical support for every system we build.' },
+  { title: 'Custom Engineering', desc: 'Every system designed to your exact specifications — no off-the-shelf compromises.', img: '/images/capabilities/custom-engineering.jpg' },
+  { title: 'In-House Manufacturing', desc: 'Complete fabrication capability from raw steel to finished equipment, all under one roof.', img: '/images/capabilities/manufacturing.jpg' },
+  { title: 'PLC Integration', desc: 'Full control system design with ladder logic programming across multiple PLC platforms.', img: '/images/capabilities/plc-integration.jpg' },
+  { title: 'Field Support', desc: 'Installation assistance, commissioning, and ongoing technical support for every system we build.', img: '/images/capabilities/field-support.jpg' },
 ];
 ---
 
@@ -37,6 +37,59 @@ const capabilities = [
     <div class="hero-scroll">
       <span>Explore</span>
       <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== INDUSTRY SOLUTIONS ===== -->
+  <section class="industries reveal" style="background: var(--steel-900); padding: 2rem 2rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="section-header" style="text-align: center; margin-bottom: 1.25rem;">
+        <span class="label" style="color: var(--zephyr-orange);">Markets We Serve</span>
+        <h2 class="display-lg" style="margin-top: 0.25rem; color: white;">Industry Solutions</h2>
+      </div>
+      <div class="industries-track-wrapper">
+        <div class="industries-track">
+          {[
+            { name: 'Life Science', img: '/images/industries/life-science.jpg' },
+            { name: 'Bakery', img: '/images/industries/bakery.jpg' },
+            { name: 'Chemical', img: '/images/industries/chemical.jpg' },
+            { name: 'Snack Foods', img: '/images/industries/snack-foods.jpg' },
+            { name: 'Plastics', img: '/images/industries/plastics.jpg' },
+            { name: 'Dairy', img: '/images/industries/dairy.jpg' },
+            { name: 'Nutraceuticals', img: '/images/industries/nutraceuticals.jpg' },
+            { name: 'Pharmaceuticals', img: '/images/industries/pharmaceuticals.jpg' },
+            { name: 'Pet Food', img: '/images/industries/pet-food.jpg' },
+            { name: 'Batteries', img: '/images/industries/batteries.jpg' },
+            { name: 'Paint & Pigments', img: '/images/industries/paint-pigments.jpg' },
+            { name: 'Ceramics', img: '/images/industries/ceramics.jpg' },
+          ].map((industry) => (
+            <div class="industry-card">
+              <div class="industry-img" style={`background-image: url('${industry.img}');`}></div>
+              <span class="industry-name">{industry.name}</span>
+            </div>
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {[
+            { name: 'Life Science', img: '/images/industries/life-science.jpg' },
+            { name: 'Bakery', img: '/images/industries/bakery.jpg' },
+            { name: 'Chemical', img: '/images/industries/chemical.jpg' },
+            { name: 'Snack Foods', img: '/images/industries/snack-foods.jpg' },
+            { name: 'Plastics', img: '/images/industries/plastics.jpg' },
+            { name: 'Dairy', img: '/images/industries/dairy.jpg' },
+            { name: 'Nutraceuticals', img: '/images/industries/nutraceuticals.jpg' },
+            { name: 'Pharmaceuticals', img: '/images/industries/pharmaceuticals.jpg' },
+            { name: 'Pet Food', img: '/images/industries/pet-food.jpg' },
+            { name: 'Batteries', img: '/images/industries/batteries.jpg' },
+            { name: 'Paint & Pigments', img: '/images/industries/paint-pigments.jpg' },
+            { name: 'Ceramics', img: '/images/industries/ceramics.jpg' },
+          ].map((industry) => (
+            <div class="industry-card">
+              <div class="industry-img" style={`background-image: url('${industry.img}');`}></div>
+              <span class="industry-name">{industry.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -97,7 +150,7 @@ const capabilities = [
     <div class="banner-pattern"></div>
     <div class="container" style="position: relative; text-align: center;">
       <h2 class="display-lg" style="color: white;">Custom Engineered.<br />American Built.</h2>
-      <p class="accent-text" style="color: rgba(255,255,255,0.85); margin-top: 0.5rem;">Every system designed to your exact specifications</p>
+      <p class="accent-text" style="color: rgba(255,255,255,0.85); margin-top: 0.5rem;">Specializing in the customization of a broad product portfolio to meet the needs of our customers</p>
       <div class="banner-stats">
         <div class="banner-stat">
           <div class="banner-stat-num">100%</div>
@@ -127,11 +180,58 @@ const capabilities = [
       <div class="capabilities-grid">
         {capabilities.map((cap, i) => (
           <div class="capability-card reveal" data-delay={i}>
-            <div class="capability-num">{String(i + 1).padStart(2, '0')}</div>
-            <h3 class="display-md" style="font-size: 1.3rem; margin-bottom: 0.75rem;">{cap.title}</h3>
-            <p style="color: var(--steel-400); font-weight: 300; line-height: 1.65;">{cap.desc}</p>
+            <div class="capability-bg" style={`background-image: url('${cap.img}');`}></div>
+            <div class="capability-content">
+              <div class="capability-num">{String(i + 1).padStart(2, '0')}</div>
+              <h3 class="display-md" style="font-size: 1.3rem; margin-bottom: 0.75rem;">{cap.title}</h3>
+              <p style="font-weight: 300; line-height: 1.65;">{cap.desc}</p>
+            </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INNOVATIVE SOLUTIONS ===== -->
+  <section class="innovations reveal" style="background: white; padding: 5rem 2rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="label" style="color: var(--zephyr-orange);">03 — Equipment</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Innovative Solutions</h2>
+      </div>
+
+      <div class="inno-track-wrapper">
+        <div class="inno-track">
+          {[
+            { name: 'LX Series', sub: 'Bedding Delivery', img: '/images/lx-render.png', href: '/bedding/delivery/lx-series' },
+            { name: 'MX Series', sub: 'Bedding Delivery', img: '/images/mx-render.png', href: '/bedding/delivery/mx-series' },
+            { name: 'VX Series', sub: 'Bedding Delivery', img: '/images/vx-render.png', href: '/bedding/delivery/vx-series' },
+            { name: '504 Series', sub: 'Bedding Dispensing', img: '/images/504-render.png', href: '/bedding/dispensing/504-series' },
+            { name: 'GF Series', sub: 'Waste Disposal', img: '/images/gf-render.png', href: '/bedding/disposal/gf-series' },
+            { name: '14V Unloader', sub: 'Bulk Unloading', img: '/images/14v-product.png', href: '/products/unload/14v-direct-bag-unloader' },
+          ].map((item) => (
+            <a href={item.href} class="inno-card">
+              <div class="inno-img-wrap"><img src={item.img} alt={item.name} /></div>
+              <div class="inno-label">{item.name}</div>
+              <div class="inno-sub">{item.sub}</div>
+            </a>
+          ))}
+          {/* Duplicate for seamless loop */}
+          {[
+            { name: 'LX Series', sub: 'Bedding Delivery', img: '/images/lx-render.png', href: '/bedding/delivery/lx-series' },
+            { name: 'MX Series', sub: 'Bedding Delivery', img: '/images/mx-render.png', href: '/bedding/delivery/mx-series' },
+            { name: 'VX Series', sub: 'Bedding Delivery', img: '/images/vx-render.png', href: '/bedding/delivery/vx-series' },
+            { name: '504 Series', sub: 'Bedding Dispensing', img: '/images/504-render.png', href: '/bedding/dispensing/504-series' },
+            { name: 'GF Series', sub: 'Waste Disposal', img: '/images/gf-render.png', href: '/bedding/disposal/gf-series' },
+            { name: '14V Unloader', sub: 'Bulk Unloading', img: '/images/14v-product.png', href: '/products/unload/14v-direct-bag-unloader' },
+          ].map((item) => (
+            <a href={item.href} class="inno-card">
+              <div class="inno-img-wrap"><img src={item.img} alt={item.name} /></div>
+              <div class="inno-label">{item.name}</div>
+              <div class="inno-sub">{item.sub}</div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -267,6 +367,76 @@ const capabilities = [
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
+  /* ===== INDUSTRY SOLUTIONS ===== */
+  .industries-track-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .industries-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .industry-card {
+    flex-shrink: 0;
+    width: 140px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .industries.in-view .industry-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .industry-img {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 0.75rem;
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--steel-100);
+    border: 2px solid var(--steel-100);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .industry-card:hover .industry-img {
+    border-color: var(--zephyr-orange);
+    transform: translateY(-4px);
+  }
+
+  .industry-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--steel-300);
+    transition: color 0.3s ease;
+  }
+
+  .industry-card:hover .industry-name {
+    color: var(--zephyr-orange);
+  }
+
+  .industry-img {
+    border-color: var(--steel-700);
+    background-color: var(--steel-800);
+  }
+
+  /* scroll-driven animation handled by JS */
+
+  @media (max-width: 768px) {
+    .industry-card { width: 110px; }
+    .industry-img { width: 90px; height: 90px; }
+  }
+
   /* ===== SECTION HEADERS ===== */
   .section-header {
     margin-bottom: 3rem;
@@ -276,7 +446,7 @@ const capabilities = [
   .banner {
     position: relative;
     background: var(--zephyr-orange);
-    padding: 5rem 2rem;
+    padding: 2.5rem 2rem;
     overflow: hidden;
   }
 
@@ -285,7 +455,7 @@ const capabilities = [
     inset: 0;
     background: url('/images/Logo/ZE-Pattern-O.png') repeat;
     background-size: 300px;
-    opacity: 0.15;
+    opacity: 0.25;
   }
 
   .banner-stats {
@@ -324,16 +494,62 @@ const capabilities = [
   }
 
   .capability-card {
+    position: relative;
     padding: 2rem;
     background: white;
     border-top: 3px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+
+  .capability-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .capability-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,18,37,0.85) 0%, rgba(78,106,128,0.8) 100%);
+  }
+
+  .capability-card:hover .capability-bg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .capability-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .capability-content p {
+    color: var(--steel-400);
+    transition: color 0.4s ease;
+  }
+
+  .capability-content h3 {
+    transition: color 0.4s ease;
+  }
+
+  .capability-card:hover .capability-content p {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .capability-card:hover .capability-content h3 {
+    color: white;
   }
 
   .capability-card:hover {
     border-top-color: var(--zephyr-orange);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
-    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
   }
 
   .capability-num {
@@ -343,6 +559,98 @@ const capabilities = [
     color: var(--steel-100);
     line-height: 1;
     margin-bottom: 1rem;
+    transition: color 0.4s ease;
+  }
+
+  .capability-card:hover .capability-num {
+    color: var(--zephyr-orange);
+  }
+
+  /* ===== INNOVATIVE SOLUTIONS ===== */
+  .inno-track-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  .inno-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: innoScroll 40s linear infinite;
+  }
+
+  .inno-track:hover {
+    animation-play-state: paused;
+  }
+
+  .inno-card {
+    flex-shrink: 0;
+    width: 240px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .inno-card:hover {
+    background: var(--steel-50);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .inno-img-wrap {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .inno-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+
+  .inno-card:hover .inno-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .inno-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
+  }
+
+  .inno-card:hover .inno-label {
+    color: var(--zephyr-orange);
+  }
+
+  .inno-sub {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+  }
+
+  @keyframes innoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .inno-card { width: 200px; }
+    .inno-img-wrap { height: 160px; }
   }
 
   /* ===== CTA ===== */
@@ -558,4 +866,52 @@ const capabilities = [
   msAccordion?.addEventListener('mouseleave', () => {
     resetPanels();
   });
+
+  // ===== INDUSTRY SOLUTIONS — scroll-driven carousel =====
+  const industriesSection = document.querySelector('.industries') as HTMLElement;
+  const track = document.querySelector('.industries-track') as HTMLElement;
+  const cards = document.querySelectorAll('.industry-card');
+
+  if (industriesSection && track) {
+    // Staggered entrance animation when section scrolls into view
+    const entranceObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          industriesSection.classList.add('in-view');
+          cards.forEach((card, i) => {
+            (card as HTMLElement).style.transitionDelay = `${i * 0.04}s`;
+          });
+          entranceObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    entranceObserver.observe(industriesSection);
+
+    // Scroll-linked horizontal movement
+    let baseSpeed = 0.5; // px per frame for ambient drift
+    let scrollOffset = 0;
+    let lastScrollY = window.scrollY;
+    let scrollVelocity = 0;
+    const halfWidth = track.scrollWidth / 2;
+
+    function animateTrack() {
+      // Calculate scroll velocity (how fast user is scrolling)
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      scrollVelocity += (delta * 0.3 - scrollVelocity) * 0.1; // smooth lerp
+      lastScrollY = currentScrollY;
+
+      // Combine ambient drift + scroll-driven boost
+      scrollOffset += baseSpeed + scrollVelocity;
+
+      // Seamless loop reset
+      if (scrollOffset >= halfWidth) scrollOffset -= halfWidth;
+      if (scrollOffset < 0) scrollOffset += halfWidth;
+
+      track.style.transform = `translateX(-${scrollOffset}px)`;
+      requestAnimationFrame(animateTrack);
+    }
+
+    requestAnimationFrame(animateTrack);
+  }
 </script>
