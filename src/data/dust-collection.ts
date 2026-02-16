@@ -53,6 +53,10 @@ export const dustCollectionProducts: Product[] = [
       { title: 'Easy Cartridge Access', desc: 'Quick-change cartridge design allows fast filter replacement with minimal downtime and no special tools required.' },
       { title: 'Flexible Installation', desc: 'Configurable inlet and outlet positions accommodate a variety of ductwork layouts and facility configurations.' },
     ],
+    galleryImages: [
+      '/images/ir24-install1.jpg',
+      '/images/ir24-install2.jpg',
+    ],
     applications: [
       'Industrial Manufacturing', 'Chemical Processing', 'Pharmaceutical', 'Food Processing',
       'Plastics', 'Woodworking', 'Metal Fabrication',

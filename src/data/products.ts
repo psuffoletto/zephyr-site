@@ -40,6 +40,7 @@ export interface Product {
   heroImage?: string;
   productImage?: string;
   sketchfabId?: string;
+  galleryImages?: string[];
 }
 
 export interface Category {
