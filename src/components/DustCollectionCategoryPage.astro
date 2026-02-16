@@ -1,0 +1,323 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Product, Category } from '../data/products';
+import { getOtherDustCollectionCategories } from '../data/dust-collection';
+
+interface Props {
+  category: Category;
+  products: Product[];
+  heroImage?: string;
+}
+
+const { category, products, heroImage } = Astro.props;
+const otherCategories = getOtherDustCollectionCategories(category.slug);
+---
+
+<BaseLayout title={`${category.name} | Dust Collection`} description={`${category.name} — ${category.tagline}. ${category.description}`}>
+
+  <!-- Hero -->
+  <section class="cat-hero">
+    <div class="cat-hero-bg" style={heroImage ? `background: linear-gradient(180deg, rgba(10,16,24,0.25) 0%, rgba(10,16,24,0.45) 100%), url('${heroImage}') center/cover no-repeat;` : ''}></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <a href="/dust-collection" class="cat-breadcrumb">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        All Dust Collection
+      </a>
+      <span class="label" style="color: var(--zephyr-orange); margin-top: 1rem; display: block;">{category.tagline}</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">{category.name}</h1>
+      <p class="cat-hero-desc">{category.description}</p>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Equipment</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">{category.name} Products</h2>
+      </div>
+
+      {products.length > 0 ? (
+        <div class="product-cards">
+          {products.map((product, i) => (
+            <a href={`/dust-collection/${category.slug}/${product.slug}`} class="product-card reveal" data-delay={i}>
+              <div class="product-card-header">
+                <span class="product-card-model">{product.modelNumber}</span>
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="product-card-arrow">
+                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="product-card-name">{product.name}</h3>
+              <p class="product-card-tagline">{product.tagline}</p>
+              <div class="product-card-specs">
+                {product.keySpecs.slice(0, 3).map(spec => (
+                  <div class="product-card-spec">
+                    <span class="product-card-spec-val">{spec.value}</span>
+                    <span class="product-card-spec-lbl">{spec.label}</span>
+                  </div>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="coming-soon reveal">
+          <p class="body-lg" style="color: var(--steel-400); text-align: center;">
+            Detailed product information is coming soon. Contact us to discuss {category.name.toLowerCase()} solutions for your facility.
+          </p>
+          <div style="text-align: center; margin-top: 2rem;">
+            <a href="/contact" class="btn btn--primary">Contact Us</a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <slot />
+
+  <!-- CTA -->
+  <section class="cat-cta">
+    <div class="cat-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Need Help Choosing?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 1rem; max-width: 480px; margin-inline: auto; line-height: 1.7;">
+        Tell us about your application and we'll help you select the right {category.name.toLowerCase()} equipment for your operation.
+      </p>
+      <a href="/contact" class="btn btn--primary" style="margin-top: 2rem; background: white; color: var(--zephyr-orange);">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Other Categories -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">More Equipment</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Other Dust Collection Categories</h2>
+      </div>
+      <div class="other-categories reveal">
+        {otherCategories.map(cat => (
+          <a href={`/dust-collection/${cat.slug}`} class="other-category-link">
+            <div>
+              <span class="other-category-num">{cat.num}</span>
+              <span class="other-category-name">{cat.name}</span>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .cat-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .cat-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232, 97, 45, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(52, 73, 94, 0.2) 0%, transparent 50%);
+  }
+  .cat-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--steel-400);
+    transition: color 0.2s;
+  }
+  .cat-breadcrumb:hover { color: var(--zephyr-orange); }
+  .cat-hero-desc {
+    color: var(--steel-300);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-top: 1rem;
+    max-width: 600px;
+  }
+
+  /* PRODUCT CARDS */
+  .product-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    display: block;
+    padding: 2rem;
+    background: var(--steel-50);
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .product-card:hover {
+    border-left-color: var(--zephyr-orange);
+    background: var(--steel-800);
+    transform: translateX(4px);
+  }
+
+  .product-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .product-card-model {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+  }
+  .product-card-arrow {
+    color: var(--steel-300);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+  }
+  .product-card:hover .product-card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--zephyr-orange);
+  }
+
+  .product-card-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  .product-card:hover .product-card-name { color: white; }
+
+  .product-card-tagline {
+    font-weight: 300;
+    font-size: 0.88rem;
+    color: var(--steel-400);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  .product-card:hover .product-card-tagline { color: var(--steel-300); }
+
+  .product-card-specs {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--steel-100);
+    transition: border-color 0.3s ease;
+  }
+  .product-card:hover .product-card-specs {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+
+  .product-card-spec-val {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--steel-700);
+    transition: color 0.3s ease;
+  }
+  .product-card:hover .product-card-spec-val { color: var(--zephyr-orange); }
+
+  .product-card-spec-lbl {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.1rem;
+  }
+
+  /* CTA */
+  .cat-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+  .cat-cta-pattern {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
+  }
+
+  /* OTHER CATEGORIES */
+  .other-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+  }
+
+  .other-category-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .other-category-link:hover {
+    background: var(--steel-800);
+  }
+
+  .other-category-num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--steel-300);
+    margin-bottom: 0.1rem;
+  }
+  .other-category-name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    transition: color 0.3s ease;
+  }
+  .other-category-link:hover .other-category-name { color: var(--zephyr-orange); }
+  .other-category-link:hover .other-category-num { color: var(--steel-400); }
+
+  .other-category-link svg {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+    color: var(--steel-800);
+  }
+  .other-category-link:hover svg {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--zephyr-orange);
+  }
+
+  .coming-soon {
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .product-cards { grid-template-columns: 1fr; }
+  }
+</style>

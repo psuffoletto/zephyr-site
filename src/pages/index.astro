@@ -153,6 +153,25 @@ const capabilities = [
           </div>
           <div class="ms-accent"></div>
         </div>
+        <div class="ms-panel ms-panel--orange" data-index="2">
+          <div class="ms-pattern"></div>
+          <div class="ms-img" style="background-image: url('/images/dust-collector-hero.jpg');"></div>
+          <img src="/images/dust-render.png" alt="Dust collection system" class="ms-render" />
+          <span class="ms-collapsed-title">Dust Collection</span>
+          <div class="ms-number">03</div>
+          <div class="ms-content">
+            <div class="ms-subtitle">Industrial Ventilation</div>
+            <h3 class="ms-title">Dust Collection Systems</h3>
+            <p class="ms-desc">Engineered dust collection systems for industrial environments — cartridge collectors, baghouse filters, and custom ventilation solutions designed to meet the most demanding air quality requirements.</p>
+            <div class="ms-tags">
+              <a href="/dust-collection">Cartridge Collectors</a>
+              <a href="/dust-collection">Baghouse Filters</a>
+              <a href="/dust-collection">Ventilation</a>
+            </div>
+            <a href="/dust-collection" class="ms-cta">Explore Dust Collection</a>
+          </div>
+          <div class="ms-accent"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -763,6 +782,7 @@ const capabilities = [
 
   .ms-panel--offwhite { background: linear-gradient(135deg, #FAFAF8 0%, #F0F2F5 100%); }
   .ms-panel--lightblue { background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%); }
+  .ms-panel--orange { background: linear-gradient(135deg, var(--zephyr-orange) 0%, #c43d0a 100%); }
 
   /* Background image layer */
   .ms-img {
@@ -800,6 +820,7 @@ const capabilities = [
     transition: opacity 0.4s ease;
   }
   .ms-panel--offwhite .ms-pattern, .ms-panel--lightblue .ms-pattern { color: var(--zephyr-orange); }
+  .ms-panel--orange .ms-pattern { color: white; }
   .ms-panel.expanded .ms-pattern { opacity: 0; }
 
   /* Collapsed vertical title — hidden by default, shown only when collapsed */
@@ -813,6 +834,7 @@ const capabilities = [
   }
   .ms-panel--offwhite .ms-collapsed-title { color: var(--zephyr-orange); }
   .ms-panel--lightblue .ms-collapsed-title { color: var(--steel-800); }
+  .ms-panel--orange .ms-collapsed-title { color: white; }
   .ms-panel.collapsed .ms-collapsed-title { opacity: 1; }
 
   .ms-number {
@@ -822,6 +844,7 @@ const capabilities = [
     transition: all 0.4s ease;
   }
   .ms-panel--offwhite .ms-number, .ms-panel--lightblue .ms-number { color: var(--zephyr-orange); }
+  .ms-panel--orange .ms-number { color: white; }
   .ms-panel.expanded .ms-number { color: white; opacity: 0.2; }
 
   /* Content — visible by default at 50/50, enhanced when expanded */
@@ -839,7 +862,9 @@ const capabilities = [
     transition: color 0.4s ease;
   }
   .ms-panel--offwhite .ms-subtitle, .ms-panel--lightblue .ms-subtitle { color: var(--zephyr-orange); }
+  .ms-panel--orange .ms-subtitle { color: rgba(255,255,255,0.85); }
   .ms-panel.expanded .ms-subtitle { color: var(--zephyr-orange); }
+  .ms-panel--orange.expanded .ms-subtitle { color: rgba(255,255,255,0.85); }
 
   .ms-title {
     font-family: var(--font-display); font-weight: 800;
@@ -848,6 +873,7 @@ const capabilities = [
     transition: color 0.4s ease;
   }
   .ms-panel--offwhite .ms-title, .ms-panel--lightblue .ms-title { color: var(--steel-800); }
+  .ms-panel--orange .ms-title { color: white; }
   .ms-panel.expanded .ms-title { color: white; }
 
   .ms-desc {
@@ -857,6 +883,7 @@ const capabilities = [
   }
   .ms-panel--offwhite .ms-desc { color: var(--steel-500); }
   .ms-panel--lightblue .ms-desc { color: var(--steel-700); }
+  .ms-panel--orange .ms-desc { color: rgba(255,255,255,0.7); }
   .ms-panel.expanded .ms-desc { color: rgba(255,255,255,0.8); }
 
   .ms-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
@@ -877,6 +904,11 @@ const capabilities = [
     border: 1px solid rgba(0,0,0,0.1);
   }
   .ms-panel--lightblue .ms-tags a:hover { background: rgba(0,0,0,0.12); }
+  .ms-panel--orange .ms-tags a {
+    background: rgba(255,255,255,0.15); color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .ms-panel--orange .ms-tags a:hover { background: rgba(255,255,255,0.25); }
   .ms-panel.expanded .ms-tags a {
     background: rgba(255,255,255,0.1); color: white;
     border-color: rgba(255,255,255,0.15);
@@ -892,6 +924,8 @@ const capabilities = [
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .ms-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .ms-panel--orange .ms-cta { background: white; color: var(--zephyr-orange); }
+  .ms-panel--orange.expanded .ms-cta { background: white; color: var(--zephyr-orange); }
 
   .ms-accent {
     position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
@@ -899,6 +933,7 @@ const capabilities = [
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .ms-panel--offwhite .ms-accent, .ms-panel--lightblue .ms-accent { background: var(--zephyr-orange); }
+  .ms-panel--orange .ms-accent { background: white; }
   .ms-panel.expanded .ms-accent { transform: scaleX(1); }
 
   @media (max-width: 768px) {

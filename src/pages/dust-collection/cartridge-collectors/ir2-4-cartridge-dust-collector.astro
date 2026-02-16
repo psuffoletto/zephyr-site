@@ -1,0 +1,9 @@
+---
+import DustCollectionDetailPage from '../../../components/DustCollectionDetailPage.astro';
+import { getDustCollectionProductBySlug, getDustCollectionCategoryBySlug } from '../../../data/dust-collection';
+
+const product = getDustCollectionProductBySlug('ir2-4-cartridge-dust-collector')!;
+const category = getDustCollectionCategoryBySlug(product.category)!;
+---
+
+<DustCollectionDetailPage product={product} category={category} />

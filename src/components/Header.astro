@@ -19,6 +19,12 @@ const bulkLinks = [
   { label: 'Power', href: '/products/power' },
 ];
 
+const dustCollectionLinks = [
+  { label: 'Cartridge Collectors', href: '/dust-collection' },
+  { label: 'Baghouse Filters', href: '/dust-collection' },
+  { label: 'Ventilation Systems', href: '/dust-collection' },
+];
+
 const beddingLinks = [
   { heading: 'Delivery', items: [
     { label: 'LX Series', href: '/bedding/delivery/lx-series' },
@@ -70,6 +76,17 @@ const beddingLinks = [
           ))}
         </div>
       </div>
+      <div class="nav-item has-dropdown">
+        <a href="/dust-collection" class:list={["nav-link", { active: currentPath.startsWith('/dust-collection') }]}>
+          Dust Collection
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown">
+          {dustCollectionLinks.map(link => (
+            <a href={link.href} class="dropdown-link">{link.label}</a>
+          ))}
+        </div>
+      </div>
       <a href="/service" class:list={["nav-link", { active: currentPath === '/service' }]}>Service</a>
       <a href="/success-stories" class:list={["nav-link", { active: currentPath.startsWith('/success-stories') }]}>Success Stories</a>
       <div class="nav-item has-dropdown">
@@ -111,6 +128,10 @@ const beddingLinks = [
           <a href={link.href} class="mobile-link mobile-link--sub">{link.label}</a>
         ))}
       </>
+    ))}
+    <a href="/dust-collection" class="mobile-link">Dust Collection</a>
+    {dustCollectionLinks.map(link => (
+      <a href={link.href} class="mobile-link mobile-link--sub">{link.label}</a>
     ))}
     <a href="/service" class="mobile-link">Service</a>
     <a href="/success-stories" class="mobile-link">Success Stories</a>

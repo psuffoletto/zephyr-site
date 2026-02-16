@@ -1,0 +1,578 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Accordion from './Accordion.astro';
+import type { Product, Category } from '../data/products';
+import { getRelatedDustCollectionProducts, getDustCollectionProductsByCategory } from '../data/dust-collection';
+
+interface Props {
+  product: Product;
+  category: Category;
+}
+
+const { product, category } = Astro.props;
+const relatedProducts = getRelatedDustCollectionProducts(product);
+const categoryProducts = getDustCollectionProductsByCategory(category.slug);
+---
+
+<BaseLayout title={`${product.name} | ${category.name}`} description={`${product.name} by Zephyr Equipment — ${product.tagline}`}>
+
+  <!-- HERO -->
+  <section class="prod-hero">
+    <div class="prod-hero-bg" style={product.heroImage ? `background: linear-gradient(135deg, rgba(78,106,128,0.85) 0%, rgba(10,18,37,0.9) 100%), url('${product.heroImage}') center/cover no-repeat;` : ''}></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="prod-hero-grid">
+        <div class="prod-hero-text">
+          <a href={`/dust-collection/${category.slug}`} class="prod-breadcrumb">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            {category.name}
+          </a>
+          {product.accentLabel && (
+            <span class="label" style="color: var(--zephyr-orange); margin-top: 1rem; display: block;">{product.accentLabel}</span>
+          )}
+          <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">
+            <Fragment set:html={product.name.replace(/(\S+)$/, '<span style="color: var(--zephyr-orange);">$1</span>')} />
+          </h1>
+          <p class="prod-hero-desc">{product.description}</p>
+          <div class="prod-hero-actions">
+            <a href="/contact" class="btn btn--primary">Request a Quote</a>
+            {product.specTable && product.specTable.length > 0 && (
+              <a href="#specs" class="btn btn--outline">View Specs</a>
+            )}
+          </div>
+        </div>
+        <div class="prod-hero-visual">
+          {(product.productImage || product.heroImage) ? (
+            <img src={product.productImage || product.heroImage} alt={product.name} class="prod-hero-img" />
+          ) : (
+            <div class="prod-hero-placeholder">
+              <div class="prod-placeholder-icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                  <rect x="12" y="8" width="40" height="48" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="32" cy="32" r="12" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="32" y1="20" x2="32" y2="8" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="32" y1="56" x2="32" y2="44" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <span class="prod-placeholder-label">Product Image</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY SPECS BAR -->
+  {product.keySpecs.length > 0 && (
+    <section class="specs-bar" id="specs">
+      <div class="container">
+        <div class="specs-bar-grid">
+          {product.keySpecs.map(spec => (
+            <div class="spec-item">
+              <div class="spec-value">{spec.value}</div>
+              <div class="spec-label">{spec.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FEATURES -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Engineering Details</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Key Features</h2>
+      </div>
+      <div class="feature-grid">
+        {product.features.map((feat, i) => (
+          <div class="feature-card reveal" data-delay={i}>
+            <div class="feature-num">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="feature-title">{feat.title}</h3>
+            <p class="feature-desc">{feat.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIFICATIONS + 3D MODEL -->
+  {product.specTable && product.specTable.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class={`specs-3d-layout ${product.sketchfabId ? 'has-model' : ''}`}>
+          <div class="specs-3d-left">
+            <div class="section-header reveal">
+              <span class="label" style="color: var(--zephyr-orange);">Technical Data</span>
+              <h2 class="display-lg" style="margin-top: 0.5rem;">Specifications</h2>
+            </div>
+            <table class="spec-table reveal">
+              <tbody>
+                {product.specTable.map(row => (
+                  <tr>
+                    <td class="spec-table-label">{row.label}</td>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {product.sketchfabId && (
+            <div class="specs-3d-right reveal">
+              <div class="specs-3d-header">
+                <span class="label" style="color: var(--zephyr-orange);">Interactive 3D</span>
+                <p style="color: var(--steel-500); margin-top: 0.4rem; font-weight: 300; font-size: 0.85rem;">Pan, zoom, and rotate to inspect every detail.</p>
+              </div>
+              <div class="sketchfab-embed">
+                <iframe
+                  title={`${product.name} 3D Model`}
+                  src={`https://sketchfab.com/models/${product.sketchfabId}/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_watermark=0`}
+                  allow="autoplay; fullscreen; xr-spatial-tracking"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- APPLICATIONS -->
+  {product.applications.length > 0 && (
+    <section class="section" style="background: var(--steel-900);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label" style="color: var(--zephyr-orange);">Where It's Used</span>
+          <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">Applications</h2>
+        </div>
+        <div class="app-grid reveal">
+          {product.applications.map(app => (
+            <div class="app-tag">{app}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- GALLERY PLACEHOLDER -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Gallery</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Photos & Media</h2>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="4" y="8" width="40" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="16" cy="20" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4 32L16 24L28 32L36 26L44 32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Photos Coming Soon</span>
+        </div>
+        <div class="gallery-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="4" y="8" width="40" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <polygon points="20,16 20,32 34,24" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>Video Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {product.faqs && product.faqs.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <Accordion
+          items={product.faqs}
+          label="Common Questions"
+          title={`${product.name} FAQ`}
+        />
+      </div>
+    </section>
+  )}
+
+  <slot />
+
+  <!-- CTA -->
+  <section class="prod-cta">
+    <div class="prod-cta-pattern"></div>
+    <div class="container" style="position: relative; text-align: center;">
+      <h2 class="display-lg" style="color: white;">Need a {product.name}<br />for Your Facility?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 1rem; max-width: 480px; margin-inline: auto; line-height: 1.7;">
+        Tell us about your application and we'll engineer the right dust collection solution.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+        <a href="/contact" class="btn btn--primary" style="background: white; color: var(--zephyr-orange);">Request a Quote</a>
+        <a href={`/dust-collection/${category.slug}`} class="btn btn--outline" style="border-color: rgba(255,255,255,0.4); color: white;">All {category.name}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  {relatedProducts.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label" style="color: var(--zephyr-orange);">More {category.name} Equipment</span>
+          <h2 class="display-lg" style="margin-top: 0.5rem;">Related Products</h2>
+        </div>
+        <div class="related-products reveal">
+          {relatedProducts.map(p => (
+            <a href={`/dust-collection/${category.slug}/${p.slug}`} class="related-product-link">
+              <div>
+                <span class="related-product-model">{p.modelNumber}</span>
+                <span class="related-product-name">{p.name}</span>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .prod-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: var(--steel-900);
+    overflow: hidden;
+  }
+  .prod-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 60%, rgba(232,97,45,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(52, 73, 94, 0.15) 0%, transparent 50%);
+  }
+
+  .prod-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .prod-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--steel-400);
+    transition: color 0.2s;
+  }
+  .prod-breadcrumb:hover { color: var(--zephyr-orange); }
+
+  .prod-hero-desc {
+    color: var(--steel-300);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    max-width: 460px;
+  }
+
+  .prod-hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .prod-hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .prod-hero-img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .prod-hero-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 400px;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .prod-placeholder-icon { color: var(--steel-500); }
+  .prod-placeholder-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-500);
+  }
+
+  /* SPECS BAR */
+  .specs-bar {
+    background: var(--steel-800);
+    padding: 2rem;
+  }
+  .specs-bar-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .spec-item { text-align: center; flex: 1; min-width: 120px; }
+  .spec-value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+  }
+  .spec-label {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.3rem;
+  }
+
+  /* SPECS + 3D LAYOUT */
+  .specs-3d-layout {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .specs-3d-layout.has-model {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: none;
+  }
+  .specs-3d-right {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+  }
+  .specs-3d-header {
+    margin-bottom: 1rem;
+  }
+  .sketchfab-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--steel-900);
+  }
+  .sketchfab-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* FEATURE GRID */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .feature-card {
+    padding: 2rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .feature-card:hover {
+    border-left-color: var(--zephyr-orange);
+    background: var(--steel-50);
+  }
+  .feature-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--steel-100);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .feature-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .feature-desc {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.65;
+    font-size: 0.88rem;
+  }
+
+  /* SPEC TABLE */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .spec-table tr { border-bottom: 1px solid var(--steel-100); }
+  .spec-table td { padding: 1rem 0; font-size: 0.9rem; color: var(--steel-600); }
+  .spec-table-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    width: 200px;
+    white-space: nowrap;
+  }
+
+  /* APPLICATIONS */
+  .app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .app-tag {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--steel-300);
+    transition: all 0.3s ease;
+  }
+  .app-tag:hover {
+    border-color: var(--zephyr-orange);
+    color: var(--zephyr-orange);
+  }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .gallery-placeholder {
+    aspect-ratio: 16/9;
+    background: var(--steel-50);
+    border: 1px dashed var(--steel-100);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--steel-300);
+  }
+  .gallery-placeholder svg { color: var(--steel-200); }
+  .gallery-placeholder span {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-300);
+  }
+
+  /* CTA */
+  .prod-cta {
+    position: relative;
+    background: var(--zephyr-orange);
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+  .prod-cta-pattern {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
+  }
+
+  /* RELATED PRODUCTS */
+  .related-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .related-product-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .related-product-link:hover {
+    background: var(--steel-800);
+  }
+
+  .related-product-model {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--zephyr-orange);
+    margin-bottom: 0.15rem;
+  }
+
+  .related-product-name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    transition: color 0.3s ease;
+  }
+
+  .related-product-link:hover .related-product-name {
+    color: white;
+  }
+
+  .related-product-link svg {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+    color: var(--steel-800);
+  }
+
+  .related-product-link:hover svg {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--zephyr-orange);
+  }
+
+  @media (max-width: 768px) {
+    .prod-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .prod-hero-visual { display: none; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .specs-bar-grid { justify-content: center; }
+    .spec-table-label { width: auto; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .specs-3d-layout.has-model { grid-template-columns: 1fr; }
+    .specs-3d-right { position: static; }
+  }
+</style>

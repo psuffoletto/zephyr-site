@@ -1,0 +1,9 @@
+---
+import DustCollectionCategoryPage from '../../../components/DustCollectionCategoryPage.astro';
+import { getDustCollectionCategoryBySlug, getDustCollectionProductsByCategory } from '../../../data/dust-collection';
+
+const category = getDustCollectionCategoryBySlug('cartridge-collectors')!;
+const products = getDustCollectionProductsByCategory('cartridge-collectors');
+---
+
+<DustCollectionCategoryPage category={category} products={products} />

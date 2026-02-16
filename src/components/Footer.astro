@@ -18,6 +18,12 @@ const beddingLinks = [
   { label: 'Disposal', href: '/bedding/disposal' },
 ];
 
+const dustCollectionLinks = [
+  { label: 'Cartridge Collectors', href: '/dust-collection' },
+  { label: 'Baghouse Filters', href: '/dust-collection' },
+  { label: 'Ventilation Systems', href: '/dust-collection' },
+];
+
 const companyLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Careers', href: '/about/careers' },
@@ -61,6 +67,14 @@ const companyLinks = [
       <div class="footer-col">
         <h4 class="footer-heading"><a href="/bedding" class="footer-heading-link">Bedding</a></h4>
         {beddingLinks.map(link => (
+          <a href={link.href} class="footer-link">{link.label}</a>
+        ))}
+      </div>
+
+      <!-- Dust Collection Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading"><a href="/dust-collection" class="footer-heading-link">Dust Collection</a></h4>
+        {dustCollectionLinks.map(link => (
           <a href={link.href} class="footer-link">{link.label}</a>
         ))}
       </div>
@@ -114,7 +128,7 @@ const companyLinks = [
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
     gap: 2.5rem;
   }
 
