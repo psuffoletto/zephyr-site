@@ -51,8 +51,27 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 - **Fonts:** `--font-display` (Barlow), `--font-body` (Inter), `--font-accent` (Playfair Display)
 - **Accordion color schemes:** `--offwhite`, `--lightblue`, `--orange` (for home page market segments)
 
+## Deployment
+- **Hosted on Vercel** — connected to GitHub repo `psuffoletto/zephyr-site`
+- **Auto-deploys on push to `main`** — no manual deploy step needed
+- Vercel detects Astro automatically; no `vercel.json` required
+- No GitHub Actions workflows — Vercel handles build & deploy
+
+## Workflow
+1. Make changes locally
+2. `npx astro build` — verify it compiles cleanly (0 errors)
+3. `git add` specific files (avoid `node_modules/`, `dist/`, `.astro/`, `.claude/`)
+4. `git commit` with descriptive message
+5. `git push` to `main` — Vercel auto-deploys within ~1 minute
+6. Verify on live site
+
 ## Build & Verify
 ```bash
 npx astro build    # Must compile cleanly — 0 errors
 npx astro dev      # Dev server on port 4321
 ```
+
+## Git Hygiene
+- No `.gitignore` currently in repo — be careful to stage only source files
+- Never stage: `node_modules/`, `dist/`, `.astro/`, `.claude/`, `package-lock.json`
+- Always stage: `src/`, `public/images/`, config files, `CLAUDE.md`
