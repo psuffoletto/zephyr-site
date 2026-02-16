@@ -48,6 +48,7 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 ## Product Hero Images
 - Product images on detail pages render at `width: 150%` to overflow the grid cell for visual impact
 - This applies to both Bedding and Dust Collection detail page components
+- Hero background images can reference shared images (e.g., LX Series uses `/images/hero/homepage-hero2.png`)
 
 ## Category Page Components
 - `BeddingCategoryPage.astro` — Bedding category landing (breadcrumb → `/bedding`)
