@@ -35,7 +35,7 @@ export const beddingProducts: Product[] = [
     slug: 'lx-series',
     modelNumber: 'LX',
     category: 'delivery',
-    heroImage: '/images/products/heroes/lx-hero.png',
+    heroImage: '/images/hero/homepage-hero2.png',
     productImage: '/images/products/renders/lx-render.png',
     accentLabel: 'Light Duty Delivery',
     tagline: 'Compact pneumatic bedding delivery for small to mid-size vivarium facilities',
