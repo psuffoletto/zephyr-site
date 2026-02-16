@@ -122,15 +122,15 @@ export const products: Product[] = [
     modelNumber: '14v',
     category: 'unload',
     heroImage: '/images/products/heroes/14v-hero.png',
-    productImage: '/images/products/renders/14v-product.png',
+    productImage: '/images/14v-product2.png',
     accentLabel: 'Bag Unloading',
     tagline: 'Automated bulk bag and drum unloading in a compact footprint',
     description: 'The 14v Series takes the heavy lifting out of emptying drums or bulk bags. Designed to handle free-flowing granules, pellets, or powders, this unique design draws the material from the top of the bag automatically. During the unloading operation, the carriage stretches the bag, forcing the material to the center, promoting continuous and complete discharge.',
     keySpecs: [
-      { value: '5 AMP', label: '120 VAC Power' },
-      { value: '10 CFM', label: 'Air @ 90 PSI' },
-      { value: 'Compact', label: 'Footprint' },
-      { value: 'Touch', label: 'Screen Control' },
+      { value: 'Bulk Bags', label: 'or Drums/Totes' },
+      { value: '96" Tall', label: 'Low Headroom' },
+      { value: '60"', label: 'Max Bag Height' },
+      { value: '100%', label: 'Empty' },
     ],
     features: [
       { title: 'Automatic Top-Draw Design', desc: 'Unique wand system draws material from the top of the bag automatically, eliminating manual lifting and promoting continuous, complete discharge.' },
@@ -152,8 +152,9 @@ export const products: Product[] = [
     ],
     applications: [
       'Chemical Processing', 'Food & Beverage', 'Pharmaceutical', 'Plastics & Pellets',
-      'Agriculture', 'Mineral Processing', 'Life Sciences', 'Dairy',
+      'Mineral Processing', 'Life Sciences', 'Dairy',
     ],
+    galleryImages: ['/images/unload-hero.png', '/images/hero/homepage-hero2.png'],
     faqs: [
       { question: 'What types of bags can the 14v handle?', answer: 'The 14v is designed to handle standard bulk bags (FIBCs) and drums containing free-flowing granules, pellets, or powders. The flexible bag snout arms and adjustable wand bag guard accommodate a wide range of bag sizes and configurations.' },
       { question: 'How much headroom is needed?', answer: 'The 14v is specifically designed for tight spaces and low headroom applications. The compact center mast design with a 16" x 16" base plate requires significantly less overhead clearance than traditional fork-style or hoist-based unloaders.' },
