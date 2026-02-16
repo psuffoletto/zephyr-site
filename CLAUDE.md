@@ -41,13 +41,14 @@ Each market segment has:
 Products use the shared `Product` and `Category` interfaces from `src/data/products.ts`. Key fields: `name`, `slug`, `modelNumber`, `category`, `tagline`, `description`, `keySpecs`, `features`, `applications`. Optional: `heroImage`, `productImage`, `specTable`, `faqs`, `sketchfabId`, `problems`, `accentLabel`, `galleryImages`.
 
 ## Product Detail Page Components
-- `DetailProductPage.astro` — Bulk products (breadcrumb → `/products/{category}`)
+- `DetailProductPage.astro` — Bulk products (breadcrumb → `/products/{category}`, carousel gallery with lightbox)
 - `BeddingDetailPage.astro` — Bedding products (breadcrumb → `/bedding/{category}`)
-- `DustCollectionDetailPage.astro` — Dust collection products (breadcrumb → `/dust-collection/{category}`, includes lightbox gallery)
+- `DustCollectionDetailPage.astro` — Dust collection products (breadcrumb → `/dust-collection/{category}`, grid gallery with lightbox)
 
 ## Product Hero Images
 - All detail page components cap hero product images at `max-height: 550px; object-fit: contain` so hero + key specs bar fits within a 1200px viewport
-- Dust Collection detail page uses `width: 150%` for visual overflow; Bedding and Bulk use `width: 100%`
+- Dust Collection detail page uses `width: 150%` for visual overflow; Bedding uses `width: 100%`; Bulk uses `width: 175%`
+- Individual product pages can override with `<style is:global>` and `!important` (e.g., 13-02 page)
 - Hero background images can reference shared images (e.g., LX Series uses `/images/hero/homepage-hero2.png`)
 - Category landing pages accept an optional `heroImage` prop for background images (e.g., `/images/unload-hero.png`)
 
