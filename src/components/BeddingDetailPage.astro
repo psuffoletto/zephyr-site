@@ -295,12 +295,15 @@ const categoryProducts = getBeddingProductsByCategory(category.slug);
     align-items: center;
     justify-content: center;
     overflow: visible;
+    max-height: 500px;
   }
 
   .prod-hero-img {
     width: 150%;
     max-width: none;
+    max-height: 500px;
     height: auto;
+    object-fit: contain;
     border-radius: 4px;
   }
 
