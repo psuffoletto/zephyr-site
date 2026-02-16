@@ -38,7 +38,20 @@ Each market segment has:
 - **Category page component** (`src/components/*CategoryPage.astro`) — Category landing with product cards
 - **Page files** (`src/pages/.../*.astro`) — Thin wrappers that import data + component
 
-Products use the shared `Product` and `Category` interfaces from `src/data/products.ts`. Key fields: `name`, `slug`, `modelNumber`, `category`, `tagline`, `description`, `keySpecs`, `features`, `applications`. Optional: `heroImage`, `productImage`, `specTable`, `faqs`, `sketchfabId`, `problems`, `accentLabel`.
+Products use the shared `Product` and `Category` interfaces from `src/data/products.ts`. Key fields: `name`, `slug`, `modelNumber`, `category`, `tagline`, `description`, `keySpecs`, `features`, `applications`. Optional: `heroImage`, `productImage`, `specTable`, `faqs`, `sketchfabId`, `problems`, `accentLabel`, `galleryImages`.
+
+## Product Detail Page Components
+- `DetailProductPage.astro` — Bulk products (breadcrumb → `/products/{category}`)
+- `BeddingDetailPage.astro` — Bedding products (breadcrumb → `/bedding/{category}`)
+- `DustCollectionDetailPage.astro` — Dust collection products (breadcrumb → `/dust-collection/{category}`, includes lightbox gallery)
+
+## Product Hero Images
+- Product images on detail pages render at `width: 150%` to overflow the grid cell for visual impact
+- This applies to both Bedding and Dust Collection detail page components
+
+## Category Page Components
+- `BeddingCategoryPage.astro` — Bedding category landing (breadcrumb → `/bedding`)
+- `DustCollectionCategoryPage.astro` — Dust collection category landing (breadcrumb → `/dust-collection`)
 
 ## Adding a New Product
 1. Add product object to the relevant data file (e.g., `src/data/dust-collection.ts`)
