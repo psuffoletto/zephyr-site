@@ -166,7 +166,7 @@ const categoryProducts = getDustCollectionProductsByCategory(category.slug);
       {product.galleryImages && product.galleryImages.length > 0 ? (
         <div class="gallery-grid reveal">
           {product.galleryImages.map(img => (
-            <div class="gallery-item">
+            <div class="gallery-item" data-lightbox>
               <img src={img} alt={product.name} class="gallery-img" />
             </div>
           ))}
@@ -240,6 +240,12 @@ const categoryProducts = getDustCollectionProductsByCategory(category.slug);
       </div>
     </section>
   )}
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="" id="lightbox-img" />
+  </div>
 
 </BaseLayout>
 
@@ -491,6 +497,7 @@ const categoryProducts = getDustCollectionProductsByCategory(category.slug);
   .gallery-item {
     border-radius: 4px;
     overflow: hidden;
+    cursor: pointer;
   }
   .gallery-img {
     width: 100%;
@@ -500,6 +507,55 @@ const categoryProducts = getDustCollectionProductsByCategory(category.slug);
   }
   .gallery-item:hover .gallery-img {
     transform: scale(1.03);
+  }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: pointer;
+  }
+  .lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+  .lightbox.active img {
+    transform: scale(1);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .lightbox-close:hover {
+    border-color: var(--zephyr-orange);
+    color: var(--zephyr-orange);
   }
   .gallery-placeholder svg { color: var(--steel-200); }
   .gallery-placeholder span {
@@ -592,3 +648,39 @@ const categoryProducts = getDustCollectionProductsByCategory(category.slug);
     .specs-3d-right { position: static; }
   }
 </style>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxClose = document.querySelector('.lightbox-close');
+
+  document.querySelectorAll('[data-lightbox]').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img') as HTMLImageElement;
+      if (img && lightbox && lightboxImg) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  function closeLightbox() {
+    lightbox?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  lightboxClose?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLightbox();
+  });
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
