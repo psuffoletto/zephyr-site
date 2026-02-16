@@ -35,7 +35,7 @@ export const dustCollectionProducts: Product[] = [
     slug: 'ir2-4-cartridge-dust-collector',
     modelNumber: 'IR2-4',
     category: 'cartridge-collectors',
-    productImage: '/images/dust-render.png',
+    productImage: '/images/ir24-product.png',
     accentLabel: 'Cartridge Dust Collection',
     tagline: 'Compact cartridge dust collector for industrial ventilation and process air filtration',
     description: 'The IR2-4 is a compact, high-efficiency cartridge dust collector designed for industrial dust collection and process air filtration applications. Featuring a two-cartridge configuration, the IR2-4 delivers reliable particulate capture in a space-efficient footprint, with pulse-jet filter cleaning for continuous operation and low maintenance.',
