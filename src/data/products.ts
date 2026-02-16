@@ -269,6 +269,8 @@ export const products: Product[] = [
     slug: '13-02-bag-dump-station',
     modelNumber: '13-02',
     category: 'unload',
+    heroImage: '/images/13-02-hero.png',
+    productImage: '/images/13-02-product.png',
     accentLabel: 'Manual Unloading',
     tagline: 'Controlled unloading of small bags and containers with integrated dust collection',
     description: 'The 13-02 Bag Dump Station is used for the controlled unloading of small volume bags, boxes, or other containers utilized in powder handling applications. Dust created from the unloading is contained through the use of an integrated downdraft hood with dust collector, providing a safer, cleaner working environment for operators.',

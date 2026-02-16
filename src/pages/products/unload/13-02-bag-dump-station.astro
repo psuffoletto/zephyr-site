@@ -7,3 +7,11 @@ const category = getCategoryBySlug(product.category)!;
 ---
 
 <DetailProductPage product={product} category={category} />
+
+<style is:global>
+  .prod-hero-img {
+    width: 225% !important;
+    max-height: none !important;
+    object-fit: cover !important;
+  }
+</style>
