@@ -164,6 +164,7 @@ export const beddingProducts: Product[] = [
     slug: '506-series',
     modelNumber: '506',
     category: 'dispensing',
+    productImage: '/images/506-product.png',
     accentLabel: 'Bedding Dispensing',
     tagline: 'Rainfall-style bedding dispenser for uniform cage filling in vivarium operations',
     description: 'The 506 Series is a rainfall-style bedding dispensing unit designed for uniform, even distribution of bedding material into rodent cages. Built for vivarium facilities requiring consistent bedding depth across all cages, the 506 features a rainfall dispensing method that evenly distributes material, advanced PLC controls, and expanded storage capacity for high-volume operations.',
