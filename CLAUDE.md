@@ -46,13 +46,19 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 - `DustCollectionDetailPage.astro` — Dust collection products (breadcrumb → `/dust-collection/{category}`, includes lightbox gallery)
 
 ## Product Hero Images
-- Product images on detail pages render at `width: 150%` to overflow the grid cell for visual impact
-- This applies to both Bedding and Dust Collection detail page components
+- All detail page components cap hero product images at `max-height: 550px; object-fit: contain` so hero + key specs bar fits within a 1200px viewport
+- Dust Collection detail page uses `width: 150%` for visual overflow; Bedding and Bulk use `width: 100%`
 - Hero background images can reference shared images (e.g., LX Series uses `/images/hero/homepage-hero2.png`)
+- Category landing pages accept an optional `heroImage` prop for background images (e.g., `/images/unload-hero.png`)
 
 ## Category Page Components
+- `CategoryPage.astro` — Bulk product category landing (breadcrumb → `/products`, optional `heroImage` prop)
 - `BeddingCategoryPage.astro` — Bedding category landing (breadcrumb → `/bedding`)
 - `DustCollectionCategoryPage.astro` — Dust collection category landing (breadcrumb → `/dust-collection`)
+
+## Home Page Hero Rotator
+- Background image slideshow in `src/pages/index.astro` — add `<div class="hero-slide">` entries with `background-image` URL
+- Images stored in `public/images/hero/`
 
 ## Adding a New Product
 1. Add product object to the relevant data file (e.g., `src/data/dust-collection.ts`)
