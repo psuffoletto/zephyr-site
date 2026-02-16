@@ -26,16 +26,16 @@ const dustCollectionLinks = [
 ];
 
 const beddingLinks = [
-  { heading: 'Delivery', items: [
+  { heading: 'Delivery', headingHref: '/bedding/delivery', items: [
     { label: 'LX Series', href: '/bedding/delivery/lx-series' },
     { label: 'MX Series', href: '/bedding/delivery/mx-series' },
     { label: 'VX Series', href: '/bedding/delivery/vx-series' },
   ]},
-  { heading: 'Dispensing', items: [
+  { heading: 'Dispensing', headingHref: '/bedding/dispensing', items: [
     { label: '504 Series', href: '/bedding/dispensing/504-series' },
     { label: '506 Series', href: '/bedding/dispensing/506-series' },
   ]},
-  { heading: 'Disposal', items: [
+  { heading: 'Disposal', headingHref: '/bedding/disposal', items: [
     { label: 'VF Series', href: '/bedding/disposal/vf-series' },
     { label: 'GF Series', href: '/bedding/disposal/gf-series' },
   ]},
@@ -68,7 +68,7 @@ const beddingLinks = [
         <div class="dropdown dropdown--bedding">
           {beddingLinks.map(section => (
             <div class="dropdown-section">
-              <span class="dropdown-heading">{section.heading}</span>
+              <a href={section.headingHref} class="dropdown-heading">{section.heading}</a>
               {section.items.map(link => (
                 <a href={link.href} class="dropdown-link">{link.label}</a>
               ))}
@@ -123,7 +123,7 @@ const beddingLinks = [
     <a href="/bedding" class="mobile-link">Bedding</a>
     {beddingLinks.map(section => (
       <>
-        <span class="mobile-link mobile-link--heading">{section.heading}</span>
+        <a href={section.headingHref} class="mobile-link mobile-link--heading">{section.heading}</a>
         {section.items.map(link => (
           <a href={link.href} class="mobile-link mobile-link--sub">{link.label}</a>
         ))}
@@ -274,6 +274,11 @@ const beddingLinks = [
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--zephyr-orange);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .dropdown-heading:hover {
+    opacity: 0.75;
   }
 
   .dropdown-link {
