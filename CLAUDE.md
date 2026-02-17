@@ -61,6 +61,21 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 - Background image slideshow in `src/pages/index.astro` — add `<div class="hero-slide">` entries with `background-image` URL
 - Images stored in `public/images/hero/`
 
+## Success Stories
+- **Location:** `src/pages/success-stories/`
+- **Index:** `src/pages/success-stories/index.astro` — stories array in frontmatter, grid of cards
+- **No shared component** — each story is a standalone `.astro` page with embedded data and scoped styles
+- **CSS classes** prefixed with `.cs-` (case study)
+- **Section pattern:** Hero → Hero Image → Intro card → Challenge (01) → Solution (02) → Results (03) → Partnership → Gallery → CTA
+- **Solution layouts:** Process flow (numbered vertical steps) or 2-column grid with solution cards
+- **Gallery:** Photos grid + optional video modal (click-to-play popup)
+- **Images:** stored in `public/images/{story-slug}/`
+- **Adding a new story:**
+  1. Create `src/pages/success-stories/{slug}.astro` following existing pattern
+  2. Add story object to the `stories` array in `index.astro`
+  3. Add images to `public/images/{slug}/`
+- **Current stories:** johns-hopkins, nih-building-35, vacuum-dense-phase, desiccant-conveying
+
 ## Adding a New Product
 1. Add product object to the relevant data file (e.g., `src/data/dust-collection.ts`)
 2. Create page file under the appropriate category directory (e.g., `src/pages/dust-collection/cartridge-collectors/my-product.astro`)
