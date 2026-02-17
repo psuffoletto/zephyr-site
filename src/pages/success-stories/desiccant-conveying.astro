@@ -42,6 +42,22 @@ const results = [
     </div>
   </section>
 
+  <!-- ===== HERO IMAGE ===== -->
+  <section class="cs-hero-image">
+    <a href="/images/desiccant/desciccant-hero3.png" target="_blank" rel="noopener noreferrer" class="cs-hero-image-link">
+      <img src="/images/desiccant/desciccant-hero3.png" alt="Bulk bag unloading station feeding vacuum conveying system" />
+      <div class="cs-hero-image-expand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 3 21 3 21 9"/>
+          <polyline points="9 21 3 21 3 15"/>
+          <line x1="21" y1="3" x2="14" y2="10"/>
+          <line x1="3" y1="21" x2="10" y2="14"/>
+        </svg>
+        View Full Image
+      </div>
+    </a>
+  </section>
+
   <!-- ===== INTRO ===== -->
   <section class="cs-section">
     <div class="container cs-container">
@@ -164,6 +180,51 @@ const results = [
     </div>
   </section>
 
+  <!-- ===== GALLERY ===== -->
+  <section class="cs-gallery">
+    <div class="container cs-container">
+      <div class="cs-section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">On the Floor</span>
+        <h2 class="display-md" style="color: white; margin-top: 0.5rem;">Before & After</h2>
+      </div>
+      <div class="cs-gallery-grid">
+        <div class="cs-gallery-item reveal" data-delay="0">
+          <img src="/images/desiccant/desiccant-install2.jpg" alt="Manual drum handling — the problem this system replaced" />
+          <span class="cs-gallery-caption">The Problem — Manual drum handling on the packaging floor</span>
+        </div>
+        <div class="cs-gallery-item reveal" data-delay="1">
+          <img src="/images/desiccant/desiccant-install1.jpg" alt="Installed vacuum conveying system — the automated solution" />
+          <span class="cs-gallery-caption">The Solution — Automated vacuum conveying system installed</span>
+        </div>
+      </div>
+      <div class="cs-gallery-video-trigger reveal" data-delay="2">
+        <button id="videoPlayBtn" class="cs-play-btn" aria-label="Play video">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="23" stroke="white" stroke-width="2"/>
+            <path d="M19 15L35 24L19 33V15Z" fill="white"/>
+          </svg>
+          <span>Click to Play</span>
+        </button>
+        <span class="cs-gallery-caption">The system in action — continuous desiccant delivery to form/fill/seal machines</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO MODAL ===== -->
+  <div id="videoModal" class="cs-video-modal">
+    <div class="cs-video-modal-backdrop"></div>
+    <div class="cs-video-modal-content">
+      <button id="videoCloseBtn" class="cs-video-modal-close" aria-label="Close video">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <video id="modalVideo" loop muted playsinline>
+        <source src="/images/desiccant/desiccant-video-1.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
   <!-- ===== CTA ===== -->
   <section class="cs-cta reveal">
     <div class="container" style="text-align: center;">
@@ -201,6 +262,53 @@ const results = [
   .cs-hero-content {
     position: relative;
     z-index: 1;
+  }
+
+  /* ===== HERO IMAGE ===== */
+  .cs-hero-image {
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+  }
+
+  .cs-hero-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .cs-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .cs-hero-image-expand {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cs-hero-image-link:hover .cs-hero-image-expand {
+    opacity: 1;
   }
 
   .cs-back {
@@ -452,6 +560,126 @@ const results = [
     font-size: 0.82rem;
   }
 
+  /* ===== GALLERY ===== */
+  .cs-gallery {
+    background: var(--steel-900);
+    padding: 3rem 0;
+  }
+
+  .cs-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .cs-gallery-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .cs-gallery-caption {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--steel-400);
+    margin-top: 0.75rem;
+  }
+
+  .cs-gallery-video-trigger {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .cs-play-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 3rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .cs-play-btn:hover {
+    background: rgba(232, 97, 45, 0.1);
+    border-color: var(--zephyr-orange);
+  }
+
+  .cs-play-btn span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .cs-play-btn:hover span {
+    color: var(--zephyr-orange);
+  }
+
+  /* ===== VIDEO MODAL ===== */
+  .cs-video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cs-video-modal.active {
+    display: flex;
+  }
+
+  .cs-video-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+  }
+
+  .cs-video-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+
+  .cs-video-modal-content video {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  .cs-video-modal-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .cs-video-modal-close:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .cs-gallery-grid { grid-template-columns: 1fr; }
+    .cs-gallery-item img { height: 240px; }
+  }
+
   /* ===== CTA ===== */
   .cs-cta {
     background: var(--steel-800);
@@ -461,6 +689,7 @@ const results = [
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .cs-hero { padding: 8rem 2rem 3rem; }
+    .cs-hero-image { height: 280px; }
     .cs-section { padding: 1.25rem 0; }
     .cs-hero-meta { gap: 1.5rem; }
     .cs-results-grid { grid-template-columns: 1fr 1fr; }
@@ -472,3 +701,31 @@ const results = [
     .cs-results-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  const playBtn = document.getElementById('videoPlayBtn');
+  const modal = document.getElementById('videoModal');
+  const closeBtn = document.getElementById('videoCloseBtn');
+  const backdrop = modal?.querySelector('.cs-video-modal-backdrop');
+  const video = document.getElementById('modalVideo') as HTMLVideoElement;
+
+  function openModal() {
+    modal?.classList.add('active');
+    video?.play();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal?.classList.remove('active');
+    video?.pause();
+    video.currentTime = 0;
+    document.body.style.overflow = '';
+  }
+
+  playBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) closeModal();
+  });
+</script>
