@@ -248,48 +248,13 @@ const category = getBeddingCategoryBySlug(product.category)!;
     opacity: 1;
   }
 
-  /* CTA card below features */
-  .features-cta {
-    margin-top: 3rem;
+  /* Compact dark bars (applications + quote) */
+  .compact-bar {
+    padding: 3rem 0 !important;
   }
 
-  .features-cta-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    padding: 2rem 2.5rem;
-    background: var(--steel-900);
-    border-radius: 6px;
-  }
-
-  .features-cta-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: white;
-  }
-
-  .features-cta-desc {
-    font-weight: 300;
-    font-size: 0.88rem;
-    color: var(--steel-300);
-    margin-top: 0.25rem;
-  }
-
-  .features-cta-btn {
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 768px) {
-    .features-cta-inner {
-      flex-direction: column;
-      text-align: center;
-      padding: 1.5rem;
-    }
+  .compact-bar .app-grid {
+    flex-wrap: nowrap !important;
   }
 
   /* Spec drawing column */
@@ -577,21 +542,57 @@ const category = getBeddingCategoryBySlug(product.category)!;
     heroActions.appendChild(featuresBtn);
   }
 
-  // Add CTA card below Key Features section
+  // Move Applications section between Features and Specifications
   const featuresSection = document.getElementById('features');
-  if (featuresSection) {
-    const ctaCard = document.createElement('div');
-    ctaCard.className = 'features-cta visible';
-    ctaCard.innerHTML = `
-      <div class="features-cta-inner">
-        <div class="features-cta-text">
-          <h3 class="features-cta-title">Interested in the 506 Series?</h3>
-          <p class="features-cta-desc">Tell us about your vivarium and we'll engineer the right solution.</p>
+  const specsSection = document.getElementById('specifications');
+  const appSection = document.querySelector('.app-grid')?.closest('section');
+  if (featuresSection && specsSection && appSection) {
+    appSection.classList.add('compact-bar');
+    featuresSection.after(appSection);
+
+    // Add bedding types image as a feature card
+    const featureGrid = featuresSection.querySelector('.feature-grid');
+    if (featureGrid) {
+      // Clone an existing card to get the scoped Astro attributes
+      const existingCard = featureGrid.querySelector('.feature-card') as HTMLElement;
+      if (existingCard) {
+        const beddingCard = existingCard.cloneNode(false) as HTMLElement;
+        beddingCard.className = 'feature-card reveal visible';
+        // Copy all data-astro-cid attributes
+        Array.from(existingCard.attributes).forEach(attr => {
+          if (attr.name.startsWith('data-astro-cid')) {
+            beddingCard.setAttribute(attr.name, attr.value);
+          }
+        });
+        // Build inner elements with same attributes
+        const cid = Array.from(existingCard.attributes).find(a => a.name.startsWith('data-astro-cid'));
+        const cidAttr = cid ? ` ${cid.name}="${cid.value}"` : '';
+        beddingCard.innerHTML = `
+          <div class="feature-num"${cidAttr}>09</div>
+          <h3 class="feature-title"${cidAttr}>Compatible Beddings</h3>
+          <p class="feature-desc"${cidAttr}>Handles all common free-flowing bedding types used in vivarium facilities — cob, chip, pellet, and paper products.</p>
+        `;
+        featureGrid.appendChild(beddingCard);
+      }
+    }
+  }
+
+  // Add Get a Quote bar (same style as Applications) below Specifications
+  if (specsSection) {
+    const ctaSection = document.createElement('section');
+    ctaSection.className = 'section compact-bar';
+    ctaSection.style.background = 'var(--steel-900)';
+    ctaSection.innerHTML = `
+      <div class="container">
+        <div class="section-header">
+          <span class="label" style="color: var(--zephyr-orange);">Next Steps</span>
+          <h2 class="display-lg" style="color: white; margin-top: 0.5rem;">Get a Quote</h2>
         </div>
-        <a href="/contact" class="btn btn--primary features-cta-btn">Get a Quote</a>
+        <p style="color: var(--steel-300); font-weight: 300; font-size: 0.95rem; max-width: 520px; line-height: 1.65; margin-bottom: 1.5rem;">Tell us about your vivarium and we'll engineer the right solution for your operation.</p>
+        <a href="/contact" class="btn btn--primary" style="background: var(--zephyr-orange);">Request a Quote</a>
       </div>
     `;
-    featuresSection.querySelector('.container')?.appendChild(ctaCard);
+    specsSection.after(ctaSection);
   }
 
   const hero = document.querySelector('.prod-hero');

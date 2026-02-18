@@ -211,7 +211,7 @@ export const beddingProducts: Product[] = [
       { question: 'Can the 506 integrate with a cage washer?', answer: 'Yes — the auto stop unload sensor with washer interlock allows the dispenser to coordinate with downstream cage washing equipment for a fully integrated workflow.' },
     ],
     applications: [
-      'Life Sciences', 'Vivarium Operations', 'Laboratory Animal Facilities',
+      'Vivarium Operations', 'Laboratory Animal Facilities',
       'Pharmaceutical Research', 'University Research', 'Contract Research Organizations',
     ],
   },
