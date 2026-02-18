@@ -1059,31 +1059,41 @@ const capabilities = [
     }, { threshold: 0.2 });
     entranceObserver.observe(industriesSection);
 
-    // Scroll-linked horizontal movement
+    // Scroll-linked horizontal movement — only runs when section is visible
     let baseSpeed = 0.5; // px per frame for ambient drift
     let scrollOffset = 0;
     let lastScrollY = window.scrollY;
     let scrollVelocity = 0;
     const halfWidth = track.scrollWidth / 2;
+    let isVisible = false;
+    let rafId: number | null = null;
 
     function animateTrack() {
-      // Calculate scroll velocity (how fast user is scrolling)
+      if (!isVisible) { rafId = null; return; }
+
       const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollY;
-      scrollVelocity += (delta * 0.3 - scrollVelocity) * 0.1; // smooth lerp
+      scrollVelocity += (delta * 0.3 - scrollVelocity) * 0.1;
       lastScrollY = currentScrollY;
 
-      // Combine ambient drift + scroll-driven boost
       scrollOffset += baseSpeed + scrollVelocity;
 
-      // Seamless loop reset
       if (scrollOffset >= halfWidth) scrollOffset -= halfWidth;
       if (scrollOffset < 0) scrollOffset += halfWidth;
 
       track.style.transform = `translateX(-${scrollOffset}px)`;
-      requestAnimationFrame(animateTrack);
+      rafId = requestAnimationFrame(animateTrack);
     }
 
-    requestAnimationFrame(animateTrack);
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !rafId) {
+          lastScrollY = window.scrollY;
+          rafId = requestAnimationFrame(animateTrack);
+        }
+      });
+    }, { threshold: 0 });
+    visibilityObserver.observe(industriesSection);
   }
 </script>
