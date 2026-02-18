@@ -23,6 +23,66 @@ const category = getBeddingCategoryBySlug(product.category)!;
   </div>
 </div>
 
+<!-- Gallery Video 2 Modal -->
+<div id="gallery2Modal" class="vid-modal">
+  <div class="vid-modal-backdrop"></div>
+  <div class="vid-modal-content">
+    <button class="vid-modal-close gallery2-close" aria-label="Close video">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <video id="gallery2Video" muted playsinline controls>
+      <source src="/images/506 series/video2-web.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<!-- Gallery Video 4 Modal -->
+<div id="gallery4Modal" class="vid-modal">
+  <div class="vid-modal-backdrop"></div>
+  <div class="vid-modal-content">
+    <button class="vid-modal-close gallery4-close" aria-label="Close video">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <video id="gallery4Video" muted playsinline controls>
+      <source src="/images/506 series/video4-web.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<!-- Gallery Video 5 Modal -->
+<div id="gallery5Modal" class="vid-modal">
+  <div class="vid-modal-backdrop"></div>
+  <div class="vid-modal-content">
+    <button class="vid-modal-close gallery5-close" aria-label="Close video">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <video id="gallery5Video" muted playsinline controls>
+      <source src="/images/506 series/video5-web.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<!-- Gallery Video 3 Modal -->
+<div id="gallery3Modal" class="vid-modal">
+  <div class="vid-modal-backdrop"></div>
+  <div class="vid-modal-content">
+    <button class="vid-modal-close gallery3-close" aria-label="Close video">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <video id="gallery3Video" muted playsinline controls>
+      <source src="/images/506 series/video3-web.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
 <!-- Image Modal -->
 <div id="imgModal" class="vid-modal">
   <div class="vid-modal-backdrop"></div>
@@ -187,15 +247,265 @@ const category = getBeddingCategoryBySlug(product.category)!;
   .vid-modal-close:hover {
     opacity: 1;
   }
+
+  /* Spec drawing column */
+  .spec-drawing-wrapper {
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    background: white;
+    padding: 1rem;
+    border: 1px solid var(--steel-100);
+  }
+
+  .spec-drawing-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .spec-drawing-wrapper:hover .spec-drawing-img {
+    transform: scale(1.02);
+  }
+
+  .spec-drawing-expand {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .spec-drawing-wrapper:hover .spec-drawing-expand {
+    opacity: 1;
+  }
+
+  /* Hide original gallery section — we replace it */
+  .gallery-grid { display: none !important; }
+
+  /* Rotator sections */
+  .rotator-section {
+    margin-top: 2.5rem;
+  }
+
+  .rotator-section:first-child {
+    margin-top: 0;
+  }
+
+  .rotator-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .rotator-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--steel-700);
+  }
+
+  .rotator-nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .rotator-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--steel-200);
+    border-radius: 50%;
+    background: white;
+    color: var(--steel-500);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .rotator-btn:hover {
+    border-color: var(--zephyr-orange);
+    color: var(--zephyr-orange);
+  }
+
+  .rotator-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    border-color: var(--steel-200);
+    color: var(--steel-300);
+  }
+
+  .rotator-track-wrapper {
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .rotator-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.4s ease;
+  }
+
+  /* Photo card in rotator */
+  .rotator-photo {
+    flex: 0 0 calc(50% - 0.5rem);
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .rotator-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .rotator-photo:hover img {
+    transform: scale(1.03);
+  }
+
+  .rotator-photo-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(0,0,0,0);
+    transition: background 0.3s ease;
+  }
+
+  .rotator-photo:hover .rotator-photo-overlay {
+    background: rgba(0,0,0,0.25);
+  }
+
+  .rotator-photo-overlay span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .rotator-photo:hover .rotator-photo-overlay span {
+    opacity: 1;
+  }
+
+  /* Video card in rotator */
+  .rotator-video {
+    flex: 0 0 calc(50% - 0.5rem);
+    position: relative;
+    aspect-ratio: 16/9;
+    background: var(--steel-900);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .rotator-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .rotator-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.3s ease;
+  }
+
+  .rotator-video:hover .rotator-video-overlay {
+    background: rgba(0,0,0,0.5);
+  }
+
+  .rotator-video-overlay svg {
+    opacity: 0.9;
+  }
+
+  .rotator-video-overlay span {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .rotator-photo,
+    .rotator-video {
+      flex: 0 0 100%;
+    }
+  }
 </style>
 
 <script>
+  // Add IDs to features and specifications sections for anchor links
+  const allSections = document.querySelectorAll('section.section');
+  allSections.forEach(sec => {
+    const label = sec.querySelector('.label');
+    if (label?.textContent?.includes('Engineering Details')) sec.id = 'features';
+    if (label?.textContent?.includes('Technical Data')) sec.id = 'specifications';
+  });
+
+  // Add "View Features" button and fix "View Specs" to jump to specifications table
+  const heroActions = document.querySelector('.prod-hero-actions');
+  if (heroActions) {
+    const viewSpecsBtn = heroActions.querySelector('a[href="#specs"]');
+    if (viewSpecsBtn) {
+      viewSpecsBtn.setAttribute('href', '#specifications');
+    }
+    const featuresBtn = document.createElement('a');
+    featuresBtn.href = '#features';
+    featuresBtn.className = 'btn btn--outline';
+    featuresBtn.textContent = 'View Features';
+    heroActions.appendChild(featuresBtn);
+  }
+
   const hero = document.querySelector('.prod-hero');
-  const heroActions = hero?.querySelector('.prod-hero-actions');
   const heroImg = hero?.querySelector('.prod-hero-img') as HTMLImageElement;
   const heroVisual = hero?.querySelector('.prod-hero-visual');
 
-  if (hero && heroActions && heroImg) {
+  if (hero && heroImg) {
     // Create background video
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'prod-hero-bg-video';
@@ -282,6 +592,219 @@ const category = getBeddingCategoryBySlug(product.category)!;
       if (e.key === 'Escape') {
         if (videoModal?.classList.contains('active')) closeVideoModal();
         if (imgModal?.classList.contains('active')) closeImgModal();
+      }
+    });
+  }
+
+  // Inject spec drawing into specifications section
+  const specsLayout = document.querySelector('.specs-3d-layout');
+  if (specsLayout) {
+    specsLayout.classList.add('has-model');
+    const specDrawing = document.createElement('div');
+    specDrawing.className = 'specs-3d-right visible spec-drawing-col';
+    specDrawing.innerHTML = `
+      <div class="section-header">
+        <span class="label" style="color: var(--zephyr-orange);">Reference</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Drawing</h2>
+      </div>
+      <div class="spec-drawing-wrapper">
+        <img src="/images/506 series/spec-drawing-2.png" alt="506 Series specification drawing" class="spec-drawing-img" />
+        <div class="spec-drawing-expand">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"/>
+            <polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/>
+            <line x1="3" y1="21" x2="10" y2="14"/>
+          </svg>
+          Click to Expand
+        </div>
+      </div>
+    `;
+    specsLayout.appendChild(specDrawing);
+
+    // Click to expand spec drawing in image modal
+    const specImg = specDrawing.querySelector('.spec-drawing-img') as HTMLImageElement;
+    const specWrapper = specDrawing.querySelector('.spec-drawing-wrapper');
+    specWrapper?.addEventListener('click', () => {
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImg') as HTMLImageElement;
+      if (modal && modalImg) {
+        modalImg.src = specImg.src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+
+  // Build Photos & Videos rotator sections
+  const gallerySection = document.querySelector('.gallery-grid')?.parentElement;
+  if (gallerySection) {
+    // Create rotator HTML helper
+    const arrowLeft = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+    const arrowRight = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>`;
+    const expandIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`;
+    const playIcon = `<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="white" stroke-width="2"/><path d="M19 15L35 24L19 33V15Z" fill="white"/></svg>`;
+
+    const photos = [
+      { src: '/images/506 series/INSTALL 1.jpg', alt: '506 Series installation' },
+      { src: '/images/506 series/506-INSTALL2.jpg', alt: '506 Series installed unit' },
+      { src: '/images/506 series/IMG_0547.jpg', alt: '506 Series detail view' },
+      { src: '/images/506 series/IMG_0549.jpg', alt: '506 Series close-up' },
+      { src: '/images/506 series/IMG_6750.jpg', alt: '506 Series on-site' },
+    ];
+
+    const videos = [
+      { src: '/images/506 series/video2-web.mp4', modalId: 'gallery2Modal', closeClass: 'gallery2-close', id: 'gallery2Trigger' },
+      { src: '/images/506 series/video3-web.mp4', modalId: 'gallery3Modal', closeClass: 'gallery3-close', id: 'gallery3Trigger' },
+      { src: '/images/506 series/video4-web.mp4', modalId: 'gallery4Modal', closeClass: 'gallery4-close', id: 'gallery4Trigger' },
+      { src: '/images/506 series/video5-web.mp4', modalId: 'gallery5Modal', closeClass: 'gallery5-close', id: 'gallery5Trigger' },
+    ];
+
+    // Build photos rotator
+    const photosHTML = `
+      <div class="rotator-section">
+        <div class="rotator-header">
+          <span class="rotator-label">Photos</span>
+          <div class="rotator-nav">
+            <button class="rotator-btn" id="photosPrev" disabled>${arrowLeft}</button>
+            <button class="rotator-btn" id="photosNext">${arrowRight}</button>
+          </div>
+        </div>
+        <div class="rotator-track-wrapper">
+          <div class="rotator-track" id="photosTrack">
+            ${photos.map((p, i) => `
+              <div class="rotator-photo" data-photo-idx="${i}">
+                <img src="${p.src}" alt="${p.alt}" />
+                <div class="rotator-photo-overlay">
+                  <span>${expandIcon} Expand</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Build videos rotator
+    const videosHTML = `
+      <div class="rotator-section">
+        <div class="rotator-header">
+          <span class="rotator-label">Videos</span>
+          <div class="rotator-nav">
+            <button class="rotator-btn" id="videosPrev" disabled>${arrowLeft}</button>
+            <button class="rotator-btn" id="videosNext">${arrowRight}</button>
+          </div>
+        </div>
+        <div class="rotator-track-wrapper">
+          <div class="rotator-track" id="videosTrack">
+            ${videos.map(v => `
+              <div class="rotator-video" id="${v.id}">
+                <video muted playsinline loop>
+                  <source src="${v.src}" type="video/mp4" />
+                </video>
+                <div class="rotator-video-overlay">
+                  ${playIcon}
+                  <span>Play Video</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Insert after section header
+    const sectionHeader = gallerySection.querySelector('.section-header');
+    if (sectionHeader) {
+      sectionHeader.insertAdjacentHTML('afterend', videosHTML);
+      sectionHeader.insertAdjacentHTML('afterend', photosHTML);
+    }
+
+    // Rotator logic
+    function setupRotator(trackId: string, prevId: string, nextId: string, itemClass: string) {
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      if (!track || !prevBtn || !nextBtn) return;
+
+      let offset = 0;
+      const items = track.querySelectorAll(`.${itemClass}`);
+      const isMobile = window.innerWidth <= 768;
+      const visible = isMobile ? 1 : 2;
+      const maxOffset = Math.max(0, items.length - visible);
+
+      function update() {
+        const gap = 16; // 1rem
+        const itemWidth = (track!.parentElement!.clientWidth - gap * (visible - 1)) / visible;
+        track!.style.transform = `translateX(-${offset * (itemWidth + gap)}px)`;
+        prevBtn!.disabled = offset === 0;
+        nextBtn!.disabled = offset >= maxOffset;
+      }
+
+      prevBtn.addEventListener('click', () => { if (offset > 0) { offset--; update(); } });
+      nextBtn.addEventListener('click', () => { if (offset < maxOffset) { offset++; update(); } });
+      update();
+      window.addEventListener('resize', () => update());
+    }
+
+    setupRotator('photosTrack', 'photosPrev', 'photosNext', 'rotator-photo');
+    setupRotator('videosTrack', 'videosPrev', 'videosNext', 'rotator-video');
+
+    // Photo click to expand
+    const gImgModal = document.getElementById('imgModal');
+    const gModalImg = document.getElementById('modalImg') as HTMLImageElement;
+    document.querySelectorAll('.rotator-photo').forEach(card => {
+      card.addEventListener('click', () => {
+        const img = card.querySelector('img') as HTMLImageElement;
+        gModalImg.src = img.src;
+        gImgModal?.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Video card: hover preview + click to modal
+    function wireGalleryVideo(triggerId: string, modalId: string, closeClass: string) {
+      const card = document.getElementById(triggerId);
+      const preview = card?.querySelector('video') as HTMLVideoElement;
+      const modal = document.getElementById(modalId);
+      const modalVid = modal?.querySelector('video') as HTMLVideoElement;
+      const closeBtn = modal?.querySelector(`.${closeClass}`);
+      const backdrop = modal?.querySelector('.vid-modal-backdrop');
+
+      card?.addEventListener('mouseenter', () => preview?.play());
+      card?.addEventListener('mouseleave', () => { preview?.pause(); preview.currentTime = 0; });
+
+      function open() {
+        modal?.classList.add('active');
+        modalVid.currentTime = 0;
+        modalVid.play();
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        modal?.classList.remove('active');
+        modalVid.pause();
+        document.body.style.overflow = '';
+      }
+
+      card?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      backdrop?.addEventListener('click', close);
+
+      return close;
+    }
+
+    const closeGallery2 = wireGalleryVideo('gallery2Trigger', 'gallery2Modal', 'gallery2-close');
+    const closeGallery3 = wireGalleryVideo('gallery3Trigger', 'gallery3Modal', 'gallery3-close');
+    const closeGallery4 = wireGalleryVideo('gallery4Trigger', 'gallery4Modal', 'gallery4-close');
+    const closeGallery5 = wireGalleryVideo('gallery5Trigger', 'gallery5Modal', 'gallery5-close');
+
+    // Escape key support for gallery modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('gallery2Modal')?.classList.contains('active')) closeGallery2();
+        if (document.getElementById('gallery3Modal')?.classList.contains('active')) closeGallery3();
+        if (document.getElementById('gallery4Modal')?.classList.contains('active')) closeGallery4();
+        if (document.getElementById('gallery5Modal')?.classList.contains('active')) closeGallery5();
       }
     });
   }

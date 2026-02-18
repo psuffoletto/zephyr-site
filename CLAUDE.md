@@ -68,8 +68,10 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 - **CSS classes** prefixed with `.cs-` (case study)
 - **Section pattern:** Hero → Hero Image → Intro card → Challenge (01) → Solution (02) → Results (03) → Partnership → Gallery → CTA
 - **Solution layouts:** Process flow (numbered vertical steps) or 2-column grid with solution cards
-- **Gallery:** Photos grid + optional video modal (click-to-play popup)
+- **Gallery:** Photos grid (before/after) + optional video modal (click-to-play popup, muted, looping)
+- **Video modal:** `<script>` block at bottom of page handles open/close/Escape key
 - **Images:** stored in `public/images/{story-slug}/`
+- **Product image overrides:** Individual product pages can use `<style is:global>` with `!important` to override hero image sizing (e.g., 506-series uses 250%)
 - **Adding a new story:**
   1. Create `src/pages/success-stories/{slug}.astro` following existing pattern
   2. Add story object to the `stories` array in `index.astro`
