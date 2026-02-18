@@ -78,6 +78,16 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
   3. Add images to `public/images/{slug}/`
 - **Current stories:** johns-hopkins, nih-building-35, vacuum-dense-phase, desiccant-conveying
 
+## Page-Level Customization (via `<script>` + `<style is:global>`)
+Individual product pages can heavily customize shared components without modifying them:
+- **DOM injection:** Use `document.createElement` + `prepend/appendChild/after` to add elements (videos, buttons, sections)
+- **Astro scoped styles:** JS-injected elements need `data-astro-cid-*` attributes copied from existing sibling elements to pick up scoped CSS
+- **Section reordering:** Move sections with `element.after(otherSection)`
+- **Hero customization:** Background video, image reveal animations, custom buttons
+- **Gallery rotators:** Replace `.gallery-grid` placeholder with custom carousel (Photos + Videos sections with prev/next navigation)
+- **Spec drawing:** Inject into `.specs-3d-layout` with `has-model` class for 2-column layout
+- **Example:** `506-series.astro` — background hero video, photo/video rotator galleries, spec drawing + datasheet button, section reordering, CTA bar, extra feature card
+
 ## Adding a New Product
 1. Add product object to the relevant data file (e.g., `src/data/dust-collection.ts`)
 2. Create page file under the appropriate category directory (e.g., `src/pages/dust-collection/cartridge-collectors/my-product.astro`)
