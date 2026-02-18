@@ -2,59 +2,167 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="Zephyr Equipment, LLC — Custom bulk material handling equipment designed and manufactured in Orchard Park, New York.">
+<BaseLayout title="About" description="Zephyr Equipment — custom-engineered bulk material handling, pneumatic conveying, and dust collection systems. Designed and built in Orchard Park, New York.">
 
   <section class="about-hero">
     <div class="about-hero-bg"></div>
     <div class="container" style="position: relative; z-index: 1;">
-      <span class="label" style="color: var(--zephyr-orange);">Our Story</span>
-      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">About<br /><span style="color: var(--zephyr-orange);">Zephyr</span></h1>
-      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Orchard Park, New York</p>
+      <span class="label" style="color: var(--zephyr-orange);">About Us</span>
+      <h1 class="display-xl" style="color: white; margin-top: 0.5rem;">Big Solutions.<br /><span style="color: var(--zephyr-orange);">Built Personally.</span></h1>
+      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem; font-size: 1.5rem; letter-spacing: 0.15em;">Built in Buffalo</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container container--narrow">
-      <div class="reveal" style="text-align: center;">
-        <p class="body-lg" style="color: var(--steel-600);">
-          Zephyr Equipment designs and builds custom bulk material handling equipment for industries that can't afford downtime. Based in Orchard Park, New York, we bring together engineering expertise, in-house manufacturing capability, and hands-on field experience to deliver equipment that works as hard as the people who run it.
-        </p>
+  <section class="section" style="padding-top: 4rem; padding-bottom: 2rem;">
+    <div class="container">
+      <div class="purpose-layout">
+        <div class="purpose-text reveal">
+          <span class="label" style="color: var(--zephyr-orange);">Our Purpose</span>
+          <h2 class="display-lg" style="margin-top: 0.5rem;">Moving What Matters</h2>
+          <p class="body-lg" style="color: var(--steel-600); margin-top: 1.25rem; text-align: justify;">
+            Across food, life sciences, advanced manufacturing, and industrial markets, the demand for custom-engineered bulk material handling, pneumatic conveying, and dust collection systems continues to grow. Tightening standards around product safety, sanitation, environmental compliance, and operational efficiency are reshaping how facilities design and operate their processes.
+          </p>
+          <p class="body-lg" style="color: var(--steel-600); margin-top: 1.25rem; text-align: justify;">
+            Zephyr Equipment stays ahead by working directly with operators, engineers, and plant leaders to design solutions that are practical, compliant, and built to perform in the real world. Our systems emphasize reliability, maintainability, safety, and thoughtful operator-centered design — because equipment should make work easier, not harder.
+          </p>
+        </div>
+        <div class="collage-grid reveal">
+          {[
+            '/images/14v-install-3.png',
+            '/images/capabilities/manufacturing.jpg',
+            '/images/vac-dense/vacdense-1.jpg',
+            '/images/johns-hopkins/install-1.jpg',
+            '/images/capabilities/custom-engineering.jpg',
+            '/images/506 series/IMG_0547.jpg',
+            '/images/desiccant/desiccant-install1.jpg',
+            '/images/capabilities/plc-integration.jpg',
+            '/images/ir24-install1.jpg',
+          ].map((src) => (
+            <div class="collage-item" data-img={src}>
+              <img src={src} alt="" loading="lazy" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background: white;">
+  <!-- Image Modal -->
+  <div class="collage-modal" id="collage-modal">
+    <button class="collage-modal-close" id="collage-modal-close">&times;</button>
+    <img class="collage-modal-img" id="collage-modal-img" src="" alt="" />
+  </div>
+
+  <section class="section" style="background: white; padding-top: 2rem; padding-bottom: 4rem;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="label" style="color: var(--zephyr-orange);">What Drives Us</span>
-        <h2 class="display-lg" style="margin-top: 0.5rem;">Our Approach</h2>
+        <span class="label" style="color: var(--zephyr-orange);">Vertically Integrated</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">More Than Equipment</h2>
+        <p class="purpose-statement">From initial concept through commissioning and beyond, Zephyr handles every phase under one roof. Design, manufacturing, controls, installation, and ongoing support — no handoffs, no finger-pointing, one team accountable for your results.</p>
       </div>
       <div class="values-grid">
         <div class="value-card reveal" data-delay="0">
           <div class="value-num">01</div>
-          <h3 class="value-title">Custom First</h3>
-          <p class="value-desc">Every system starts with your specific application — your material, your facility, your throughput — and we engineer from there.</p>
+          <h3 class="value-title">Design & Engineering</h3>
+          <p class="value-desc">Every system starts with your specific application — your material, your facility, your throughput. Structural analysis, flow calculations, and 3D modeling all happen in-house.</p>
         </div>
         <div class="value-card reveal" data-delay="1">
           <div class="value-num">02</div>
-          <h3 class="value-title">Built to Last</h3>
-          <p class="value-desc">Heavy-gauge steel, precision-machined components, and quality hardware. Built the way equipment should be built.</p>
+          <h3 class="value-title">Manufacturing</h3>
+          <p class="value-desc">Heavy-gauge steel fabrication, precision machining, welding, and assembly — all under our roof. Built the way equipment should be built, with full quality control at every step.</p>
         </div>
         <div class="value-card reveal" data-delay="2">
           <div class="value-num">03</div>
-          <h3 class="value-title">Engineering Depth</h3>
-          <p class="value-desc">From structural analysis and flow calculations to PLC programming across multiple platforms — all in-house.</p>
+          <h3 class="value-title">Controls & Automation</h3>
+          <p class="value-desc">PLC programming across multiple platforms, custom control panel builds, and system integration. The brains of your system designed by the same team that built the hardware.</p>
         </div>
         <div class="value-card reveal" data-delay="3">
           <div class="value-num">04</div>
-          <h3 class="value-title">Straight Talk</h3>
-          <p class="value-desc">We'll tell you what you need to hear. If your application needs a different approach, we'll say so — and explain why.</p>
+          <h3 class="value-title">Installation & Support</h3>
+          <p class="value-desc">Field installation, commissioning, startup support, and ongoing service. We stand behind what we build — and we're there when you need us.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" style="padding-top: 4rem; padding-bottom: 4rem;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">What We Do</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Solutions</h2>
+      </div>
+      <div class="solutions-grid reveal">
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Bulk Material Handling & Conveying</h3>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Pneumatic Transport Systems</h3>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v12H3z"/><path d="M12 16v4"/><path d="M8 20h8"/><path d="M7 8h2"/><path d="M7 11h2"/></svg>
+          </div>
+          <h3>Dust Collection & Containment</h3>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Sanitary & Hygienic Process Equipment</h3>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/><path d="M12 11v4"/></svg>
+          </div>
+          <h3>Bedding Handling Systems</h3>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Custom Fabrication & Engineered Systems</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--steel-900); padding-top: 4rem; padding-bottom: 4rem;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Markets</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem; color: white;">Industries We Serve</h2>
+      </div>
+      <div class="industries-grid reveal">
+        {[
+          { name: 'Life Sciences', img: '/images/industries/life-science.jpg' },
+          { name: 'Bakery', img: '/images/industries/bakery.jpg' },
+          { name: 'Chemical', img: '/images/industries/chemical.jpg' },
+          { name: 'Snack Foods', img: '/images/industries/snack-foods.jpg' },
+          { name: 'Plastics & Polymers', img: '/images/industries/plastics.jpg' },
+          { name: 'Dairy', img: '/images/industries/dairy.jpg' },
+          { name: 'Nutraceuticals', img: '/images/industries/nutraceuticals.jpg' },
+          { name: 'Pharmaceuticals', img: '/images/industries/pharmaceuticals.jpg' },
+          { name: 'Pet Food', img: '/images/industries/pet-food.jpg' },
+          { name: 'Batteries', img: '/images/industries/batteries.jpg' },
+          { name: 'Paint & Pigments', img: '/images/industries/paint-pigments.jpg' },
+          { name: 'Ceramics', img: '/images/industries/ceramics.jpg' },
+        ].map((ind) => (
+          <div class="industry-box">
+            <div class="industry-box-img" style={`background-image: url('${ind.img}');`}></div>
+            <span class="industry-box-name">{ind.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 4rem; padding-bottom: 4rem;">
     <div class="container">
       <div class="section-header reveal">
         <span class="label" style="color: var(--zephyr-orange);">In-House</span>
@@ -91,7 +199,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <style>
   .about-hero {
     position: relative;
-    padding: 8rem 2rem 5rem;
+    padding: 7rem 2rem 4rem;
     background: var(--steel-900);
     overflow: hidden;
   }
@@ -103,6 +211,97 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       url('https://static.wixstatic.com/media/9d739b_3e45957f2110413296f3af60838c560b~mv2.jpg') center/cover no-repeat;
   }
 
+  /* Purpose layout */
+  .purpose-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .collage-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.85);
+  }
+
+  .collage-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(1);
+  }
+
+  .collage-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    pointer-events: none;
+  }
+
+  .collage-item:hover::after {
+    border-color: var(--zephyr-orange);
+  }
+
+  /* Collage Modal */
+  .collage-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .collage-modal.open {
+    display: flex;
+  }
+
+  .collage-modal-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .collage-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10000;
+  }
+
+  .purpose-statement {
+    font-weight: 300;
+    color: var(--steel-500);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin-top: 1rem;
+  }
+
   .values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -111,14 +310,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .value-card {
     padding: 2rem;
-    background: var(--steel-50);
+    background: white;
     border-top: 3px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
   }
   .value-card:hover {
     border-top-color: var(--zephyr-orange);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
-    transform: translateY(-2px);
+    background: var(--steel-900);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
   }
 
   .value-num {
@@ -128,6 +328,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--steel-100);
     line-height: 1;
     margin-bottom: 1rem;
+    transition: color 0.4s ease;
+  }
+  .value-card:hover .value-num {
+    color: var(--zephyr-orange);
   }
 
   .value-title {
@@ -136,6 +340,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     font-size: 1.1rem;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
+    transition: color 0.4s ease;
+  }
+  .value-card:hover .value-title {
+    color: white;
   }
 
   .value-desc {
@@ -143,8 +351,104 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--steel-400);
     line-height: 1.65;
     font-size: 0.9rem;
+    transition: color 0.4s ease;
+  }
+  .value-card:hover .value-desc {
+    color: rgba(255,255,255,0.7);
   }
 
+  /* Solutions */
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .solution-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border: 1px solid var(--steel-100);
+    transition: all 0.3s ease;
+  }
+
+  .solution-card:hover {
+    border-color: var(--zephyr-orange);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+  }
+
+  .solution-icon {
+    color: var(--zephyr-orange);
+    flex-shrink: 0;
+  }
+
+  .solution-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--steel-700);
+  }
+
+  /* Industries */
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .industry-box {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  .industry-box:hover {
+    border-color: var(--zephyr-orange);
+  }
+
+  .industry-box-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .industry-box:hover .industry-box-img {
+    opacity: 0.5;
+  }
+
+  .industry-box-name {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel-300);
+    text-align: center;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .industry-box:hover .industry-box-name {
+    color: white;
+  }
+
+  /* Capabilities */
   .cap-grid {
     display: flex;
     flex-wrap: wrap;
@@ -171,7 +475,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .about-cta {
     position: relative;
     background: var(--zephyr-orange);
-    padding: 5rem 2rem;
+    padding: 3.5rem 2rem;
     overflow: hidden;
   }
   .about-cta-pattern {
@@ -181,6 +485,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   @media (max-width: 768px) {
+    .purpose-layout { grid-template-columns: 1fr; }
     .values-grid { grid-template-columns: 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
+
+<script>
+  const modal = document.getElementById('collage-modal');
+  const modalImg = document.getElementById('collage-modal-img') as HTMLImageElement;
+  const modalClose = document.getElementById('collage-modal-close');
+
+  document.querySelectorAll('.collage-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img') as HTMLImageElement;
+      if (img && modal && modalImg) {
+        modalImg.src = img.src;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  modalClose?.addEventListener('click', () => {
+    modal?.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
