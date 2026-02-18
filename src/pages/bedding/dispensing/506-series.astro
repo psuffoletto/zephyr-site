@@ -8,8 +8,281 @@ const category = getBeddingCategoryBySlug(product.category)!;
 
 <BeddingDetailPage product={product} category={category} />
 
+<!-- Video Modal -->
+<div id="videoModal" class="vid-modal">
+  <div class="vid-modal-backdrop"></div>
+  <div class="vid-modal-content">
+    <button id="videoCloseBtn" class="vid-modal-close" aria-label="Close video">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <video id="modalVideo" muted playsinline controls>
+      <source src="/images/506 series/video1-web.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<!-- Image Modal -->
+<div id="imgModal" class="vid-modal">
+  <div class="vid-modal-backdrop"></div>
+  <div class="vid-modal-content">
+    <button id="imgCloseBtn" class="vid-modal-close" aria-label="Close image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <img id="modalImg" alt="506 Series Bedding Dispenser" />
+  </div>
+</div>
+
 <style is:global>
+  /* Hide product image initially, animate in when video ends */
   .prod-hero-img {
-    width: 250% !important;
+    width: 350% !important;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    cursor: pointer;
+  }
+
+  .prod-hero-img.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Click to expand label */
+  .prod-hero-visual {
+    position: relative;
+  }
+
+  .prod-img-expand {
+    display: none;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 3;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .prod-img-expand.visible {
+    display: flex;
+  }
+
+  .prod-hero-visual:hover .prod-img-expand.visible {
+    opacity: 1;
+  }
+
+  /* Background video */
+  .prod-hero-bg-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    transition: opacity 1.5s ease;
+  }
+
+  .prod-hero-bg-video.faded {
+    opacity: 0;
+  }
+
+  .prod-hero-bg-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .prod-hero-bg {
+    z-index: 1 !important;
+    background: linear-gradient(135deg, rgba(10,18,37,0.7) 0%, rgba(10,18,37,0.8) 100%) !important;
+  }
+
+  /* Play again link */
+  .prod-hero-replay {
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .prod-hero-replay:hover {
+    color: var(--zephyr-orange);
+  }
+
+  .prod-hero-replay.visible {
+    display: inline-flex;
+  }
+
+  /* Modals */
+  .vid-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vid-modal.active {
+    display: flex;
+  }
+
+  .vid-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+  }
+
+  .vid-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+
+  .vid-modal-content video,
+  .vid-modal-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  .vid-modal-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .vid-modal-close:hover {
+    opacity: 1;
   }
 </style>
+
+<script>
+  const hero = document.querySelector('.prod-hero');
+  const heroActions = hero?.querySelector('.prod-hero-actions');
+  const heroImg = hero?.querySelector('.prod-hero-img') as HTMLImageElement;
+  const heroVisual = hero?.querySelector('.prod-hero-visual');
+
+  if (hero && heroActions && heroImg) {
+    // Create background video
+    const videoWrapper = document.createElement('div');
+    videoWrapper.className = 'prod-hero-bg-video';
+    videoWrapper.innerHTML = `<video autoplay muted playsinline>
+      <source src="/images/506 series/video1-web.mp4" type="video/mp4" />
+    </video>`;
+    hero.prepend(videoWrapper);
+
+    const bgVideo = videoWrapper.querySelector('video') as HTMLVideoElement;
+
+    // Create expand button for product image
+    const expandBtn = document.createElement('button');
+    expandBtn.className = 'prod-img-expand';
+    expandBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 3 21 3 21 9"/>
+      <polyline points="9 21 3 21 3 15"/>
+      <line x1="21" y1="3" x2="14" y2="10"/>
+      <line x1="3" y1="21" x2="10" y2="14"/>
+    </svg> Click to Expand`;
+    heroVisual?.appendChild(expandBtn);
+
+    // Create replay button
+    const replayBtn = document.createElement('button');
+    replayBtn.className = 'prod-hero-replay';
+    replayBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </svg> Watch Video`;
+    heroActions.after(replayBtn);
+
+    // When video ends: fade background, reveal product image, show buttons
+    bgVideo.addEventListener('ended', () => {
+      videoWrapper.classList.add('faded');
+      heroImg.classList.add('revealed');
+      expandBtn.classList.add('visible');
+      replayBtn.classList.add('visible');
+    });
+
+    // Image modal
+    const imgModal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg') as HTMLImageElement;
+    const imgCloseBtn = document.getElementById('imgCloseBtn');
+    const imgBackdrop = imgModal?.querySelector('.vid-modal-backdrop');
+
+    function openImgModal() {
+      modalImg.src = heroImg.src;
+      imgModal?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImgModal() {
+      imgModal?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    heroImg.addEventListener('click', openImgModal);
+    expandBtn.addEventListener('click', openImgModal);
+    imgCloseBtn?.addEventListener('click', closeImgModal);
+    imgBackdrop?.addEventListener('click', closeImgModal);
+
+    // Video modal
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo') as HTMLVideoElement;
+    const videoCloseBtn = document.getElementById('videoCloseBtn');
+    const videoBackdrop = videoModal?.querySelector('.vid-modal-backdrop');
+
+    function openVideoModal() {
+      videoModal?.classList.add('active');
+      modalVideo.currentTime = 0;
+      modalVideo.play();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      videoModal?.classList.remove('active');
+      modalVideo.pause();
+      document.body.style.overflow = '';
+    }
+
+    replayBtn.addEventListener('click', openVideoModal);
+    videoCloseBtn?.addEventListener('click', closeVideoModal);
+    videoBackdrop?.addEventListener('click', closeVideoModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (videoModal?.classList.contains('active')) closeVideoModal();
+        if (imgModal?.classList.contains('active')) closeImgModal();
+      }
+    });
+  }
+</script>
