@@ -34,7 +34,7 @@ const categoryProducts = getProductsByCategory(category.slug);
           </h1>
           <p class="prod-hero-desc">{product.description}</p>
           <div class="prod-hero-actions">
-            <a href="/contact" class="btn btn--primary">Request a Quote</a>
+            <a href="/contact" class="btn btn--primary">Let's Connect</a>
             {product.specTable && product.specTable.length > 0 && (
               <a href="#specs" class="btn btn--outline">View Specs</a>
             )}
@@ -252,7 +252,7 @@ const categoryProducts = getProductsByCategory(category.slug);
         Tell us about your application and we'll engineer the right solution for your process.
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-        <a href="/contact" class="btn btn--primary" style="background: white; color: var(--zephyr-orange);">Request a Quote</a>
+        <a href="/contact" class="btn btn--primary" style="background: white; color: var(--zephyr-orange);">Let's Connect</a>
         <a href={`/products/${category.slug}`} class="btn btn--outline" style="border-color: rgba(255,255,255,0.4); color: white;">All {category.name} Products</a>
       </div>
     </div>
