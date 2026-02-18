@@ -188,11 +188,57 @@ const capabilities = [
     </div>
   </section>
 
+  <!-- ===== INNOVATIVE SOLUTIONS ===== -->
+  <section class="innovations reveal" style="background: white; padding: 5rem 2rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="label" style="color: var(--zephyr-orange);">02 — Equipment</span>
+        <h2 class="display-lg" style="margin-top: 0.5rem;">Innovative Solutions</h2>
+      </div>
+
+      <div class="inno-track-wrapper">
+        <div class="inno-track">
+          {[
+            { name: 'LX Series', sub: 'Bedding Delivery', img: '/images/products/renders/lx-render.png', href: '/bedding/delivery/lx-series' },
+            { name: 'MX Series', sub: 'Bedding Delivery', img: '/images/products/renders/mx-render.png', href: '/bedding/delivery/mx-series' },
+            { name: 'VX Series', sub: 'Bedding Delivery', img: '/images/products/renders/vx-render.png', href: '/bedding/delivery/vx-series' },
+            { name: '504 Series', sub: 'Bedding Dispensing', img: '/images/products/renders/504-render.png', href: '/bedding/dispensing/504-series' },
+            { name: 'GF Series', sub: 'Waste Disposal', img: '/images/products/renders/gf-render.png', href: '/bedding/disposal/gf-series' },
+            { name: '14V Unloader', sub: 'Bulk Unloading', img: '/images/products/renders/14v-product.png', href: '/products/unload/14v-direct-bag-unloader' },
+            { name: 'Vac Dense Phase', sub: 'Bulk Conveying', img: '/images/vac-dense/vac-dense-phase-3d.png', href: '/success-stories/vacuum-dense-phase' },
+          ].map((item) => (
+            <a href={item.href} class="inno-card">
+              <div class="inno-img-wrap"><img src={item.img} alt={item.name} /></div>
+              <div class="inno-label">{item.name}</div>
+              <div class="inno-sub">{item.sub}</div>
+            </a>
+          ))}
+          {/* Duplicate for seamless loop */}
+          {[
+            { name: 'LX Series', sub: 'Bedding Delivery', img: '/images/products/renders/lx-render.png', href: '/bedding/delivery/lx-series' },
+            { name: 'MX Series', sub: 'Bedding Delivery', img: '/images/products/renders/mx-render.png', href: '/bedding/delivery/mx-series' },
+            { name: 'VX Series', sub: 'Bedding Delivery', img: '/images/products/renders/vx-render.png', href: '/bedding/delivery/vx-series' },
+            { name: '504 Series', sub: 'Bedding Dispensing', img: '/images/products/renders/504-render.png', href: '/bedding/dispensing/504-series' },
+            { name: 'GF Series', sub: 'Waste Disposal', img: '/images/products/renders/gf-render.png', href: '/bedding/disposal/gf-series' },
+            { name: '14V Unloader', sub: 'Bulk Unloading', img: '/images/products/renders/14v-product.png', href: '/products/unload/14v-direct-bag-unloader' },
+            { name: 'Vac Dense Phase', sub: 'Bulk Conveying', img: '/images/vac-dense/vac-dense-phase-3d.png', href: '/success-stories/vacuum-dense-phase' },
+          ].map((item) => (
+            <a href={item.href} class="inno-card">
+              <div class="inno-img-wrap"><img src={item.img} alt={item.name} /></div>
+              <div class="inno-label">{item.name}</div>
+              <div class="inno-sub">{item.sub}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CAPABILITIES ===== -->
   <section class="section" style="background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%);">
     <div class="container">
       <div class="section-header reveal">
-        <span class="label" style="color: var(--zephyr-orange);">02 — Capabilities</span>
+        <span class="label" style="color: var(--zephyr-orange);">03 — Capabilities</span>
         <h2 class="display-lg" style="margin-top: 0.5rem;">How We Work</h2>
         <p class="accent-text" style="color: var(--steel-400); margin-top: 0.25rem;">From concept to commissioning</p>
       </div>
@@ -209,50 +255,6 @@ const capabilities = [
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INNOVATIVE SOLUTIONS ===== -->
-  <section class="innovations reveal" style="background: white; padding: 5rem 2rem;">
-    <div class="container" style="max-width: 1200px;">
-      <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
-        <span class="label" style="color: var(--zephyr-orange);">03 — Equipment</span>
-        <h2 class="display-lg" style="margin-top: 0.5rem;">Innovative Solutions</h2>
-      </div>
-
-      <div class="inno-track-wrapper">
-        <div class="inno-track">
-          {[
-            { name: 'LX Series', sub: 'Bedding Delivery', img: '/images/products/renders/lx-render.png', href: '/bedding/delivery/lx-series' },
-            { name: 'MX Series', sub: 'Bedding Delivery', img: '/images/products/renders/mx-render.png', href: '/bedding/delivery/mx-series' },
-            { name: 'VX Series', sub: 'Bedding Delivery', img: '/images/products/renders/vx-render.png', href: '/bedding/delivery/vx-series' },
-            { name: '504 Series', sub: 'Bedding Dispensing', img: '/images/products/renders/504-render.png', href: '/bedding/dispensing/504-series' },
-            { name: 'GF Series', sub: 'Waste Disposal', img: '/images/products/renders/gf-render.png', href: '/bedding/disposal/gf-series' },
-            { name: '14V Unloader', sub: 'Bulk Unloading', img: '/images/products/renders/14v-product.png', href: '/products/unload/14v-direct-bag-unloader' },
-          ].map((item) => (
-            <a href={item.href} class="inno-card">
-              <div class="inno-img-wrap"><img src={item.img} alt={item.name} /></div>
-              <div class="inno-label">{item.name}</div>
-              <div class="inno-sub">{item.sub}</div>
-            </a>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {[
-            { name: 'LX Series', sub: 'Bedding Delivery', img: '/images/products/renders/lx-render.png', href: '/bedding/delivery/lx-series' },
-            { name: 'MX Series', sub: 'Bedding Delivery', img: '/images/products/renders/mx-render.png', href: '/bedding/delivery/mx-series' },
-            { name: 'VX Series', sub: 'Bedding Delivery', img: '/images/products/renders/vx-render.png', href: '/bedding/delivery/vx-series' },
-            { name: '504 Series', sub: 'Bedding Dispensing', img: '/images/products/renders/504-render.png', href: '/bedding/dispensing/504-series' },
-            { name: 'GF Series', sub: 'Waste Disposal', img: '/images/products/renders/gf-render.png', href: '/bedding/disposal/gf-series' },
-            { name: '14V Unloader', sub: 'Bulk Unloading', img: '/images/products/renders/14v-product.png', href: '/products/unload/14v-direct-bag-unloader' },
-          ].map((item) => (
-            <a href={item.href} class="inno-card">
-              <div class="inno-img-wrap"><img src={item.img} alt={item.name} /></div>
-              <div class="inno-label">{item.name}</div>
-              <div class="inno-sub">{item.sub}</div>
-            </a>
-          ))}
-        </div>
       </div>
     </div>
   </section>

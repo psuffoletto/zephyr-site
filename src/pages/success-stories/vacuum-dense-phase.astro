@@ -16,27 +16,43 @@ const results = [
     <div class="cs-hero-bg"></div>
     <div class="cs-hero-overlay"></div>
     <div class="container cs-hero-content">
-      <a href="/success-stories" class="cs-back">
-        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-          <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        All Success Stories
-      </a>
-      <span class="label" style="color: var(--zephyr-orange);">Ceramics</span>
-      <h1 class="display-lg" style="color: white; margin-top: 0.5rem;">Vacuum Dense Phase<br /><span style="color: var(--zephyr-orange);">Conveying System</span></h1>
-      <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Bulk bag unloading, gain-in-weight batching & dual mixer delivery for ceramics production</p>
-      <div class="cs-hero-meta">
-        <div class="cs-meta-item">
-          <span class="cs-meta-label">Client</span>
-          <span class="cs-meta-value">Ceramics Manufacturer</span>
+      <div class="cs-hero-grid">
+        <div class="cs-hero-text">
+          <a href="/success-stories" class="cs-back">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            All Projects
+          </a>
+          <span class="label" style="color: var(--zephyr-orange);">Ceramics</span>
+          <h1 class="display-lg" style="color: white; margin-top: 0.5rem;">Vacuum Dense Phase<br /><span style="color: var(--zephyr-orange);">Conveying System</span></h1>
+          <p class="accent-text" style="color: var(--steel-300); margin-top: 0.5rem;">Bulk bag unloading, gain-in-weight batching & dual mixer delivery for ceramics production</p>
+          <div class="cs-hero-meta">
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Client</span>
+              <span class="cs-meta-value">Ceramics Manufacturer</span>
+            </div>
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Industry</span>
+              <span class="cs-meta-value">Ceramics Manufacturing</span>
+            </div>
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Technology</span>
+              <span class="cs-meta-value">Vacuum Dense Phase Conveying</span>
+            </div>
+          </div>
         </div>
-        <div class="cs-meta-item">
-          <span class="cs-meta-label">Industry</span>
-          <span class="cs-meta-value">Ceramics Manufacturing</span>
-        </div>
-        <div class="cs-meta-item">
-          <span class="cs-meta-label">Technology</span>
-          <span class="cs-meta-value">Vacuum Dense Phase Conveying</span>
+        <div class="cs-hero-render" id="heroRenderTrigger">
+          <img src="/images/vac-dense/vac-dense-phase-3d.png" alt="Vacuum dense phase conveying system 3D rendering" />
+          <div class="cs-hero-render-expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 3 21 3 21 9"/>
+              <polyline points="9 21 3 21 3 15"/>
+              <line x1="21" y1="3" x2="14" y2="10"/>
+              <line x1="3" y1="21" x2="10" y2="14"/>
+            </svg>
+            Click to Expand
+          </div>
         </div>
       </div>
     </div>
@@ -44,8 +60,8 @@ const results = [
 
   <!-- ===== HERO IMAGE ===== -->
   <section class="cs-hero-image">
-    <a href="/images/products/renders/vac-dense-phase-render.png" target="_blank" rel="noopener noreferrer" class="cs-hero-image-link">
-      <img src="/images/products/renders/vac-dense-phase-render.png" alt="Vacuum dense phase conveying system with bulk bag unloading, gain-in-weight batching, and dual mixer delivery" />
+    <a href="/images/vac-dense/vacdense-1.jpg" target="_blank" rel="noopener noreferrer" class="cs-hero-image-link">
+      <img src="/images/vac-dense/vacdense-2.jpg" alt="Vacuum dense phase conveying system installation" />
       <div class="cs-hero-image-expand">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 3 21 3 21 9"/>
@@ -180,6 +196,61 @@ const results = [
     </div>
   </section>
 
+  <!-- ===== PHOTO GALLERY ===== -->
+  <section class="cs-section" style="background: white; padding: 3rem 0;">
+    <div class="container cs-container" style="max-width: 1200px;">
+      <div class="cs-section-header reveal">
+        <span class="label" style="color: var(--zephyr-orange);">Gallery</span>
+        <h2 class="display-md" style="margin-top: 0.5rem;">Project Photos</h2>
+      </div>
+      <div class="cs-gallery-rotator reveal">
+        <div class="cs-gallery-nav">
+          <button class="cs-gallery-btn" id="galleryPrev" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="cs-gallery-btn" id="galleryNext">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+        </div>
+        <div class="cs-gallery-wrapper">
+          <div class="cs-gallery-track" id="galleryTrack">
+            <div class="cs-gallery-slide" data-src="/images/vac-dense/vacdense-1.jpg">
+              <img src="/images/vac-dense/vacdense-1.jpg" alt="System overview" />
+            </div>
+            <div class="cs-gallery-slide" data-src="/images/vac-dense/vacdense-2.jpg">
+              <img src="/images/vac-dense/vacdense-2.jpg" alt="System detail" />
+            </div>
+            <div class="cs-gallery-slide" data-src="/images/vac-dense/vacdense-3.jpg">
+              <img src="/images/vac-dense/vacdense-3.jpg" alt="Installation view" />
+            </div>
+            <div class="cs-gallery-slide" data-src="/images/vac-dense/vacdense-4.gif">
+              <img src="/images/vac-dense/vacdense-4.gif" alt="System in operation" />
+            </div>
+            <div class="cs-gallery-slide" data-src="/images/vac-dense/vacdense-5.png">
+              <img src="/images/vac-dense/vacdense-5.png" alt="System detail view" />
+            </div>
+            <div class="cs-gallery-slide" data-src="/images/vac-dense/vac-dense-phase-3d.png">
+              <img src="/images/vac-dense/vac-dense-phase-3d.png" alt="3D system rendering" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="csImgModal" class="cs-img-modal">
+    <div class="cs-img-modal-backdrop"></div>
+    <div class="cs-img-modal-content">
+      <button id="csImgClose" class="cs-img-modal-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <img id="csModalImg" alt="Gallery image" />
+    </div>
+  </div>
+
   <!-- ===== CTA ===== -->
   <section class="cs-cta reveal">
     <div class="container" style="text-align: center;">
@@ -217,6 +288,63 @@ const results = [
   .cs-hero-content {
     position: relative;
     z-index: 1;
+  }
+
+  .cs-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .cs-hero-render {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .cs-hero-render img {
+    width: 250%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 40px rgba(0,0,0,0.3));
+  }
+
+  .cs-hero-render-expand {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cs-hero-render:hover .cs-hero-render-expand {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .cs-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .cs-hero-render { display: none; }
   }
 
   .cs-back {
@@ -535,4 +663,192 @@ const results = [
   @media (max-width: 480px) {
     .cs-results-grid { grid-template-columns: 1fr; }
   }
+
+  /* ===== PHOTO GALLERY ROTATOR ===== */
+  .cs-gallery-rotator {
+    position: relative;
+  }
+
+  .cs-gallery-nav {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+
+  .cs-gallery-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--steel-200);
+    border-radius: 50%;
+    background: white;
+    color: var(--steel-500);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cs-gallery-btn:hover {
+    border-color: var(--zephyr-orange);
+    color: var(--zephyr-orange);
+  }
+
+  .cs-gallery-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    border-color: var(--steel-200);
+    color: var(--steel-300);
+  }
+
+  .cs-gallery-wrapper {
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .cs-gallery-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.4s ease;
+  }
+
+  .cs-gallery-slide {
+    flex: 0 0 calc(50% - 0.5rem);
+    aspect-ratio: 16/9;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .cs-gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .cs-gallery-slide:hover img {
+    transform: scale(1.03);
+  }
+
+  @media (max-width: 768px) {
+    .cs-gallery-slide {
+      flex: 0 0 100%;
+    }
+  }
+
+  /* ===== IMAGE MODAL ===== */
+  .cs-img-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cs-img-modal.active {
+    display: flex;
+  }
+
+  .cs-img-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+  }
+
+  .cs-img-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+
+  .cs-img-modal-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  .cs-img-modal-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .cs-img-modal-close:hover {
+    opacity: 1;
+  }
 </style>
+
+<script>
+  // Gallery rotator
+  const track = document.getElementById('galleryTrack');
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+
+  if (track && prevBtn && nextBtn) {
+    let offset = 0;
+    const slides = track.querySelectorAll('.cs-gallery-slide');
+    const isMobile = window.innerWidth <= 768;
+    const visible = isMobile ? 1 : 2;
+    const maxOffset = Math.max(0, slides.length - visible);
+
+    function update() {
+      const gap = 16;
+      const itemWidth = (track!.parentElement!.clientWidth - gap * (visible - 1)) / visible;
+      track!.style.transform = `translateX(-${offset * (itemWidth + gap)}px)`;
+      prevBtn!.disabled = offset === 0;
+      nextBtn!.disabled = offset >= maxOffset;
+    }
+
+    prevBtn.addEventListener('click', () => { if (offset > 0) { offset--; update(); } });
+    nextBtn.addEventListener('click', () => { if (offset < maxOffset) { offset++; update(); } });
+    update();
+    window.addEventListener('resize', update);
+
+    // Hero render click to expand
+    const heroRender = document.getElementById('heroRenderTrigger');
+    const heroRenderImg = heroRender?.querySelector('img') as HTMLImageElement;
+
+    // Click to expand
+    const modal = document.getElementById('csImgModal');
+    const modalImg = document.getElementById('csModalImg') as HTMLImageElement;
+    const closeBtn = document.getElementById('csImgClose');
+    const backdrop = modal?.querySelector('.cs-img-modal-backdrop');
+
+    slides.forEach(slide => {
+      slide.addEventListener('click', () => {
+        const img = slide.querySelector('img') as HTMLImageElement;
+        modalImg.src = img.src;
+        modal?.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    heroRender?.addEventListener('click', () => {
+      modalImg.src = heroRenderImg.src;
+      modal?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeModal() {
+      modal?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop?.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('active')) closeModal();
+    });
+  }
+</script>
