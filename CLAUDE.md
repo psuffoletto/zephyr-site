@@ -61,14 +61,15 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 - Background image slideshow in `src/pages/index.astro` — add `<div class="hero-slide">` entries with `background-image` URL
 - Images stored in `public/images/hero/`
 
-## Success Stories
+## Projects (formerly Success Stories)
+- **Nav label:** "Projects" in header (links to `/success-stories`)
 - **Location:** `src/pages/success-stories/`
 - **Index:** `src/pages/success-stories/index.astro` — stories array in frontmatter, grid of cards
 - **No shared component** — each story is a standalone `.astro` page with embedded data and scoped styles
 - **CSS classes** prefixed with `.cs-` (case study)
-- **Section pattern:** Hero → Hero Image → Intro card → Challenge (01) → Solution (02) → Results (03) → Partnership → Gallery → CTA
+- **Section pattern:** Hero (optional 2-col with 3D render) → Hero Image → Intro card → Challenge (01) → Solution (02) → Results (03) → Partnership → Photo Rotator Gallery → CTA
 - **Solution layouts:** Process flow (numbered vertical steps) or 2-column grid with solution cards
-- **Gallery:** Photos grid (before/after) + optional video modal (click-to-play popup, muted, looping)
+- **Photo rotator:** Prev/next carousel with click-to-expand image modal (see vacuum-dense-phase.astro)
 - **Video modal:** `<script>` block at bottom of page handles open/close/Escape key
 - **Images:** stored in `public/images/{story-slug}/`
 - **Product image overrides:** Individual product pages can use `<style is:global>` with `!important` to override hero image sizing (e.g., 506-series uses 250%)
@@ -77,6 +78,15 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
   2. Add story object to the `stories` array in `index.astro`
   3. Add images to `public/images/{slug}/`
 - **Current stories:** johns-hopkins, nih-building-35, vacuum-dense-phase, desiccant-conveying
+
+## Home Page Sections (order)
+1. Hero (fixed parallax with slideshow)
+2. Industry Solutions (scroll-driven carousel, dark)
+3. What We Do (3-panel market segment accordion)
+4. CTA
+5. Innovative Solutions (product rotator carousel, white) — `02`
+6. How We Work / Capabilities (capability cards, blue gradient) — `03`
+7. Banner (orange stats bar)
 
 ## Page-Level Customization (via `<script>` + `<style is:global>`)
 Individual product pages can heavily customize shared components without modifying them:
