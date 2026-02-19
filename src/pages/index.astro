@@ -52,53 +52,27 @@ const capabilities = [
 
   <div class="page-content">
   <!-- ===== INDUSTRY SOLUTIONS ===== -->
-  <section class="industries reveal" style="background: var(--steel-900); padding: 2rem 2rem;">
+  <section class="key-stats reveal" style="background: var(--steel-900);">
     <div class="container" style="max-width: 1200px;">
-      <div class="section-header" style="text-align: center; margin-bottom: 1.25rem;">
-        <span class="label" style="color: var(--zephyr-orange);">Markets We Serve</span>
-        <h2 class="display-lg" style="margin-top: 0.25rem; color: white;">Industry Solutions</h2>
-      </div>
-      <div class="industries-track-wrapper">
-        <div class="industries-track">
-          {[
-            { name: 'Life Science', img: '/images/industries/life-science.jpg' },
-            { name: 'Bakery', img: '/images/industries/bakery.jpg' },
-            { name: 'Chemical', img: '/images/industries/chemical.jpg' },
-            { name: 'Snack Foods', img: '/images/industries/snack-foods.jpg' },
-            { name: 'Plastics', img: '/images/industries/plastics.jpg' },
-            { name: 'Dairy', img: '/images/industries/dairy.jpg' },
-            { name: 'Nutraceuticals', img: '/images/industries/nutraceuticals.jpg' },
-            { name: 'Pharmaceuticals', img: '/images/industries/pharmaceuticals.jpg' },
-            { name: 'Pet Food', img: '/images/industries/pet-food.jpg' },
-            { name: 'Batteries', img: '/images/industries/batteries.jpg' },
-            { name: 'Paint & Pigments', img: '/images/industries/paint-pigments.jpg' },
-            { name: 'Ceramics', img: '/images/industries/ceramics.jpg' },
-          ].map((industry) => (
-            <div class="industry-card">
-              <div class="industry-img" style={`background-image: url('${industry.img}');`}></div>
-              <span class="industry-name">{industry.name}</span>
-            </div>
-          ))}
-          {/* Duplicate set for seamless loop */}
-          {[
-            { name: 'Life Science', img: '/images/industries/life-science.jpg' },
-            { name: 'Bakery', img: '/images/industries/bakery.jpg' },
-            { name: 'Chemical', img: '/images/industries/chemical.jpg' },
-            { name: 'Snack Foods', img: '/images/industries/snack-foods.jpg' },
-            { name: 'Plastics', img: '/images/industries/plastics.jpg' },
-            { name: 'Dairy', img: '/images/industries/dairy.jpg' },
-            { name: 'Nutraceuticals', img: '/images/industries/nutraceuticals.jpg' },
-            { name: 'Pharmaceuticals', img: '/images/industries/pharmaceuticals.jpg' },
-            { name: 'Pet Food', img: '/images/industries/pet-food.jpg' },
-            { name: 'Batteries', img: '/images/industries/batteries.jpg' },
-            { name: 'Paint & Pigments', img: '/images/industries/paint-pigments.jpg' },
-            { name: 'Ceramics', img: '/images/industries/ceramics.jpg' },
-          ].map((industry) => (
-            <div class="industry-card">
-              <div class="industry-img" style={`background-image: url('${industry.img}');`}></div>
-              <span class="industry-name">{industry.name}</span>
-            </div>
-          ))}
+      <div class="key-stats-grid">
+        <div class="key-stat">
+          <div class="key-stat-num" data-count="25" data-suffix="+">0</div>
+          <div class="key-stat-lbl">Years of Experience</div>
+        </div>
+        <div class="key-stat-divider"></div>
+        <div class="key-stat">
+          <div class="key-stat-num" data-count="1000" data-suffix="+" data-comma="true">0</div>
+          <div class="key-stat-lbl">Systems Installed</div>
+        </div>
+        <div class="key-stat-divider"></div>
+        <div class="key-stat">
+          <div class="key-stat-num" data-count="500" data-suffix="+">0</div>
+          <div class="key-stat-lbl">Materials Handled</div>
+        </div>
+        <div class="key-stat-divider"></div>
+        <div class="key-stat">
+          <div class="key-stat-num" data-count="12" data-suffix="+">0</div>
+          <div class="key-stat-lbl">Industries</div>
         </div>
       </div>
     </div>
@@ -447,74 +421,51 @@ const capabilities = [
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
-  /* ===== INDUSTRY SOLUTIONS ===== */
-  .industries-track-wrapper {
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  /* ===== KEY STATS ===== */
+  .key-stats {
+    padding: 4rem 2rem;
   }
 
-  .industries-track {
+  .key-stats-grid {
     display: flex;
-    gap: 1.5rem;
-    width: max-content;
-    will-change: transform;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
   }
 
-  .industry-card {
-    flex-shrink: 0;
-    width: 140px;
+  .key-stat {
     text-align: center;
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
-  .industries.in-view .industry-card {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  .key-stat-num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--zephyr-orange);
+    line-height: 1;
   }
 
-  .industry-img {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 0.75rem;
-    border-radius: 6px;
-    background-size: cover;
-    background-position: center;
-    background-color: var(--steel-100);
-    border: 2px solid var(--steel-100);
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
-
-  .industry-card:hover .industry-img {
-    border-color: var(--zephyr-orange);
-    transform: translateY(-4px);
-  }
-
-  .industry-name {
+  .key-stat-lbl {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--steel-300);
-    transition: color 0.3s ease;
+    color: white;
+    margin-top: 0.75rem;
   }
 
-  .industry-card:hover .industry-name {
-    color: var(--zephyr-orange);
+  .key-stat-divider {
+    width: 1px;
+    height: 4rem;
+    background: rgba(255,255,255,0.15);
   }
-
-  .industry-img {
-    border-color: var(--steel-700);
-    background-color: var(--steel-800);
-  }
-
-  /* scroll-driven animation handled by JS */
 
   @media (max-width: 768px) {
-    .industry-card { width: 110px; }
-    .industry-img { width: 90px; height: 90px; }
+    .key-stats-grid { gap: 1.5rem; }
+    .key-stat-num { font-size: 2.5rem; }
+    .key-stat-lbl { font-size: 0.65rem; }
+    .key-stat-divider { height: 2.5rem; }
   }
 
   /* ===== SECTION HEADERS ===== */
@@ -1039,61 +990,38 @@ const capabilities = [
     });
   }
 
-  // ===== INDUSTRY SOLUTIONS — scroll-driven carousel =====
-  const industriesSection = document.querySelector('.industries') as HTMLElement;
-  const track = document.querySelector('.industries-track') as HTMLElement;
-  const cards = document.querySelectorAll('.industry-card');
+  // ===== KEY STATS — count-up animation =====
+  const statsSection = document.querySelector('.key-stats') as HTMLElement;
+  const counters = document.querySelectorAll<HTMLElement>('.key-stat-num[data-count]');
 
-  if (industriesSection && track) {
-    // Staggered entrance animation when section scrolls into view
-    const entranceObserver = new IntersectionObserver((entries) => {
+  if (statsSection && counters.length) {
+    let counted = false;
+    const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          industriesSection.classList.add('in-view');
-          cards.forEach((card, i) => {
-            (card as HTMLElement).style.transitionDelay = `${i * 0.04}s`;
+        if (entry.isIntersecting && !counted) {
+          counted = true;
+          counters.forEach(el => {
+            const target = parseInt(el.dataset.count || '0');
+            const suffix = el.dataset.suffix || '';
+            const useComma = el.dataset.comma === 'true';
+            const duration = 1200;
+            const start = performance.now();
+
+            function update(now: number) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              // Ease-out curve
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(eased * target);
+              el.textContent = (useComma ? current.toLocaleString() : String(current)) + suffix;
+              if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
           });
-          entranceObserver.unobserve(entry.target);
+          statsObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
-    entranceObserver.observe(industriesSection);
-
-    // Scroll-linked horizontal movement — only runs when section is visible
-    let baseSpeed = 0.5; // px per frame for ambient drift
-    let scrollOffset = 0;
-    let lastScrollY = window.scrollY;
-    let scrollVelocity = 0;
-    const halfWidth = track.scrollWidth / 2;
-    let isVisible = false;
-    let rafId: number | null = null;
-
-    function animateTrack() {
-      if (!isVisible) { rafId = null; return; }
-
-      const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
-      scrollVelocity += (delta * 0.3 - scrollVelocity) * 0.1;
-      lastScrollY = currentScrollY;
-
-      scrollOffset += baseSpeed + scrollVelocity;
-
-      if (scrollOffset >= halfWidth) scrollOffset -= halfWidth;
-      if (scrollOffset < 0) scrollOffset += halfWidth;
-
-      track.style.transform = `translateX(-${scrollOffset}px)`;
-      rafId = requestAnimationFrame(animateTrack);
-    }
-
-    const visibilityObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && !rafId) {
-          lastScrollY = window.scrollY;
-          rafId = requestAnimationFrame(animateTrack);
-        }
-      });
-    }, { threshold: 0 });
-    visibilityObserver.observe(industriesSection);
+    }, { threshold: 0.5 });
+    statsObserver.observe(statsSection);
   }
 </script>
