@@ -656,6 +656,14 @@ const capabilities = [
     transition: transform 0.4s ease;
   }
 
+  .inno-img-wrap img[src$=".svg"] {
+    transform: scale(1.35);
+  }
+
+  .inno-card:hover .inno-img-wrap img[src$=".svg"] {
+    transform: scale(1.45);
+  }
+
   .inno-card:hover .inno-img-wrap img {
     transform: scale(1.08);
   }
