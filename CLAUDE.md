@@ -81,7 +81,7 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 
 ## Home Page Sections (order)
 1. Hero (fixed parallax with slideshow)
-2. Industry Solutions (scroll-driven carousel, dark)
+2. Industry Solutions (scroll-driven carousel, dark — rAF loop pauses when off-screen to save CPU)
 3. What We Do (3-panel market segment accordion)
 4. CTA
 5. Innovative Solutions (product rotator carousel, white) — `02`
@@ -102,6 +102,22 @@ Individual product pages can heavily customize shared components without modifyi
 1. Add product object to the relevant data file (e.g., `src/data/dust-collection.ts`)
 2. Create page file under the appropriate category directory (e.g., `src/pages/dust-collection/cartridge-collectors/my-product.astro`)
 3. Page file imports the detail component + data helpers (3-line pattern)
+
+## About Page
+- **Hero:** "Big Solutions. Built Personally." + "Built in Buffalo"
+- **Sections:** Our Purpose (Moving What Matters + 3x3 photo collage with click-to-expand) → Vertically Integrated (More Than Equipment — 4 cards: Design, Manufacturing, Controls, Installation) → Solutions (6 icon cards) → Industries We Serve (hover boxes with rollover images) → Capabilities (tag grid) → CTA
+- **Value card hover:** White → dark blue (`--steel-900`) with orange border-top line
+- **Industry boxes:** 4x3 grid, dark background, industry image fades in on hover
+
+## CTA Buttons
+- All CTA buttons site-wide use "Let's Connect" (not "Get a Quote" or "Request a Quote")
+- Contact form heading also says "Let's Connect"
+
+## Image Optimization
+- Hero/background images should be JPEG (not PNG) — quality 90 via `npx sharp-cli`
+- Typical savings: 90%+ (18MB PNG → 1.4MB JPEG)
+- `npx sharp-cli -i input.png -o output.jpg -- --quality 90`
+- Originals backed up in `originals/` subdirectories and recoverable from git history
 
 ## Design System
 - **Brand color:** `--zephyr-orange` (#E8612D)
