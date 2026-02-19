@@ -154,7 +154,7 @@ export const products: Product[] = [
       'Chemical Processing', 'Food & Beverage', 'Pharmaceutical', 'Plastics & Pellets',
       'Mineral Processing', 'Life Sciences', 'Dairy',
     ],
-    galleryImages: ['/images/unload-hero.png', '/images/hero/homepage-hero2.png', '/images/14v-install-3.png', '/images/14v-install-4.png', '/images/14v-install-5.png'],
+    galleryImages: ['/images/unload-hero.png', '/images/hero/homepage-hero2.jpg', '/images/14v-install-3.png', '/images/14v-install-4.png', '/images/14v-install-5.png'],
     faqs: [
       { question: 'What types of bags can the 14v handle?', answer: 'The 14v is designed to handle standard bulk bags (FIBCs) and drums containing free-flowing granules, pellets, or powders. The flexible bag snout arms and adjustable wand bag guard accommodate a wide range of bag sizes and configurations.' },
       { question: 'How much headroom is needed?', answer: 'The 14v is specifically designed for tight spaces and low headroom applications. The compact center mast design with a 16" x 16" base plate requires significantly less overhead clearance than traditional fork-style or hoist-based unloaders.' },
