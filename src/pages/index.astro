@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const capabilities = [
-  { title: 'Custom Engineering', desc: 'Every system designed to your exact specifications — no off-the-shelf compromises.', img: '/images/capabilities/custom-engineering.jpg' },
-  { title: 'In-House Manufacturing', desc: 'Complete fabrication capability from raw steel to finished equipment, all under one roof.', img: '/images/capabilities/manufacturing.jpg' },
-  { title: 'PLC Integration', desc: 'Full control system design with ladder logic programming across multiple PLC platforms.', img: '/images/capabilities/plc-integration.jpg' },
-  { title: 'Field Support', desc: 'Installation assistance, commissioning, and ongoing technical support for every system we build.', img: '/images/capabilities/field-support.jpg' },
+  { title: 'Collaborative Execution', desc: 'Feasibility evaluations, on-site walkthroughs, process flow diagrams, 3D modeling, and dust hazard assessments — all before fabrication starts.', img: '/images/capabilities/custom-engineering.jpg' },
+  { title: 'Application Expertise', desc: 'Application engineering, mechanical design, controls integration, dust collection, and startup support — working together as a cohesive team.', img: '/images/capabilities/manufacturing.jpg' },
+  { title: 'Full-System Thinking', desc: 'We design across the full material flow: receiving, conveying, processing, dust collection, and discharge — not just individual equipment.', img: '/images/capabilities/plc-integration.jpg' },
+  { title: 'Built for Engineering Teams', desc: 'Clear drawings, defined performance criteria, responsive communication, and practical designs — structured to keep projects moving forward.', img: '/images/capabilities/field-support.jpg' },
 ];
 ---
 
@@ -210,20 +210,20 @@ const capabilities = [
     </div>
   </section>
 
-  <!-- ===== CAPABILITIES ===== -->
+  <!-- ===== HOW WE WORK ===== -->
   <section class="section" style="background: linear-gradient(135deg, #C8D6E5 0%, #B0C4D4 100%);">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="label" style="color: var(--zephyr-orange);">03 — Capabilities</span>
+      <div class="section-header reveal" style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="label" style="color: var(--zephyr-orange);">03 — Customer Driven</span>
         <h2 class="display-lg" style="margin-top: 0.5rem;">How We Work</h2>
-        <p class="accent-text" style="color: var(--steel-400); margin-top: 0.25rem;">From concept to commissioning</p>
+        <p class="accent-text" style="color: var(--steel-900); margin-top: 0.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">Clarity. Performance. Confidence. We take an engineer-to-application approach that aligns process requirements, safety considerations, and operational goals from the earliest stages.</p>
       </div>
 
       <div class="capabilities-grid">
         {capabilities.map((cap, i) => (
           <div class="capability-card reveal" data-delay={i}>
             <div class="capability-pattern"></div>
-            <div class="capability-bg" style={`background-image: url('${cap.img}');`}></div>
+            <div class="capability-bg"></div>
             <div class="capability-content">
               <div class="capability-num">{String(i + 1).padStart(2, '0')}</div>
               <h3 class="display-md" style="font-size: 1.3rem; margin-bottom: 0.75rem;">{cap.title}</h3>
@@ -231,6 +231,11 @@ const capabilities = [
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="hww-tagline reveal" style="text-align: center; margin-top: 2.5rem;">
+        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--steel-700);">Big Solution Delivery. <span style="color: var(--zephyr-orange);">Small Company Accountability.</span></p>
+        <p style="font-weight: 300; color: var(--steel-500); margin-top: 0.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.65;">Direct access to engineers, faster decision-making, practical problem solving, and personal accountability for outcomes.</p>
       </div>
     </div>
   </section>
@@ -545,23 +550,13 @@ const capabilities = [
   .capability-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    background: var(--steel-900);
     opacity: 0;
-    transform: scale(1.1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .capability-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(10,18,37,0.85) 0%, rgba(78,106,128,0.8) 100%);
+    transition: opacity 0.5s ease;
   }
 
   .capability-card:hover .capability-bg {
     opacity: 1;
-    transform: scale(1);
   }
 
   .capability-content {
