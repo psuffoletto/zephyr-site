@@ -81,12 +81,14 @@ Products use the shared `Product` and `Category` interfaces from `src/data/produ
 
 ## Home Page Sections (order)
 1. Hero (fixed parallax with slideshow)
-2. Industry Solutions (scroll-driven carousel, dark — rAF loop pauses when off-screen to save CPU)
+2. Key Stats bar (dark, count-up animation — 25+ Years, 1,000+ Systems, 500+ Materials Handled, 12+ Industries)
 3. What We Do (3-panel market segment accordion)
 4. CTA
 5. Innovative Solutions (product rotator carousel, white) — `02`
-6. How We Work / Capabilities (capability cards, blue gradient) — `03`
-7. Banner (orange stats bar)
+6. How We Work / Customer Driven (4 capability cards, blue gradient, dark blue hover) — `03`
+   - Cards: Collaborative Execution, Application Expertise, Full-System Thinking, Built for Engineering Teams
+   - Tagline: "Big Solution Delivery. Small Company Accountability."
+7. Banner (orange — "Custom Engineered. American Built." with stats: 100% Custom Design, 12+ Industries, NY Manufactured)
 
 ## Page-Level Customization (via `<script>` + `<style is:global>`)
 Individual product pages can heavily customize shared components without modifying them:
